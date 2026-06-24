@@ -1,0 +1,180 @@
+# AI Agents — AppForge Entry Point
+
+> **Read this file first** in any repository that uses the **AppForge** workflow starter.
+
+---
+
+## Start Every Session
+
+1. Read **`docs/AI_RULES.md`** — detailed behavior, gates, and reading order
+2. Read **`.cursor/workflow/state.md`** — current mode, phase, blockers, next step
+3. Obey **Allowed Actions** and **Forbidden Actions** in workflow state
+
+If `Human Checkpoint Required: yes`, `Blocked: yes`, or `DONE: yes` — follow state before starting new work.
+
+---
+
+## Mandatory Workflow
+
+All scoped work follows:
+
+**Plan → Review → Implement → Test → Signoff**
+
+| Gate | Rule |
+|------|------|
+| Implement | Requires plan in `docs/plans/` **and** review approval |
+| Signoff | Requires tests run **or** failures documented honestly |
+| Scope | Never silently expand beyond approved plan |
+
+---
+
+## Human Approval Required
+
+Stop and ask the user before:
+
+- Production deploys
+- Destructive migrations or data changes
+- Secrets or shared environment variable changes
+- External service setup (auth providers, DNS, SaaS accounts)
+- Billing, pricing, payouts, or customer-facing policy
+- Visual or UX approval when design impact is significant
+- Any console action outside the repo
+- Unclear requirements that change product behavior
+
+See `.cursor/rules/human-checkpoints.mdc`.
+
+---
+
+## How This System Is Organized
+
+| Layer | Location | Role |
+|-------|----------|------|
+| **Docs** | `docs/` | **Source of truth** — what the product is and how it works |
+| **Rules** | `.cursor/rules/` | **Behavior instructions** — what to read, how to act, when to stop |
+| **Agents** | `.cursor/agents/` | **Specialist roles** — planning, review, implement, test, signoff, etc. |
+| **Skills** | `.cursor/skills/` | **Reusable workflows** — intake, bootstrap, managed phase, safe changes |
+| **State** | `.cursor/workflow/state.md` | **Current progress** — phase, gates, blockers, next step |
+| **Hooks** | `.cursor/hooks.json` | Session and tool safety reminders |
+
+---
+
+## Who Controls What
+
+- **Managing Agent** owns the workflow, reads state, delegates, and advances phases
+- **Specialist agents** do focused work within the current phase only
+- **Specialist agents do not free-roam** or independently change project direction
+- **Workflow state** determines what step comes next
+
+---
+
+## Operating Modes
+
+| Mode | When | Skill | App code? |
+|------|------|-------|-----------|
+| **Existing Project Intake** | Established codebase | `project-intake` | **No** — docs only |
+| **New Project Bootstrap** | Blank / greenfield | `new-project-bootstrap` | **No** until user approves |
+| **Managed Phase** | Feature, fix, refactor | `managed-phase` | After review approval |
+
+---
+
+## Command Aliases
+
+AppForge supports **short natural commands**. When the user sends a message that matches an alias (case-insensitive), treat it as the full workflow — do not ask for confirmation.
+
+Canonical mapping: `.cursor/workflow/command-aliases.md`
+
+### Existing Project Intake
+
+**Say any of:** `Existing Project` · `Existing Project Intake` · `Project Intake` · `Intake` · `Intake this repo` · `Analyze this repo` · `Review this codebase` · `Document this project` · `Existing App`
+
+→ **Start Existing Project Intake** — repo inspection, health assessment, docs only, no app code changes.
+
+### New Project Bootstrap
+
+**Say any of:** `New Project` · `Project Bootstrap` · `New Project Bootstrap` · `Bootstrap` · `Start App` · `Start New App` · `Blank Project`
+
+→ **Start New Project Bootstrap** — questionnaire, docs first, no app code until approval.
+
+### Managed Phase
+
+**Say any of:** `Managed Phase` · `Start Phase` · `Run Phase` · `Next Phase` · `Continue Workflow` · `Continue AppForge`
+
+→ **Start or continue** Plan → Review → Implement → Test → Signoff using `.cursor/workflow/state.md`. Stop for human checkpoints.
+
+---
+
+## Established Project: Existing Project Intake
+
+Uses **actual repo inspection** (not user interviews alone):
+
+- Stack, scripts, architecture from code
+- Doc vs code mismatches
+- Security, testing, dependency, accessibility, deployment gaps
+- AI-discovered risks → `RISK_REGISTER.md`
+- AI-discovered tech debt → `TECH_DEBT.md`
+- Project health summary → `PROJECT_HEALTH.md`
+- Inspection log → `INTAKE_FINDINGS.md`
+
+Recommends future cleanup phases; **does not fix issues** during intake.
+
+---
+
+## Blank Project: New Project Bootstrap
+
+Uses **user questionnaire** + clearly marked assumptions:
+
+- Essential questions only
+- Docs first (`PROJECT_BRIEF`, `ARCHITECTURE`, etc.)
+- Assumptions tagged `[ASSUMED]` or `[NEEDS HUMAN INPUT]`
+- **No app code** until user approves first implementation phase
+
+---
+
+## Specialist Agents (Quick Reference)
+
+| Agent | Does | Does not |
+|-------|------|----------|
+| Managing Agent | Orchestrates workflow, state, gates | Implement code directly |
+| Planning Agent | Creates plans | Implement |
+| Review Agent | Approves / blocks | Implement |
+| Implementation Agent | Code within approved scope | Production actions |
+| Test Agent | Runs and records tests | Claim pass without running |
+| Signoff Agent | Closes workflow | Skip test gates |
+| Documentation Agent | Docs, intake, bootstrap | Change app code during intake |
+| Security Agent | Security review | Weaken prod rules without approval |
+| Architecture Agent | Structure review | Mandate out-of-scope rewrites |
+
+Details: `.cursor/agents/`
+
+---
+
+## Key Docs After Intake
+
+| Doc | Purpose |
+|-----|---------|
+| `docs/AI_RULES.md` | Detailed agent rules |
+| `docs/PROJECT_BRIEF.md` | Product context |
+| `docs/PROJECT_HEALTH.md` | Health summary and priorities |
+| `docs/INTAKE_FINDINGS.md` | Intake inspection record |
+| `docs/TECH_DEBT.md` | Tracked debt items |
+| `docs/RISK_REGISTER.md` | Active risks |
+
+---
+
+## Safety Summary
+
+- Docs are source of truth; rules tell you how to behave
+- Prefer narrow, reversible changes
+- Never commit secrets
+- Never claim tests passed without running them
+- Never perform production actions without human approval
+
+**Next:** Read `docs/AI_RULES.md`, then `.cursor/workflow/state.md`.
+
+---
+
+## Naming Standard
+
+- **AppForge** is the canonical name for this workflow starter (rules, skills, agents, docs, and `AGENTS.md`).
+- **BuildPilot** is a historical label (e.g. local folder name) — do not use it for current project references in documentation.
+- Application product names live in `PROJECT_BRIEF.md` after intake or bootstrap; they are separate from the AppForge starter name.

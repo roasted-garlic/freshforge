@@ -1,0 +1,30 @@
+{
+  "config": {
+    "default": false,
+    "MD001": true,
+    "MD003": false,
+    "MD009": false,
+    "MD012": false,
+    "MD013": false,
+    "MD022": false,
+    "MD024": false,
+    "MD029": false,
+    "MD031": false,
+    "MD032": false,
+    "MD033": false,
+    "MD034": true,
+    "MD036": false,
+    "MD040": false,
+    "MD041": false,
+    "MD042": true,
+    "MD047": true
+  },
+  "globs": [
+    "README.md",
+    "AGENTS.md",
+    "docs/**/*.md"
+  ],
+  "ignores": [
+    "node_modules/**"
+  ]
+}

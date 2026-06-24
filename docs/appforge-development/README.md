@@ -1,0 +1,48 @@
+# AppForge Development Archive
+
+> **Not part of the clean starter package.** This folder holds historical records from building and maintaining AppForge inside its own workflow. Do **not** copy this folder when dropping AppForge into another project.
+
+---
+
+## Purpose
+
+When AppForge is developed using its own managed phases, generated artifacts accumulate:
+
+- Plans, reviews, test reports, and signoffs
+- Intake findings (when run on the starter repo)
+- Health snapshots
+
+These files are useful for AppForge maintainers but confuse adopters who expect empty `docs/plans/` and `docs/reviews/` folders ready for **their** project work.
+
+---
+
+## Folder Layout
+
+| Path | Contents |
+|------|----------|
+| `plans/` | Completed managed phase plans for AppForge development |
+| `reviews/` | Reviews, test reports, and signoffs from AppForge development |
+| `intake/` | Intake findings if Existing Project Intake is run on the starter repo |
+| `health/` | Optional health snapshots from starter maintenance |
+
+---
+
+## Clean Starter Copy
+
+Before copying AppForge into another repository:
+
+1. Run the **starter-package-cleanup** managed phase (or follow `docs/PACKAGING.md` manually).
+2. **Exclude** `docs/appforge-development/` from the copy.
+3. Confirm `docs/plans/`, `docs/reviews/`, and `docs/setup/` contain only `README.md` and `.gitkeep`.
+4. Confirm `.cursor/workflow/state.md` is idle.
+
+See `docs/PACKAGING.md` for the full checklist.
+
+---
+
+## After Copying Into a Target Repo
+
+| Target | Next step |
+|--------|-----------|
+| Existing application codebase | **Existing Project Intake** |
+| New / blank project | **New Project Bootstrap** |

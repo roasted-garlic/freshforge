@@ -1,0 +1,21 @@
+{
+  "name": "appforge-starter",
+  "private": true,
+  "description": "Validation tooling for the AppForge workflow starter (not an application)",
+  "scripts": {
+    "validate": "npm run validate:structure && npm run validate:markdown && npm run validate:links",
+    "validate:starter": "npm run validate:structure && npm run validate:markdown && npm run validate:links",
+    "validate:structure": "node scripts/validate-structure.mjs",
+    "validate:markdown": "markdownlint-cli2",
+    "validate:links": "node scripts/validate-links.mjs",
+    "export:starter": "node scripts/export-starter.mjs",
+    "export:starter:full": "node scripts/export-starter.mjs --include-readme --include-validation",
+    "install:appforge": "node scripts/install-appforge.mjs"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.17.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

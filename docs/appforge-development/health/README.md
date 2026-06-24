@@ -1,0 +1,5 @@
+# Health Archive
+
+Optional snapshots of AppForge starter maintenance health (documentation quality, validation status, etc.).
+
+Starter-facing `docs/PROJECT_HEALTH.md` should remain a template for target applications.

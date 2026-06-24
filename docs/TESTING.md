@@ -1,0 +1,164 @@
+# Testing
+
+> AppForge workflow starter validation and testing expectations. For application projects using AppForge, customize commands during intake or bootstrap.
+
+---
+
+## Overview
+
+This repository is a **markdown-only workflow starter**, not an application. Automated checks verify:
+
+- Required AppForge files and folders exist
+- Markdown formatting (markdownlint)
+- Relative markdown link targets resolve
+
+Application tests (unit, E2e, build) are added to target repos during intake or bootstrap.
+
+---
+
+## Required Checks Before Signoff
+
+| Check | Command | When required |
+|-------|---------|---------------|
+| Structure | `npm run validate:structure` | Starter doc/structure changes |
+| Markdown | `npm run validate:markdown` | Markdown changes |
+| Links | `npm run validate:links` | Markdown with relative links |
+| All validation | `npm run validate` | Before signoff on starter changes |
+
+If Node is unavailable, run checks in CI or document why validation was skipped.
+
+**Never claim tests passed unless they were actually run.**
+
+---
+
+## Commands Reference
+
+### Prerequisites
+
+- Node.js 18 or newer
+- npm (bundled with Node)
+
+```bash
+# Install validation dependencies (first time only)
+npm install
+
+# Run all starter validation checks
+npm run validate
+
+# Starter-focused validation (structure + markdown + links)
+npm run validate:starter
+
+# Individual checks
+npm run validate:structure
+npm run validate:markdown
+npm run validate:links
+```
+
+### Distribution and install scripts
+
+```bash
+# Export clean starter to dist/appforge-starter/
+npm run export:starter
+
+# Export with README and validation tooling
+npm run export:starter:full
+
+# Install into current directory (from AppForge repo)
+npm run install:appforge -- --target /path/to/project
+
+# Preview install without writing files
+node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
+node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run --include-readme
+node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run --include-validation
+```
+
+### What each check does
+
+| Script | Purpose |
+|--------|---------|
+| `validate:structure` | Required files, clean folders, idle workflow state, state-template mapping, default install/export output |
+| `validate:markdown` | Markdownlint on `README.md`, `AGENTS.md`, and `docs/**/*.md` (see `.markdownlint-cli2.jsonc`) |
+| `validate:links` | Relative `[text](path)` links point to existing files |
+| `validate` / `validate:starter` | Runs all of the above in sequence |
+| `export:starter` | Export default starter to `dist/appforge-starter/` |
+| `export:starter:full` | Export with `--include-readme --include-validation` |
+| `install:appforge` | Install starter files into a target directory |
+
+**Markdown scope:** Focused rules only (`MD001`, `MD034`, `MD042`, `MD047`). `.cursor/` workflow templates are excluded to keep validation low-noise.
+
+### Manual inspection: export output
+
+After `npm run export:starter`:
+
+1. Open `dist/appforge-starter/`
+2. Confirm top-level entries: `AGENTS.md`, `.cursor/`, `docs/` only (default)
+3. Confirm `docs/appforge-development/` is absent
+4. Confirm `docs/plans/`, `docs/reviews/`, `docs/setup/` contain only `README.md` and `.gitkeep`
+5. Confirm `dist/appforge-starter/.cursor/workflow/state.md` matches `state-template.md` (no dev phase history)
+6. Confirm no `node_modules/`, `.git/`, `.env`, or log files
+
+### Manual inspection: install dry-run
+
+```bash
+node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
+```
+
+Confirm summary lists only `AGENTS.md`, `.cursor/`, and `docs/` for default install. Confirm dry-run shows `state-template.md → state.md` and does not copy development `state.md`. With `--include-readme`, expect `APPFORGE_README.md`. With `--include-validation`, expect `scripts/`, `package.json`, etc.
+
+See `docs/INSTALLATION.md` and `docs/DISTRIBUTION.md` for full workflows.
+
+---
+
+## Test Types (Application Projects)
+
+After copying AppForge into an application repo, intake or bootstrap should fill in:
+
+### Unit Tests
+- **Location:** `[TBD path]`
+- **Framework:** `[Jest / Vitest / pytest / etc.]`
+
+### Integration Tests
+- **Location:** `[TBD]`
+
+### E2E Tests
+- **Location:** `[TBD]`
+- **Framework:** `[Playwright / Cypress / etc.]`
+
+### Backend / Rules Tests
+- **Location:** `[TBD]`
+
+---
+
+## Manual Testing
+
+| Area | Why manual | Last verified |
+|------|------------|---------------|
+| Cursor agent behavior | Requires IDE session | |
+| Hooks configuration | Cursor version-specific | |
+
+---
+
+## CI Expectations
+
+| Platform | Config file | Checks run |
+|----------|-------------|------------|
+| GitHub Actions | `.github/workflows/validate.yml` | `npm ci` + `npm run validate` |
+
+PRs to `main` / `master` should pass validation when CI is enabled.
+
+---
+
+## Coverage (if tracked)
+- Tool: none (starter repo)
+- Application repos: configure during intake
+
+---
+
+## Revision History
+
+| Date | Summary |
+|------|---------|
+| 2026-06-23 | Added workflow state-template install/export and full state validation |
+| 2026-06-23 | Added distribution/install test commands and export inspection |
+| 2026-06-23 | Added starter validation commands and CI |
+| YYYY-MM-DD | Initial template |
