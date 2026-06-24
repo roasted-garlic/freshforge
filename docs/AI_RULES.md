@@ -322,6 +322,64 @@ Continue through Plan, Review, Implement, Test, and Signoff **without asking** u
 
 
 
+## Starter Surface (AppForge Development)
+
+
+
+When working on the **AppForge development repository** (not a target app), distinguish the **starter surface** — the distributed product — from development-only files.
+
+
+
+### Starter surface definition
+
+
+
+Default installed product:
+
+
+
+- `AGENTS.md`
+- `.cursor/`
+- `docs/` (excluding `docs/appforge-development/`)
+
+
+
+Source of truth: `docs/STARTER_SURFACE.md`.
+
+
+
+### Required impact classification
+
+
+
+Every AppForge managed phase plan must classify impact in one or more areas:
+
+
+
+- **Starter Surface** — rules, agents, skills, workflow, baseline docs
+- **Development Tooling** — validation, CI, package scripts
+- **Distribution/Installer** — install/export CLI and scripts
+- **Documentation** — docs that describe behavior (surface vs dev-only)
+- **Development History** — phase artifacts under `docs/appforge-development/`
+
+
+
+### Rules
+
+
+
+- **Starter behavior changes** must update starter surface files if they should affect installed projects.
+- Do not make starter behavior changes only in development-only docs, `docs/appforge-development/`, or maintainer scripts.
+- **Development-only changes** must not be documented as if they affect default installed behavior.
+- Archive AppForge phase history in `docs/appforge-development/`, not in `docs/plans/` or `docs/reviews/`.
+- Never install or export `docs/appforge-development/`.
+
+
+
+---
+
+
+
 ## Safety
 
 

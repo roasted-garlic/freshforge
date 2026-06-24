@@ -88,6 +88,27 @@ node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
 
 **Markdown scope:** Focused rules only (`MD001`, `MD034`, `MD042`, `MD047`). `.cursor/` workflow templates are excluded to keep validation low-noise.
 
+### Starter surface verification
+
+The **starter surface** is the default installed product: `AGENTS.md`, `.cursor/`, `docs/`. See `docs/STARTER_SURFACE.md`.
+
+```bash
+npm run validate
+npm run export:starter
+```
+
+After export, inspect `dist/appforge-starter/`:
+
+| Check | Expected |
+|-------|----------|
+| Top-level roots | `AGENTS.md`, `.cursor/`, `docs/` only |
+| `docs/STARTER_SURFACE.md` | Present in export |
+| `docs/appforge-development/` | Absent |
+| `.cursor/workflow/state.md` | Clean idle (from `state-template.md`) |
+| Starter behavior changes | Visible in exported `.cursor/` and `docs/` |
+
+Structure validation enforces starter surface rules automatically. Re-run export after starter surface changes to confirm they appear in `dist/appforge-starter/`.
+
 ### Manual inspection: export output
 
 After `npm run export:starter`:
@@ -140,11 +161,31 @@ After copying AppForge into an application repo, intake or bootstrap should fill
 
 ---
 
+### Local validation order
+
+`dist/` is **generated output** and is gitignored — do not commit it. Structure validation checks exported files under `dist/appforge-starter/`, so generate the export first:
+
+```bash
+npm run export:starter
+npm run validate
+```
+
+Or run structure validation alone after export:
+
+```bash
+npm run export:starter
+npm run validate:structure
+```
+
+---
+
 ## CI Expectations
 
 | Platform | Config file | Checks run |
 |----------|-------------|------------|
-| GitHub Actions | `.github/workflows/validate.yml` | `npm ci` + `npm run validate` |
+| GitHub Actions | `.github/workflows/validate.yml` | `npm ci` → `npm run export:starter` → `npm run validate` |
+
+CI generates `dist/appforge-starter/` during the workflow because `dist/` is not committed. The export step must run **before** validation.
 
 PRs to `main` / `master` should pass validation when CI is enabled.
 
@@ -160,6 +201,8 @@ PRs to `main` / `master` should pass validation when CI is enabled.
 
 | Date | Summary |
 |------|---------|
+| 2026-06-23 | CI runs `export:starter` before `validate`; document local export-first order |
+| 2026-06-23 | Added starter surface verification tests and `docs/STARTER_SURFACE.md` |
 | 2026-06-23 | Added CLI install/export test commands (`bin/appforge.mjs`) |
 | 2026-06-23 | Added workflow state-template install/export and full state validation |
 | 2026-06-23 | Added distribution/install test commands and export inspection |

@@ -2,6 +2,10 @@
 
 > How to ship, install, export, and verify a **clean** AppForge workflow starter package.
 
+**Starter surface** (the installed product): `AGENTS.md`, `.cursor/`, `docs/` — see `docs/STARTER_SURFACE.md`.
+
+**Distribution tools** (`bin/appforge.mjs`, `scripts/install-appforge.mjs`, `scripts/export-starter.mjs`) deliver the starter surface but are not part of the default installed product.
+
 ---
 
 ## Development Repo vs Clean Starter
@@ -176,5 +180,6 @@ Search starter-facing docs (exclude `docs/appforge-development/`) for completed 
 
 | Date | Summary |
 |------|---------|
+| 2026-06-23 | Added starter surface reference (`docs/STARTER_SURFACE.md`) |
 | 2026-06-23 | Added install/export scripts; default package is AGENTS.md + .cursor + docs |
 | 2026-06-23 | Initial packaging guide |

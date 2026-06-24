@@ -179,7 +179,19 @@ The **Managing Agent** reads state and enforces gates. Specialist agents do not 
 
 ---
 
+## Starter Surface
 
+The **default installed product** is the starter surface:
+
+- `AGENTS.md`
+- `.cursor/`
+- `docs/` (excluding `docs/appforge-development/`)
+
+AppForge development tooling (`scripts/`, `package.json`, CI, validation) supports building and shipping that product — it is not installed by default.
+
+When you improve AppForge behavior for target projects, update **starter surface** files. See `docs/STARTER_SURFACE.md`.
+
+---
 
 ## Development Repo vs Installed Starter
 

@@ -41,6 +41,7 @@ const REQUIRED_STARTER_FILES = [
   'docs/PACKAGING.md',
   'docs/INSTALLATION.md',
   'docs/DISTRIBUTION.md',
+  'docs/STARTER_SURFACE.md',
   'docs/PROJECT_BRIEF.md',
   'docs/ARCHITECTURE.md',
   'docs/DATA_MODEL.md',
@@ -167,6 +168,11 @@ async function checkDefaultDistributionOutput() {
 
   violations.push(...validateStateMapping(items));
 
+  const hasStarterSurfaceDoc = copied.some((item) => item.targetRel === 'docs/STARTER_SURFACE.md');
+  if (!hasStarterSurfaceDoc) {
+    violations.push('default export must include docs/STARTER_SURFACE.md in starter surface');
+  }
+
   const templateContent = await readFile(path.join(ROOT, STATE_TEMPLATE_REL), 'utf8');
   violations.push(...validateCleanStateContent(templateContent).map((v) => `state-template.md: ${v}`));
 
@@ -211,7 +217,10 @@ async function checkDefaultInstallDryRun() {
 async function checkExportedStateClean() {
   const exportStatePath = path.join(ROOT, 'dist', 'appforge-starter', STATE_TARGET_REL);
   if (!(await exists(exportStatePath))) {
-    return ['dist/appforge-starter/.cursor/workflow/state.md not found — run npm run export:starter'];
+    return [
+      'The starter export is missing. Run `npm run export:starter` before structure validation, or ensure CI runs export before validate.',
+      'Expected: dist/appforge-starter/.cursor/workflow/state.md',
+    ];
   }
 
   const content = await readFile(exportStatePath, 'utf8');
@@ -220,6 +229,14 @@ async function checkExportedStateClean() {
 
   if (content.replace(/\r\n/g, '\n').trim() !== templateContent.replace(/\r\n/g, '\n').trim()) {
     violations.push('exported state.md does not match state-template.md');
+  }
+
+  if (!(await exists(path.join(ROOT, 'dist', 'appforge-starter', 'docs', 'STARTER_SURFACE.md')))) {
+    violations.push('exported starter missing docs/STARTER_SURFACE.md');
+  }
+
+  if (await exists(path.join(ROOT, 'dist', 'appforge-starter', 'docs', 'appforge-development'))) {
+    violations.push('exported starter must not include docs/appforge-development/');
   }
 
   return violations;

@@ -173,6 +173,27 @@ Details: `.cursor/agents/`
 
 ---
 
+## Starter Surface Awareness
+
+AppForge is used to build itself, but it also distributes a **starter surface** into target projects. Before changing behavior, classify the impact:
+
+| Area | Location | Affects installed projects? |
+|------|----------|----------------------------|
+| **Starter Surface** | `AGENTS.md`, `.cursor/`, `docs/` (not `docs/appforge-development/`) | **Yes** |
+| **Development Tooling** | `scripts/`, `package.json`, `.github/`, `.markdownlint-cli2.jsonc` | Only with `--include-validation` |
+| **Distribution/Installer** | `bin/`, install/export scripts | Delivery mechanism only |
+| **Development History** | `docs/appforge-development/` | **No** |
+
+Rules:
+
+- If a change should affect **installed projects**, update **starter surface** files — not development-only docs or scripts alone.
+- Do not put AppForge development history in starter-facing `docs/plans/` or `docs/reviews/`.
+- Do not install or export `docs/appforge-development/`.
+
+Source of truth: `docs/STARTER_SURFACE.md`.
+
+---
+
 ## Naming Standard
 
 - **AppForge** is the canonical name for this workflow starter (rules, skills, agents, docs, and `AGENTS.md`).

@@ -97,6 +97,22 @@ When the user's message matches an alias (case-insensitive, trim whitespace), ex
 
 → Start or continue from `.cursor/workflow/state.md`. Plan → Review → Implement → Test → Signoff. Stop for human checkpoints.
 
+## AppForge Impact Classification
+
+For **AppForge itself** (the development repository), every managed phase must classify impact in the plan:
+
+| Area | Examples |
+|------|----------|
+| **Starter Surface** | `AGENTS.md`, `.cursor/`, starter-facing `docs/` |
+| **Development Tooling** | `scripts/`, `package.json`, `.github/`, validation |
+| **Distribution/Installer** | `bin/`, install/export scripts |
+| **Documentation** | Docs describing behavior or process |
+| **Development History** | Artifacts archived under `docs/appforge-development/` |
+
+If impact includes **Starter Surface**, the plan and signoff must list which starter files changed.
+
+See `docs/STARTER_SURFACE.md`.
+
 ## Documentation
 
 Rules point to docs; they do not duplicate them. Read `docs/AI_RULES.md` and `docs/WORKFLOWS.md` for full workflow context.

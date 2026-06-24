@@ -588,6 +588,35 @@ Canonical clean state: `.cursor/workflow/state-template.md`. Validation requires
 
 ---
 
+## AppForge Self-Development Workflow
+
+**When:** Improving AppForge itself in the development repository (not a target application).
+
+**Docs:** `docs/STARTER_SURFACE.md`, `docs/AI_RULES.md`
+
+### Flow
+
+```
+Plan → Review → Implement → Test → Signoff
+```
+
+### During Plan
+
+- **Classify impact area:** Starter Surface, Development Tooling, Distribution/Installer, Documentation, Development History
+- If **Starter Surface** is affected → list starter files to change (`AGENTS.md`, `.cursor/*`, starter-facing `docs/`)
+- If **Development Tooling** is affected → list `scripts/`, `package.json`, `.github/`, etc.
+- If **Distribution/Installer** is affected → verify install/export dry-runs
+- If **Development History** is affected → archive under `docs/appforge-development/`, keep `docs/plans/` and `docs/reviews/` clean
+
+### During Signoff
+
+- State whether **installed projects** will be affected
+- State what **default install/export** includes (`AGENTS.md`, `.cursor/`, `docs/` unless flags used)
+- State whether **starter surface** files changed
+- Archive plan/signoff to `docs/appforge-development/` when working on AppForge itself
+
+---
+
 ## Autonomy
 
 
