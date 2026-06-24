@@ -1,7 +1,10 @@
 {
-  "name": "appforge-starter",
+  "name": "appforge",
   "private": true,
-  "description": "Validation tooling for the AppForge workflow starter (not an application)",
+  "description": "AppForge — reusable Cursor AI workflow starter with install, export, and validation CLI",
+  "bin": {
+    "appforge": "./bin/appforge.mjs"
+  },
   "scripts": {
     "validate": "npm run validate:structure && npm run validate:markdown && npm run validate:links",
     "validate:starter": "npm run validate:structure && npm run validate:markdown && npm run validate:links",

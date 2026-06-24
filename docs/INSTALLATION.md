@@ -1,6 +1,36 @@
 # Installation Guide
 
-> How to install AppForge into a new or existing project from the GitHub development repository.
+> How to install AppForge into a new or existing project.
+
+---
+
+## Recommended Install (CLI)
+
+From your **target project directory** (existing repo or new folder):
+
+```bash
+npx github:roasted-garlic/appforge install
+```
+
+No temporary clone or cleanup required. Default install copies **only** `AGENTS.md`, `.cursor/`, and `docs/`.
+
+### Optional flags
+
+```bash
+npx github:roasted-garlic/appforge install --include-readme
+npx github:roasted-garlic/appforge install --include-validation
+npx github:roasted-garlic/appforge install --target ../some-project
+npx github:roasted-garlic/appforge install --dry-run
+npx github:roasted-garlic/appforge install --force
+```
+
+### Future npm command
+
+When published to npm:
+
+```bash
+npx appforge install
+```
 
 ---
 
@@ -8,44 +38,39 @@
 
 ### Default install
 
-The default install command copies **only**:
-
 | Path | Description |
 |------|-------------|
 | `AGENTS.md` | Universal AI entry point |
 | `.cursor/` | Rules, agents, skills, workflow state, hooks |
 | `docs/` | Baseline and project-template documentation |
 
-It does **not** copy by default:
+Clean idle workflow state is written from `.cursor/workflow/state-template.md` → `.cursor/workflow/state.md`.
+
+### Not copied by default
 
 - `README.md`
 - `package.json` / `package-lock.json`
 - `scripts/` (validation tooling)
 - `.github/` (CI workflow)
 - `docs/appforge-development/` (maintainer history)
+- `node_modules/`, `dist/`, env files, logs, archives, temp folders
 
 ### Optional flags
 
 | Flag | Effect |
 |------|--------|
-| `--include-readme` | Copy AppForge `README.md` as `APPFORGE_README.md` (never overwrites an existing `README.md`) |
-| `--include-validation` | Also copy `scripts/`, `package.json`, `package-lock.json`, `.markdownlint-cli2.jsonc`, `.github/workflows/validate.yml` |
-| `--force` | Overwrite existing target files that would otherwise conflict |
-| `--dry-run` | Print what would be copied, skipped, blocked, or excluded without writing files |
-
-Combine flags for a fuller install:
-
-```bash
-node appforge-temp/scripts/install-appforge.mjs --target . --include-readme --include-validation
-```
+| `--include-readme` | Copy AppForge `README.md` as `APPFORGE_README.md` |
+| `--include-validation` | Also copy validation scripts, `package.json`, CI workflow |
+| `--target <path>` | Install into a directory (default: current working directory) |
+| `--force` | Overwrite existing target files |
+| `--dry-run` | Preview without writing files |
 
 ---
 
 ## Prerequisites
 
-- **Node.js 18+** (to run the install script)
-- **Git** (to clone the AppForge repository)
-- A target project directory (existing repo or new folder)
+- **Node.js 18+**
+- A target project directory
 
 Official repository: [roasted-garlic/appforge](https://github.com/roasted-garlic/appforge).
 
@@ -53,66 +78,48 @@ Official repository: [roasted-garlic/appforge](https://github.com/roasted-garlic
 
 ## Workflow A: Existing Project Install
 
-Install AppForge into a repository that already has application code:
-
 ```bash
-git clone https://github.com/roasted-garlic/appforge.git appforge-temp
-node appforge-temp/scripts/install-appforge.mjs --target .
-rm -rf appforge-temp
+cd my-existing-app
+npx github:roasted-garlic/appforge install
 ```
 
-Then open the project in **Cursor** and run:
-
-**Existing Project** (or `Intake`, `Analyze this repo`)
+Open in **Cursor** and run **Existing Project** (or `Intake`).
 
 ---
 
 ## Workflow B: New Blank Project Install
 
-Create a new folder, initialize your app repo, and install AppForge:
-
 ```bash
-mkdir my-new-app
-cd my-new-app
-git clone https://github.com/roasted-garlic/appforge.git appforge-temp
-node appforge-temp/scripts/install-appforge.mjs --target .
-rm -rf appforge-temp
+mkdir my-new-app && cd my-new-app
+npx github:roasted-garlic/appforge install
 ```
 
-Then open the project in **Cursor** and run:
-
-**New Project** or **Bootstrap**
+Open in **Cursor** and run **New Project** or **Bootstrap**.
 
 ---
 
 ## Workflow C: Optional README Install
 
-Copy AppForge documentation as `APPFORGE_README.md` without touching your project `README.md`:
-
 ```bash
-node appforge-temp/scripts/install-appforge.mjs --target . --include-readme
+npx github:roasted-garlic/appforge install --include-readme
 ```
 
 ---
 
 ## Workflow D: Optional Validation Install
 
-Include validation scripts and CI for maintaining workflow docs in the target repo:
-
 ```bash
-node appforge-temp/scripts/install-appforge.mjs --target . --include-validation
+npx github:roasted-garlic/appforge install --include-validation
 ```
 
-After install, run `npm install` and `npm run validate` in the target project.
+Then in the target project: `npm install` and `npm run validate`.
 
 ---
 
 ## Workflow E: Full Helper Install
 
-README plus validation tooling:
-
 ```bash
-node appforge-temp/scripts/install-appforge.mjs --target . --include-readme --include-validation
+npx github:roasted-garlic/appforge install --include-readme --include-validation
 ```
 
 ---
@@ -124,37 +131,25 @@ node appforge-temp/scripts/install-appforge.mjs --target . --include-readme --in
 | Existing codebase with app code | **Existing Project** / **Intake** |
 | New or blank project | **New Project** / **Bootstrap** |
 
-Intake inspects the codebase and fills `PROJECT_HEALTH.md`, `INTAKE_FINDINGS.md`, and `TECH_DEBT.md`. Bootstrap runs a questionnaire and generates project docs before any app implementation.
+---
+
+## Fallback Install (clone temp repo)
+
+Use only if the CLI is unavailable:
+
+```bash
+git clone https://github.com/roasted-garlic/appforge.git appforge-temp
+node appforge-temp/scripts/install-appforge.mjs --target .
+rm -rf appforge-temp
+```
+
+On Windows PowerShell: `Remove-Item -Recurse -Force appforge-temp`
 
 ---
 
 ## Conflict Behavior
 
-The install script **does not overwrite** existing files unless you pass `--force`:
-
-| Existing target file | Behavior |
-|---------------------|----------|
-| `AGENTS.md` | Conflict — use `--force` to replace |
-| Any file under `.cursor/` | Conflict |
-| Any file under `docs/` | Conflict |
-| `APPFORGE_README.md` (with `--include-readme`) | Conflict |
-| `README.md` | Never overwritten; AppForge README goes to `APPFORGE_README.md` |
-
-Run with `--dry-run` first to preview actions:
-
-```bash
-node appforge-temp/scripts/install-appforge.mjs --target . --dry-run
-```
-
----
-
-## What Is Always Excluded
-
-Even when copying `docs/`, the install script skips:
-
-- `docs/appforge-development/`
-- Generated artifacts in `docs/plans/`, `docs/reviews/`, `docs/setup/` (only `README.md` and `.gitkeep` are copied)
-- `node_modules/`, `.git/`, logs, archives, `.env` files, temp folders, and local export directories
+The installer does not overwrite existing files unless you pass `--force`. Run `--dry-run` first to preview.
 
 ---
 
@@ -162,7 +157,7 @@ Even when copying `docs/`, the install script skips:
 
 - `docs/DISTRIBUTION.md` — development repo vs clean starter
 - `docs/PACKAGING.md` — manual packaging checklist
-- Root `README.md` — quick start and validation overview
+- Root `README.md` — quick start
 
 ---
 
@@ -170,4 +165,5 @@ Even when copying `docs/`, the install script skips:
 
 | Date | Summary |
 |------|---------|
-| 2026-06-23 | Initial installation guide with install script workflows |
+| 2026-06-23 | Added recommended `npx github:roasted-garlic/appforge install` CLI flow |
+| 2026-06-23 | Initial installation guide |

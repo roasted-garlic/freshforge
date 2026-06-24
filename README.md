@@ -191,7 +191,7 @@ The **Managing Agent** reads state and enforces gates. Specialist agents do not 
 | `README.md` | Full AppForge docs | Optional (`--include-readme` → `APPFORGE_README.md`) |
 | `node_modules/` | Local dev only | Never copied — do not manual-copy |
 
-Push this repo to GitHub as the development source. Use `install-appforge.mjs` or `export-starter.mjs` to deliver a clean starter. See `docs/DISTRIBUTION.md`.
+Push this repo to GitHub as the development source. Users install with `npx github:roasted-garlic/appforge install`. See `docs/DISTRIBUTION.md`.
 
 
 
@@ -201,23 +201,23 @@ Push this repo to GitHub as the development source. Use `install-appforge.mjs` o
 
 ## Installing AppForge Into a Project
 
-**Default install** copies only:
+**Recommended:**
 
-- `AGENTS.md`
-- `.cursor/`
-- `docs/`
+```bash
+npx github:roasted-garlic/appforge install
+```
 
-Use optional flags when you need more:
+**Default install** copies only `AGENTS.md`, `.cursor/`, and `docs/`.
 
-- `--include-readme` — copies AppForge README as `APPFORGE_README.md` (does not overwrite your `README.md`)
-- `--include-validation` — copies `scripts/`, `package.json`, `package-lock.json`, `.markdownlint-cli2.jsonc`, `.github/workflows/validate.yml`
+Optional flags: `--include-readme`, `--include-validation`, `--target <path>`, `--force`, `--dry-run`.
+
+Future npm: `npx appforge install`
 
 ### Existing Project Quick Start
 
 ```bash
-git clone https://github.com/roasted-garlic/appforge.git appforge-temp
-node appforge-temp/scripts/install-appforge.mjs --target .
-rm -rf appforge-temp
+cd my-existing-app
+npx github:roasted-garlic/appforge install
 ```
 
 Open in Cursor and run **Existing Project** (or `Intake`).
@@ -226,12 +226,18 @@ Open in Cursor and run **Existing Project** (or `Intake`).
 
 ```bash
 mkdir my-new-app && cd my-new-app
+npx github:roasted-garlic/appforge install
+```
+
+Open in Cursor and run **New Project** or **Bootstrap**.
+
+### Fallback (clone temp repo)
+
+```bash
 git clone https://github.com/roasted-garlic/appforge.git appforge-temp
 node appforge-temp/scripts/install-appforge.mjs --target .
 rm -rf appforge-temp
 ```
-
-Open in Cursor and run **New Project** or **Bootstrap**.
 
 Full workflows: `docs/INSTALLATION.md`.
 

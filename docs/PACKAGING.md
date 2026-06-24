@@ -53,17 +53,21 @@ The GitHub repository may include development tooling, CI, and `docs/appforge-de
 
 ## Install Into Another Repo (Recommended)
 
-Use the install script from a cloned AppForge repo:
+From the target project directory:
+
+```bash
+npx github:roasted-garlic/appforge install
+```
+
+Optional flags: `--include-readme`, `--include-validation`, `--target`, `--force`, `--dry-run`.
+
+### Fallback (clone temp repo)
 
 ```bash
 git clone https://github.com/roasted-garlic/appforge.git appforge-temp
 node appforge-temp/scripts/install-appforge.mjs --target .
 rm -rf appforge-temp
 ```
-
-Optional flags: `--include-readme`, `--include-validation`, `--dry-run`, `--force`.
-
-Full workflows: `docs/INSTALLATION.md`.
 
 ---
 

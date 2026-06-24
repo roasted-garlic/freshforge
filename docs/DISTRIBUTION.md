@@ -21,7 +21,7 @@ This working repository is **not** the final shipped artifact for end users. It 
 
 ## Default Install and Export
 
-Both `install-appforge.mjs` and `export-starter.mjs` copy **only** these paths by default:
+Both the `appforge` CLI and `install-appforge.mjs` / `export-starter.mjs` copy **only** these paths by default:
 
 - `AGENTS.md`
 - `.cursor/`
@@ -174,9 +174,13 @@ The live development `state.md` is excluded from install/export output. `state-t
 
 ## Install From GitHub
 
-See `docs/INSTALLATION.md` for clone-and-install workflows.
+**Recommended:**
 
-Quick default install:
+```bash
+npx github:roasted-garlic/appforge install
+```
+
+**Fallback** (if CLI unavailable):
 
 ```bash
 git clone https://github.com/roasted-garlic/appforge.git appforge-temp

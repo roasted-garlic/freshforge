@@ -57,19 +57,20 @@ npm run validate:links
 ### Distribution and install scripts
 
 ```bash
+# Recommended install (from target project)
+npx github:roasted-garlic/appforge install
+npx github:roasted-garlic/appforge install --dry-run
+
+# CLI (local development)
+node bin/appforge.mjs install --dry-run
+node bin/appforge.mjs install --target ./tmp-install-test --dry-run
+node bin/appforge.mjs export --dry-run
+
 # Export clean starter to dist/appforge-starter/
 npm run export:starter
 
-# Export with README and validation tooling
-npm run export:starter:full
-
-# Install into current directory (from AppForge repo)
-npm run install:appforge -- --target /path/to/project
-
-# Preview install without writing files
+# Legacy script entry points (fallback / development)
 node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
-node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run --include-readme
-node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run --include-validation
 ```
 
 ### What each check does
@@ -82,7 +83,8 @@ node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run --includ
 | `validate` / `validate:starter` | Runs all of the above in sequence |
 | `export:starter` | Export default starter to `dist/appforge-starter/` |
 | `export:starter:full` | Export with `--include-readme --include-validation` |
-| `install:appforge` | Install starter files into a target directory |
+| `install:appforge` | Install starter via legacy script entry point |
+| `bin/appforge.mjs` | CLI: `install`, `export`, `validate` |
 
 **Markdown scope:** Focused rules only (`MD001`, `MD034`, `MD042`, `MD047`). `.cursor/` workflow templates are excluded to keep validation low-noise.
 
@@ -158,6 +160,7 @@ PRs to `main` / `master` should pass validation when CI is enabled.
 
 | Date | Summary |
 |------|---------|
+| 2026-06-23 | Added CLI install/export test commands (`bin/appforge.mjs`) |
 | 2026-06-23 | Added workflow state-template install/export and full state validation |
 | 2026-06-23 | Added distribution/install test commands and export inspection |
 | 2026-06-23 | Added starter validation commands and CI |

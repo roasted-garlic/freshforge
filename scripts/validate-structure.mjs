@@ -66,6 +66,9 @@ const REQUIRED_DEVELOPMENT_FILES = [
   'scripts/install-appforge.mjs',
   'scripts/export-starter.mjs',
   'scripts/lib/starter-distribution.mjs',
+  'scripts/lib/run-install.mjs',
+  'scripts/lib/run-export.mjs',
+  'bin/appforge.mjs',
   '.markdownlint-cli2.jsonc',
   '.github/workflows/validate.yml',
 ];

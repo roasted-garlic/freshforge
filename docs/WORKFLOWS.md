@@ -499,21 +499,16 @@ See `.cursor/agents/` for details.
 ### Flow
 
 ```
-Clone AppForge → install-appforge.mjs → remove clone → open in Cursor → intake or bootstrap
+npx github:roasted-garlic/appforge install → open in Cursor → intake or bootstrap
 ```
 
-### Default install
+### Recommended install
 
-Copies only `AGENTS.md`, `.cursor/`, and `docs/`.
+```bash
+npx github:roasted-garlic/appforge install
+```
 
-### Optional flags
-
-- `--include-readme` — AppForge README as `APPFORGE_README.md`
-- `--include-validation` — scripts, package files, markdownlint config, CI workflow
-- `--dry-run` — preview without writing
-- `--force` — overwrite conflicts
-
-### Commands
+### Fallback
 
 ```bash
 git clone https://github.com/roasted-garlic/appforge.git appforge-temp
