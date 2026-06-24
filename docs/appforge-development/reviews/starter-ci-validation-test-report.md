@@ -4,7 +4,7 @@
 |-------|-------|
 | Date | 2026-06-23 |
 | Tester | Test Agent |
-| Plan | docs/plans/starter-ci-validation-plan.md |
+| Plan | docs/appforge-development/plans/starter-ci-validation-plan.md |
 | Result | **passed** |
 
 ---

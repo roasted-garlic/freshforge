@@ -80,7 +80,7 @@ Use template `.cursor/workflow/human-checkpoint-template.md` and skill `manual-t
    - `Allowed Actions: [only safe actions, e.g. read docs, wait]`
    - `Forbidden Actions: implement, deploy, migrate, ...`
    - `Next Required Step: Await human feedback on [topic]`
-2. Create or update human checkpoint doc in `docs/reviews/` if multi-step.
+2. Create or update human checkpoint doc in `docs/workflow/reviews/` if multi-step.
 3. Tell the user exactly what decision or test is needed—no vague "please review."
 
 ## How to Resume After Feedback

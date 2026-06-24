@@ -6,7 +6,7 @@
 | Author | Planning Agent |
 | Status | ready_for_review |
 | Workflow | managed-phase |
-| Related | docs/reviews/starter-package-cleanup-review.md |
+| Related | docs/appforge-development/reviews/starter-package-cleanup-review.md |
 
 ---
 
@@ -51,19 +51,19 @@ Confirmed **not** reusable starter templates — **move** to `docs/appforge-deve
 ### Reset (not moved — revert to template)
 | File | Action |
 |------|--------|
-| `docs/ROADMAP.md` | Remove AppForge phase 0 content and dev revision history |
+| `docs/project/ROADMAP.md` | Remove AppForge phase 0 content and dev revision history |
 | `.cursor/workflow/state.md` | Reset to idle starter state |
 
 ### Unchanged (already templates or baseline)
 | File | Notes |
 |------|-------|
-| `docs/PROJECT_BRIEF.md` | Template with generic starter note — keep |
-| `docs/ARCHITECTURE.md` | Template with generic starter note — keep |
-| `docs/INTAKE_FINDINGS.md` | Empty template — keep |
-| `docs/PROJECT_HEALTH.md` | Empty template — keep |
-| `docs/TECH_DEBT.md` | Empty template — keep |
-| `docs/DECISIONS.md` | ADRs describe starter capabilities — keep |
-| `docs/TESTING.md` | Validation commands for starter — keep |
+| `docs/project/PROJECT_BRIEF.md` | Template with generic starter note — keep |
+| `docs/architecture/ARCHITECTURE.md` | Template with generic starter note — keep |
+| `docs/intake/INTAKE_FINDINGS.md` | Empty template — keep |
+| `docs/project/PROJECT_HEALTH.md` | Empty template — keep |
+| `docs/project/TECH_DEBT.md` | Empty template — keep |
+| `docs/project/DECISIONS.md` | ADRs describe starter capabilities — keep |
+| `docs/standards/TESTING.md` | Validation commands for starter — keep |
 
 ---
 
@@ -73,7 +73,7 @@ Confirmed **not** reusable starter templates — **move** to `docs/appforge-deve
 - Create `docs/appforge-development/` archive structure
 - Move listed artifacts; clean `docs/plans/`, `docs/reviews/`, `docs/setup/`
 - Reset `state.md` and `ROADMAP.md`
-- Add `docs/PACKAGING.md` and README section
+- Add `docs/appforge-development/distribution/PACKAGING.md` and README section
 - Extend structure validation for clean starter folders
 - Archive this phase plan + signoff at end
 
@@ -91,7 +91,7 @@ Confirmed **not** reusable starter templates — **move** to `docs/appforge-deve
 2. Move prior phase artifacts to archive
 3. Reset ROADMAP and state.md
 4. Add `.gitkeep` to plans/reviews/setup
-5. Write `docs/PACKAGING.md` and README section
+5. Write `docs/appforge-development/distribution/PACKAGING.md` and README section
 6. Update `validate-structure.mjs` for PACKAGING.md and clean-folder checks
 7. Complete workflow; move this plan + signoff to archive
 8. Run validation tests
@@ -117,5 +117,5 @@ Confirmed **not** reusable starter templates — **move** to `docs/appforge-deve
 ---
 
 ## Approval
-- Review doc: docs/reviews/starter-package-cleanup-review.md
+- Review doc: docs/appforge-development/reviews/starter-package-cleanup-review.md
 - Verdict: pending

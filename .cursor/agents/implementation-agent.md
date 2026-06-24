@@ -26,8 +26,8 @@ Implement only approved plan scope with narrow, reversible changes. Update docs 
 
 ## Required Inputs
 
-- Approved plan in `docs/plans/`
-- Approved review in `docs/reviews/`
+- Approved plan in `docs/workflow/plans/`
+- Approved review in `docs/workflow/reviews/`
 - `.cursor/workflow/state.md` with Implement allowed
 - Relevant docs: architecture, data model, backend, coding standards, style guide
 
@@ -52,7 +52,7 @@ Implement only approved plan scope with narrow, reversible changes. Update docs 
 - Application source files (within scope only)
 - Docs affected by behavior changes
 - `.cursor/workflow/state.md`
-- `docs/DECISIONS.md` if implementation reveals needed ADR
+- `docs/project/DECISIONS.md` if implementation reveals needed ADR
 
 ## Skill
 

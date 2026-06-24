@@ -18,7 +18,7 @@ Apply when implementing or reviewing UI, and during Existing Project Intake when
 - **Responsive behavior** — usable across breakpoints documented in `STYLE_GUIDE.md`
 - **Reduced motion** — respect `prefers-reduced-motion` where animations exist
 
-See also `docs/STYLE_GUIDE.md` accessibility section.
+See also `docs/standards/STYLE_GUIDE.md` accessibility section.
 
 ## During Existing Project Intake
 
@@ -31,9 +31,9 @@ When UI code exists, sample key screens/components and record:
 - Non-semantic interactive elements (`div` click handlers without roles)
 
 Record findings in:
-- `docs/PROJECT_HEALTH.md` — UX/accessibility domain
-- `docs/TECH_DEBT.md` — category `ux-a11y`
-- `docs/INTAKE_FINDINGS.md` — if discovered during inspection
+- `docs/project/PROJECT_HEALTH.md` — UX/accessibility domain
+- `docs/project/TECH_DEBT.md` — category `ux-a11y`
+- `docs/intake/INTAKE_FINDINGS.md` — if discovered during inspection
 
 **Do not fix accessibility issues during intake** — recommend managed phases.
 

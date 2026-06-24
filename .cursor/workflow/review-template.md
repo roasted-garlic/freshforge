@@ -4,7 +4,7 @@
 |-------|-------|
 | Date | YYYY-MM-DD |
 | Reviewer | Review Agent |
-| Plan | docs/plans/[plan].md |
+| Plan | docs/workflow/plans/[plan].md |
 | Verdict | **approved** / **approved_with_changes** / **blocked** |
 
 ---

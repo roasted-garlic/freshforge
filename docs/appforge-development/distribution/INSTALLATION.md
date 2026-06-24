@@ -155,8 +155,8 @@ The installer does not overwrite existing files unless you pass `--force`. Run `
 
 ## Related Documentation
 
-- `docs/DISTRIBUTION.md` — development repo vs clean starter
-- `docs/PACKAGING.md` — manual packaging checklist
+- `docs/appforge-development/distribution/DISTRIBUTION.md` — development repo vs clean starter
+- `docs/appforge-development/distribution/PACKAGING.md` — manual packaging checklist
 - Root `README.md` — quick start
 
 ---

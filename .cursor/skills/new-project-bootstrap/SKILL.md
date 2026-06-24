@@ -52,7 +52,7 @@ Define a new application through a focused questionnaire and generate documentat
    Defer nice-to-have details to ROADMAP later phases.
 
 3. **Create bootstrap plan**
-   - `docs/plans/new-project-bootstrap-plan.md`
+   - `docs/workflow/plans/new-project-bootstrap-plan.md`
    - List docs to generate and assumptions
 
 4. **Review plan** (lightweight)
@@ -75,10 +75,10 @@ Define a new application through a focused questionnaire and generate documentat
 
 ## Outputs
 
-- `docs/plans/new-project-bootstrap-plan.md`
+- `docs/workflow/plans/new-project-bootstrap-plan.md`
 - Populated project-specific docs
 - Recommended `ROADMAP.md`
-- Bootstrap signoff in `docs/reviews/`
+- Bootstrap signoff in `docs/workflow/reviews/`
 - Workflow state: bootstrap complete, implementation forbidden until approval
 
 ## Stop Conditions

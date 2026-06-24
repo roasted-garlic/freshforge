@@ -65,4 +65,4 @@ Use during **plan phase** and **review phase**. Copy relevant items into plan an
 | Medium | Document and mitigate |
 | Low | Track on roadmap |
 
-Record items in plan **Risks** table and `docs/RISK_REGISTER.md` when they persist beyond the workflow.
+Record items in plan **Risks** table and `docs/project/RISK_REGISTER.md` when they persist beyond the workflow.

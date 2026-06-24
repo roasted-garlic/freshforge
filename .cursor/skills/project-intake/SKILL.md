@@ -43,7 +43,7 @@ Onboard an established codebase into AppForge by **inspecting actual repo files*
 
 ### 2. Create intake plan first
 
-- Create **`docs/plans/project-intake-plan.md`** before any other doc work
+- Create **`docs/workflow/plans/project-intake-plan.md`** before any other doc work
 - List inspection areas, docs to produce/update, and review criteria
 
 ### 3. Inspect repository (read-only)
@@ -80,22 +80,22 @@ Tag facts:
 
 **Project docs:**
 
-- `docs/PROJECT_BRIEF.md`
-- `docs/ARCHITECTURE.md` — from **actual** code structure
-- `docs/DATA_MODEL.md`
-- `docs/BACKEND.md`
-- `docs/STYLE_GUIDE.md`
-- `docs/ROADMAP.md` — include **recommended cleanup phases** (not implemented during intake)
-- `docs/TESTING.md` — actual commands from scripts/CI
-- `docs/DEPLOYMENT.md`
-- `docs/DECISIONS.md` — `[INFERRED]` where applicable
-- `docs/RISK_REGISTER.md` — AI-discovered risks
+- `docs/project/PROJECT_BRIEF.md`
+- `docs/architecture/ARCHITECTURE.md` — from **actual** code structure
+- `docs/architecture/DATA_MODEL.md`
+- `docs/architecture/BACKEND.md`
+- `docs/standards/STYLE_GUIDE.md`
+- `docs/project/ROADMAP.md` — include **recommended cleanup phases** (not implemented during intake)
+- `docs/standards/TESTING.md` — actual commands from scripts/CI
+- `docs/standards/DEPLOYMENT.md`
+- `docs/project/DECISIONS.md` — `[INFERRED]` where applicable
+- `docs/project/RISK_REGISTER.md` — AI-discovered risks
 
 **Intake-specific docs:**
 
-- `docs/PROJECT_HEALTH.md` — use `.cursor/workflow/project-health-template.md`
-- `docs/INTAKE_FINDINGS.md` — full inspection record
-- `docs/TECH_DEBT.md` — use `.cursor/workflow/tech-debt-template.md`
+- `docs/project/PROJECT_HEALTH.md` — use `.cursor/workflow/project-health-template.md`
+- `docs/intake/INTAKE_FINDINGS.md` — full inspection record
+- `docs/project/TECH_DEBT.md` — use `.cursor/workflow/tech-debt-template.md`
 
 ### 5. Identify issues — do not fix
 
@@ -130,18 +130,18 @@ Add tech debt rows to `TECH_DEBT.md`. Add risks to `RISK_REGISTER.md`. Recommend
 
 ### 9. Signoff
 
-- Create **`docs/reviews/project-intake-signoff.md`**
+- Create **`docs/workflow/reviews/project-intake-signoff.md`**
 - Summarize: docs updated, health summary, top risks/debt, human input needed, recommended next phases
 - Set workflow state `DONE: yes`
 
 ## Outputs
 
-- `docs/plans/project-intake-plan.md`
+- `docs/workflow/plans/project-intake-plan.md`
 - Updated project docs (list above)
-- `docs/PROJECT_HEALTH.md`
-- `docs/INTAKE_FINDINGS.md`
-- `docs/TECH_DEBT.md`
-- `docs/reviews/project-intake-signoff.md`
+- `docs/project/PROJECT_HEALTH.md`
+- `docs/intake/INTAKE_FINDINGS.md`
+- `docs/project/TECH_DEBT.md`
+- `docs/workflow/reviews/project-intake-signoff.md`
 - Updated `.cursor/workflow/state.md`
 
 ## Stop Conditions

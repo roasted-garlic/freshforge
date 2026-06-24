@@ -17,7 +17,7 @@ Execute applicable automated checks, record results, and determine signoff readi
 
 ## Inputs
 
-- `docs/TESTING.md`
+- `docs/standards/TESTING.md`
 - Implementation or docs under test
 - `.cursor/workflow/test-report-template.md`
 - `.cursor/workflow/state.md`
@@ -30,14 +30,14 @@ Execute applicable automated checks, record results, and determine signoff readi
 3. Run each command that exists; record command + exit code + summary
 4. For missing commands: document in report; recommend in TESTING.md
 5. Determine if manual testing required → `manual-test-checkpoint` skill
-6. Create `docs/reviews/[name]-test-report.md`
+6. Create `docs/workflow/reviews/[name]-test-report.md`
 7. Update state:
    - `Tests Run: [list]`
    - `Test Status: passed | passed_with_notes | failed | failed_documented | pending_manual`
 
 ## Outputs
 
-- Test report in `docs/reviews/`
+- Test report in `docs/workflow/reviews/`
 - Updated workflow state
 - Manual test instructions if needed
 

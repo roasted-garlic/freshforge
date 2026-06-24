@@ -18,9 +18,9 @@
 
 | Assertion | Result |
 |-----------|--------|
-| `docs/STARTER_SURFACE.md` exists | Pass |
+| `docs/appforge-development/distribution/STARTER_SURFACE.md` exists | Pass |
 | Default export roots: `AGENTS.md`, `.cursor/`, `docs/` | Pass |
-| `docs/STARTER_SURFACE.md` in export | Pass |
+| `docs/appforge-development/distribution/STARTER_SURFACE.md` in export | Pass |
 | `docs/appforge-development/` excluded from export | Pass |
 | Exported `state.md` clean idle | Pass |
 | Default install behavior unchanged | Pass |

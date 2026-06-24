@@ -196,7 +196,7 @@ All scoped work follows:
 
 Hard gates:
 
-- **No implementation** without a plan in `docs/plans/`
+- **No implementation** without a plan in `docs/workflow/plans/`
 
 - **No implementation** without review approval
 
@@ -344,7 +344,7 @@ Default installed product:
 
 
 
-Source of truth: `docs/STARTER_SURFACE.md`.
+Source of truth: `docs/appforge-development/distribution/STARTER_SURFACE.md`.
 
 
 
@@ -371,7 +371,7 @@ Every AppForge managed phase plan must classify impact in one or more areas:
 - **Starter behavior changes** must update starter surface files if they should affect installed projects.
 - Do not make starter behavior changes only in development-only docs, `docs/appforge-development/`, or maintainer scripts.
 - **Development-only changes** must not be documented as if they affect default installed behavior.
-- Archive AppForge phase history in `docs/appforge-development/`, not in `docs/plans/` or `docs/reviews/`.
+- Archive AppForge phase history in `docs/appforge-development/`, not in `docs/workflow/plans/` or `docs/workflow/reviews/`.
 - Never install or export `docs/appforge-development/`.
 
 

@@ -24,7 +24,7 @@ Install and export now always deliver clean idle workflow state from `state-temp
 - `.cursor/workflow/state.md` (reset to template)
 - `scripts/lib/starter-distribution.mjs`
 - `scripts/validate-structure.mjs`
-- `README.md`, `docs/DISTRIBUTION.md`, `docs/PACKAGING.md`, `docs/TESTING.md`, `docs/WORKFLOWS.md`
+- `README.md`, `docs/appforge-development/distribution/DISTRIBUTION.md`, `docs/appforge-development/distribution/PACKAGING.md`, `docs/standards/TESTING.md`, `docs/WORKFLOWS.md`
 
 ## GitHub Readiness
 

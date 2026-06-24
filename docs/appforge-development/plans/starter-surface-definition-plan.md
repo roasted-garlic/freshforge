@@ -11,5 +11,5 @@ Document and enforce the distinction between starter surface (distributed produc
 
 ## Deliverables
 
-- `docs/STARTER_SURFACE.md`
+- `docs/appforge-development/distribution/STARTER_SURFACE.md`
 - Updates to AGENTS.md, AI_RULES.md, workflow.mdc, documentation.mdc, DISTRIBUTION, PACKAGING, WORKFLOWS, TESTING, README, validate-structure

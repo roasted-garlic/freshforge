@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Data Model Rules
 
-Read `docs/DATA_MODEL.md` before changing persisted data. Apply these rules across SQL databases, document stores, ORMs, and backend-as-a-service schemas.
+Read `docs/architecture/DATA_MODEL.md` before changing persisted data. Apply these rules across SQL databases, document stores, ORMs, and backend-as-a-service schemas.
 
 ## Modeling Standards
 
@@ -27,7 +27,7 @@ Read `docs/DATA_MODEL.md` before changing persisted data. Apply these rules acro
 
 ## Documentation Requirements
 
-All of the following must be documented in `docs/DATA_MODEL.md` (or linked project-specific doc):
+All of the following must be documented in `docs/architecture/DATA_MODEL.md` (or linked project-specific doc):
 
 - **Entities** — name, purpose, key fields
 - **Relationships** — one-to-one, one-to-many, many-to-many; cascade and delete behavior

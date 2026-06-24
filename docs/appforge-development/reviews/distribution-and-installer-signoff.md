@@ -19,8 +19,8 @@ AppForge is ready as a GitHub development source with install and export scripts
 
 ## Files Created
 
-- `docs/INSTALLATION.md`
-- `docs/DISTRIBUTION.md`
+- `docs/appforge-development/distribution/INSTALLATION.md`
+- `docs/appforge-development/distribution/DISTRIBUTION.md`
 - `scripts/install-appforge.mjs`
 - `scripts/export-starter.mjs`
 - `scripts/lib/starter-distribution.mjs`
@@ -32,8 +32,8 @@ AppForge is ready as a GitHub development source with install and export scripts
 ## Files Updated
 
 - `README.md`
-- `docs/PACKAGING.md`
-- `docs/TESTING.md`
+- `docs/appforge-development/distribution/PACKAGING.md`
+- `docs/standards/TESTING.md`
 - `docs/WORKFLOWS.md`
 - `package.json`
 - `scripts/validate-structure.mjs`

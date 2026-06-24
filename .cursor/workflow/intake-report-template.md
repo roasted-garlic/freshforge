@@ -10,7 +10,7 @@
 |-------|-------|
 | Date | YYYY-MM-DD |
 | Repository | [repo name/path] |
-| Intake plan | docs/plans/project-intake-plan.md |
+| Intake plan | docs/workflow/plans/project-intake-plan.md |
 | Agent mode | existing-project-intake |
 
 ---

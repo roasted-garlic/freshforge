@@ -23,7 +23,7 @@ Review auth, authorization, secrets, data access, uploads, backend rules, depend
 ## Required Inputs
 
 - Plan or implementation under review
-- `docs/SECURITY.md`, `docs/BACKEND.md`, `docs/DATA_MODEL.md`
+- `docs/standards/SECURITY.md`, `docs/architecture/BACKEND.md`, `docs/architecture/DATA_MODEL.md`
 - Dependency manifests when dependency changes involved
 
 ## Required Outputs
@@ -41,9 +41,9 @@ Review auth, authorization, secrets, data access, uploads, backend rules, depend
 
 ## Files to Update
 
-- `docs/reviews/*` (security section)
-- `docs/RISK_REGISTER.md`
-- `docs/SECURITY.md` (if baseline needs project-specific additions)
+- `docs/workflow/reviews/*` (security section)
+- `docs/project/RISK_REGISTER.md`
+- `docs/standards/SECURITY.md` (if baseline needs project-specific additions)
 - `.cursor/workflow/state.md` (checkpoint flags)
 
 ## Skill

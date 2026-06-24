@@ -13,9 +13,9 @@
 
 | Folder | Contents | Result |
 |--------|----------|--------|
-| `docs/plans/` | README.md, .gitkeep | PASS |
-| `docs/reviews/` | README.md, .gitkeep | PASS |
-| `docs/setup/` | README.md, .gitkeep | PASS |
+| `docs/workflow/plans/` | README.md, .gitkeep | PASS |
+| `docs/workflow/reviews/` | README.md, .gitkeep | PASS |
+| `docs/workflow/setup/` | README.md, .gitkeep | PASS |
 
 ## State check
 
@@ -29,11 +29,11 @@
 | Check | Result |
 |-------|--------|
 | README.md — Preparing a Clean Starter Copy | PASS |
-| docs/PACKAGING.md exists | PASS |
+| docs/appforge-development/distribution/PACKAGING.md exists | PASS |
 
 ## Phase name search (starter-facing, excluding appforge-development)
 
-Searched for `branding-clarification`, `starter-ci-validation`, `starter-package-cleanup` outside archive — no matches in `docs/plans/`, `docs/reviews/`, baseline templates.
+Searched for `branding-clarification`, `starter-ci-validation`, `starter-package-cleanup` outside archive — no matches in `docs/workflow/plans/`, `docs/workflow/reviews/`, baseline templates.
 
 ## Validation
 

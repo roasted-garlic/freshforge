@@ -9,7 +9,7 @@
 - [ ] Read `AGENTS.md` and `docs/AI_RULES.md`
 - [ ] Read `.cursor/workflow/state.md`
 - [ ] Set `Current Mode: existing-project-intake`
-- [ ] Create `docs/plans/project-intake-plan.md` **first**
+- [ ] Create `docs/workflow/plans/project-intake-plan.md` **first**
 
 ---
 
@@ -147,7 +147,7 @@ Tag inferred facts `[INFERRED]`. Tag uncertain facts `[NEEDS HUMAN INPUT]`.
 - [ ] Doc consistency check (architecture ↔ data ↔ backend ↔ testing)
 - [ ] Project Health Review — priorities and next phases
 - [ ] Human Clarification List in INTAKE_FINDINGS.md
-- [ ] `docs/reviews/project-intake-signoff.md`
+- [ ] `docs/workflow/reviews/project-intake-signoff.md`
 - [ ] Update workflow state `DONE: yes`
 - [ ] **No application code modified**
 

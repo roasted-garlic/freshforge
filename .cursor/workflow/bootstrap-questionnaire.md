@@ -81,6 +81,6 @@ After answers, record in bootstrap plan:
 ## Stop Rule
 
 When Round 1 is complete (or user says "use defaults"), proceed to:
-`docs/plans/new-project-bootstrap-plan.md` → doc generation → signoff.
+`docs/workflow/plans/new-project-bootstrap-plan.md` → doc generation → signoff.
 
 **Do not implement app code** until user approves first implementation phase.

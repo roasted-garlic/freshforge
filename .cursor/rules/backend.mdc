@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Backend Rules
 
-Read `docs/BACKEND.md` before backend, API, auth, storage, or integration work. Backend may be self-hosted, serverless, BaaS (Firebase, Supabase, etc.), or third-party APIs—rules apply to all.
+Read `docs/architecture/BACKEND.md` before backend, API, auth, storage, or integration work. Backend may be self-hosted, serverless, BaaS (Firebase, Supabase, etc.), or third-party APIs—rules apply to all.
 
 ## Access Pattern
 

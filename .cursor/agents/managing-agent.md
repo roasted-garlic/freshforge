@@ -31,7 +31,7 @@ Own the end-to-end workflow. Read workflow state, delegate to specialist agents,
 - `.cursor/workflow/state.md`
 - User goal or phase request (from prompt or `phase-request-template.md`)
 - Relevant docs per `documentation.mdc` reading order
-- Current plan/review/test/signoff artifacts in `docs/plans/` and `docs/reviews/`
+- Current plan/review/test/signoff artifacts in `docs/workflow/plans/` and `docs/workflow/reviews/`
 
 ## Required Outputs
 
@@ -54,10 +54,10 @@ Own the end-to-end workflow. Read workflow state, delegate to specialist agents,
 | File | When |
 |------|------|
 | `.cursor/workflow/state.md` | Every phase transition, checkpoint, blocker |
-| `docs/plans/*` | Ensure plan exists before implement |
-| `docs/reviews/*` | Ensure review/signoff tracked |
-| `docs/DECISIONS.md` | Significant workflow or product decisions |
-| `docs/RISK_REGISTER.md` | New blockers or risks discovered |
+| `docs/workflow/plans/*` | Ensure plan exists before implement |
+| `docs/workflow/reviews/*` | Ensure review/signoff tracked |
+| `docs/project/DECISIONS.md` | Significant workflow or product decisions |
+| `docs/project/RISK_REGISTER.md` | New blockers or risks discovered |
 
 ## Skills to Use
 

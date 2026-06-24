@@ -16,7 +16,7 @@ The Managing Agent owns phase transitions. Specialist agents do focused work wit
 ## Hard Gates
 
 1. **No implementation before a plan exists**
-   - A plan document must exist in `docs/plans/` before any application code changes.
+   - A plan document must exist in `docs/workflow/plans/` before any application code changes.
    - Intake and bootstrap flows may create or update documentation only; they are not implementation phases.
 
 2. **No implementation before review is complete**
@@ -31,11 +31,11 @@ The Managing Agent owns phase transitions. Specialist agents do focused work wit
    - Read `.cursor/workflow/state.md` at the start of every session.
    - Update it after every meaningful step: phase change, checkpoint, blocker, test run, or completion.
 
-5. **Always create plans in docs/plans/**
+5. **Always create plans in docs/workflow/plans/**
    - Plan files use descriptive names: `YYYY-MM-DD-feature-name-plan.md` or workflow-specific names like `project-intake-plan.md`.
 
-6. **Always create reviews and signoffs in docs/reviews/**
-   - Review and signoff documents live in `docs/reviews/` with matching descriptive names.
+6. **Always create reviews and signoffs in docs/workflow/reviews/**
+   - Review and signoff documents live in `docs/workflow/reviews/` with matching descriptive names.
 
 ## Scope and Change Discipline
 
@@ -111,7 +111,7 @@ For **AppForge itself** (the development repository), every managed phase must c
 
 If impact includes **Starter Surface**, the plan and signoff must list which starter files changed.
 
-See `docs/STARTER_SURFACE.md`.
+See `docs/appforge-development/distribution/STARTER_SURFACE.md`.
 
 ## Documentation
 

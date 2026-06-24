@@ -25,7 +25,7 @@ Formalize completion with summary, test results, risks, and approval status.
 
 1. Verify test gate: passed, passed_with_notes, or failed_documented per rules
 2. Verify no outstanding human checkpoints
-3. Create `docs/reviews/[name]-signoff.md` from template:
+3. Create `docs/workflow/reviews/[name]-signoff.md` from template:
    - Summary of changes
    - Files touched
    - Tests run and results
@@ -40,7 +40,7 @@ Formalize completion with summary, test results, risks, and approval status.
 
 ## Outputs
 
-- Signoff document in `docs/reviews/`
+- Signoff document in `docs/workflow/reviews/`
 - Updated workflow state and roadmap
 - User summary
 

@@ -31,9 +31,9 @@
 | Default install dry-run top-level: `AGENTS.md`, `.cursor/`, `docs/` only | Pass |
 | Export excludes `docs/appforge-development/` | Pass |
 | Export excludes `node_modules/` | Pass |
-| `docs/plans/` in export: README.md + .gitkeep only | Pass |
-| `docs/reviews/` in export: README.md + .gitkeep only | Pass |
-| `docs/setup/` in export: README.md + .gitkeep only | Pass |
+| `docs/workflow/plans/` in export: README.md + .gitkeep only | Pass |
+| `docs/workflow/reviews/` in export: README.md + .gitkeep only | Pass |
+| `docs/workflow/setup/` in export: README.md + .gitkeep only | Pass |
 | `.cursor/workflow/state.md` idle after signoff prep | Pass |
 | `--include-readme` adds `APPFORGE_README.md` on install | Pass |
 | `--include-validation` adds scripts, package files, CI | Pass |

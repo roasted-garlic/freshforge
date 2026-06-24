@@ -6,7 +6,7 @@
 | Author | Planning Agent |
 | Status | ready_for_review |
 | Workflow | managed-phase |
-| Related | docs/reviews/branding-clarification-review.md |
+| Related | docs/appforge-development/reviews/branding-clarification-review.md |
 
 ---
 
@@ -23,8 +23,8 @@ The starter was introduced with overlapping names (AppForge as working name, Bui
 ### In Scope
 - Replace `BuildPilot` references with `AppForge` where they describe the current project
 - Add a short **Naming Standard** section (README.md and AGENTS.md)
-- Update listed docs: README.md, AGENTS.md, docs/AI_RULES.md, docs/PROJECT_BRIEF.md, docs/ARCHITECTURE.md, docs/WORKFLOWS.md, docs/ROADMAP.md, docs/INTAKE_FINDINGS.md, docs/PROJECT_HEALTH.md, docs/TECH_DEBT.md
-- Add ADR in docs/DECISIONS.md for canonical naming
+- Update listed docs: README.md, AGENTS.md, docs/AI_RULES.md, docs/project/PROJECT_BRIEF.md, docs/architecture/ARCHITECTURE.md, docs/WORKFLOWS.md, docs/project/ROADMAP.md, docs/intake/INTAKE_FINDINGS.md, docs/project/PROJECT_HEALTH.md, docs/project/TECH_DEBT.md
+- Add ADR in docs/project/DECISIONS.md for canonical naming
 - Clarify template docs describe *target applications*; AppForge itself is the workflow starter
 - Post-change repo search for remaining `BuildPilot` references
 
@@ -44,11 +44,11 @@ The starter was introduced with overlapping names (AppForge as working name, Bui
 - `AGENTS.md` — tagline, Naming Standard section
 - `docs/WORKFLOWS.md` — subtitle
 - `docs/AI_RULES.md` — naming note if needed
-- `docs/PROJECT_BRIEF.md` — AppForge starter context note
-- `docs/ARCHITECTURE.md` — AppForge starter context note
-- `docs/ROADMAP.md` — starter vs app roadmap note
-- `docs/INTAKE_FINDINGS.md`, `docs/PROJECT_HEALTH.md`, `docs/TECH_DEBT.md` — starter context in intros
-- `docs/DECISIONS.md` — ADR-002 canonical naming
+- `docs/project/PROJECT_BRIEF.md` — AppForge starter context note
+- `docs/architecture/ARCHITECTURE.md` — AppForge starter context note
+- `docs/project/ROADMAP.md` — starter vs app roadmap note
+- `docs/intake/INTAKE_FINDINGS.md`, `docs/project/PROJECT_HEALTH.md`, `docs/project/TECH_DEBT.md` — starter context in intros
+- `docs/project/DECISIONS.md` — ADR-002 canonical naming
 - `.cursor/workflow/state.md` — workflow tracking
 
 ### Architecture Impact
@@ -135,5 +135,5 @@ Revert doc commits; no runtime impact.
 ---
 
 ## Approval
-- Review doc: docs/reviews/branding-clarification-review.md
+- Review doc: docs/appforge-development/reviews/branding-clarification-review.md
 - Verdict: pending

@@ -4,7 +4,7 @@
 
 > Universal process baseline for agent-driven development in this repository (**AppForge** workflow starter).
 
-
+This project uses the AppForge workflow starter. The active workflow surface is `AGENTS.md`, `.cursor/`, and `docs/`. AppForge development and distribution documentation is not part of installed target projects.
 
 ---
 
@@ -30,21 +30,35 @@ Plan → Review → Implement → Test → Signoff
 
 |-------|--------|------|
 
-| Plan | `docs/plans/*.md` | — |
+| Plan | `docs/workflow/plans/*.md` | — |
 
-| Review | `docs/reviews/*-review.md` | Must approve before implement |
+| Review | `docs/workflow/reviews/*-review.md` | Must approve before implement |
 
 | Implement | Code + doc updates | Approved scope only |
 
-| Test | `docs/reviews/*-test-report.md` | Honest results |
+| Test | `docs/workflow/reviews/*-test-report.md` | Honest results |
 
-| Signoff | `docs/reviews/*-signoff.md` | Tests complete or documented |
+| Signoff | `docs/workflow/reviews/*-signoff.md` | Tests complete or documented |
 
 
 
 State tracked in `.cursor/workflow/state.md`. Start every session with `AGENTS.md` → state → `AI_RULES.md`.
 
+---
 
+## Workflow Artifact Folders
+
+Workflow output lives under `docs/workflow/` — separate from permanent project documentation:
+
+| Folder | Purpose |
+|--------|---------|
+| `docs/workflow/plans/` | Plan documents (required before implementation) |
+| `docs/workflow/reviews/` | Reviews, test reports, signoffs, human checkpoints |
+| `docs/workflow/setup/` | Project-specific setup notes (optional; after intake or bootstrap) |
+
+Permanent docs (`docs/project/`, `docs/architecture/`, `docs/standards/`, `docs/intake/`) describe what the product **is**. Workflow folders hold **phase artifacts** for the current or recent managed phase.
+
+When idle, workflow folders contain only `README.md` and `.gitkeep`. Archive completed AppForge development phase history under `docs/appforge-development/` (development repo only — never installed or exported).
 
 ---
 
@@ -116,17 +130,17 @@ Plan
 
 |------|--------|
 
-| Plan | `docs/plans/project-intake-plan.md` **first** |
+| Plan | `docs/workflow/plans/project-intake-plan.md` **first** |
 
 | Repo Inspection | Read-only scan of code, config, CI, tests |
 
 | Documentation Generation | Project docs + intake docs (see below) |
 
-| Project Health Review | `docs/PROJECT_HEALTH.md` with priorities |
+| Project Health Review | `docs/project/PROJECT_HEALTH.md` with priorities |
 
 | Human Clarification List | `[NEEDS HUMAN INPUT]` in `INTAKE_FINDINGS.md` |
 
-| Signoff | `docs/reviews/project-intake-signoff.md` |
+| Signoff | `docs/workflow/reviews/project-intake-signoff.md` |
 
 
 
@@ -164,13 +178,13 @@ Plan
 
 Record in:
 
-- `docs/INTAKE_FINDINGS.md` — inspection log
+- `docs/intake/INTAKE_FINDINGS.md` — inspection log
 
-- `docs/TECH_DEBT.md` — debt items with suggested phases
+- `docs/project/TECH_DEBT.md` — debt items with suggested phases
 
-- `docs/RISK_REGISTER.md` — risks
+- `docs/project/RISK_REGISTER.md` — risks
 
-- `docs/PROJECT_HEALTH.md` — domain health and priorities
+- `docs/project/PROJECT_HEALTH.md` — domain health and priorities
 
 
 
@@ -494,7 +508,7 @@ See `.cursor/agents/` for details.
 
 **When:** Installing AppForge from the GitHub development repository into a new or existing project.
 
-**Docs:** `docs/INSTALLATION.md`, `docs/DISTRIBUTION.md`
+**Docs:** `docs/appforge-development/distribution/INSTALLATION.md`, `docs/appforge-development/distribution/DISTRIBUTION.md`
 
 ### Flow
 
@@ -522,7 +536,7 @@ rm -rf appforge-temp
 
 **When:** Maintainers prepare a clean starter copy from the AppForge development repo.
 
-**Docs:** `docs/DISTRIBUTION.md`, `docs/PACKAGING.md`
+**Docs:** `docs/appforge-development/distribution/DISTRIBUTION.md`, `docs/appforge-development/distribution/PACKAGING.md`
 
 ### Flow
 
@@ -592,7 +606,7 @@ Canonical clean state: `.cursor/workflow/state-template.md`. Validation requires
 
 **When:** Improving AppForge itself in the development repository (not a target application).
 
-**Docs:** `docs/STARTER_SURFACE.md`, `docs/AI_RULES.md`
+**Docs:** `docs/appforge-development/distribution/STARTER_SURFACE.md`, `docs/AI_RULES.md`
 
 ### Flow
 
@@ -606,7 +620,7 @@ Plan → Review → Implement → Test → Signoff
 - If **Starter Surface** is affected → list starter files to change (`AGENTS.md`, `.cursor/*`, starter-facing `docs/`)
 - If **Development Tooling** is affected → list `scripts/`, `package.json`, `.github/`, etc.
 - If **Distribution/Installer** is affected → verify install/export dry-runs
-- If **Development History** is affected → archive under `docs/appforge-development/`, keep `docs/plans/` and `docs/reviews/` clean
+- If **Development History** is affected → archive under `docs/appforge-development/`, keep `docs/workflow/plans/` and `docs/workflow/reviews/` clean
 
 ### During Signoff
 

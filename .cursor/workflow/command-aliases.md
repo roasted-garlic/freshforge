@@ -34,10 +34,10 @@ Plan → Repo Inspection → Documentation Generation → Project Health Review 
 Read AGENTS.md and docs/AI_RULES.md first. Use actual repo inspection as the primary source. Tag inferred facts [INFERRED] and uncertain facts [NEEDS HUMAN INPUT].
 
 Create or update:
-docs/PROJECT_BRIEF.md, docs/ARCHITECTURE.md, docs/DATA_MODEL.md, docs/BACKEND.md,
-docs/STYLE_GUIDE.md, docs/ROADMAP.md, docs/TESTING.md, docs/DEPLOYMENT.md,
-docs/DECISIONS.md, docs/RISK_REGISTER.md, docs/PROJECT_HEALTH.md,
-docs/INTAKE_FINDINGS.md, docs/TECH_DEBT.md
+docs/project/PROJECT_BRIEF.md, docs/architecture/ARCHITECTURE.md, docs/architecture/DATA_MODEL.md, docs/architecture/BACKEND.md,
+docs/standards/STYLE_GUIDE.md, docs/project/ROADMAP.md, docs/standards/TESTING.md, docs/standards/DEPLOYMENT.md,
+docs/project/DECISIONS.md, docs/project/RISK_REGISTER.md, docs/project/PROJECT_HEALTH.md,
+docs/intake/INTAKE_FINDINGS.md, docs/project/TECH_DEBT.md
 
 Autonomy:
 Continue without asking me unless you need a business decision, design preference, production credential, external service access, or clarification that cannot be inferred from the repo.
@@ -109,7 +109,7 @@ Stop for human checkpoints.
 1. Read `AGENTS.md`, `docs/AI_RULES.md`, `.cursor/workflow/state.md`
 2. If workflow **in progress** (`DONE: no`, mode `managed-phase`) → continue from `Next Required Step`
 3. If workflow **idle or DONE** and user gave phase/goal in the same message → start new managed phase with that scope
-4. If workflow **idle or DONE** and no goal provided → ask for phase name and goal, or offer next item from `docs/ROADMAP.md`
+4. If workflow **idle or DONE** and no goal provided → ask for phase name and goal, or offer next item from `docs/project/ROADMAP.md`
 5. Respect gates: no implement without plan + review; no signoff without tests
 
 **Skill:** `managed-phase`

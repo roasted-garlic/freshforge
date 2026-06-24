@@ -6,7 +6,7 @@
 | Author | Agent / Human |
 | Status | draft / ready_for_review / approved / superseded |
 | Workflow | managed-phase / intake / bootstrap / hotfix |
-| Related | docs/reviews/[review].md |
+| Related | docs/workflow/reviews/[review].md |
 
 ---
 

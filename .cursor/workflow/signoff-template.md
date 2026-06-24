@@ -4,9 +4,9 @@
 |-------|-------|
 | Date | YYYY-MM-DD |
 | Signoff by | Signoff Agent |
-| Plan | docs/plans/[plan].md |
-| Review | docs/reviews/[review].md |
-| Test report | docs/reviews/[test-report].md |
+| Plan | docs/workflow/plans/[plan].md |
+| Review | docs/workflow/reviews/[review].md |
+| Test report | docs/workflow/reviews/[test-report].md |
 | Final status | **approved** / **approved_with_notes** / **blocked** |
 
 ---

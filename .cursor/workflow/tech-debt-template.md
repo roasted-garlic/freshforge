@@ -1,6 +1,6 @@
 # Tech Debt — Intake Item Template
 
-> Add rows to `docs/TECH_DEBT.md` during Existing Project Intake. One row per discovered item.
+> Add rows to `docs/project/TECH_DEBT.md` during Existing Project Intake. One row per discovered item.
 
 ---
 

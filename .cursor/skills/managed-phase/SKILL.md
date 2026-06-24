@@ -45,11 +45,11 @@ Execute the complete managed development workflow for a single goal from plannin
    - Set `Allowed Actions` for Plan phase
 
 2. **Plan phase** (skill: `plan-phase`)
-   - Planning Agent creates plan in `docs/plans/`
+   - Planning Agent creates plan in `docs/workflow/plans/`
    - Set `Plan Status: complete`, `Review Status: pending`
 
 3. **Review phase** (skill: `review-phase`)
-   - Review Agent produces review in `docs/reviews/`
+   - Review Agent produces review in `docs/workflow/reviews/`
    - If `blocked` → stop, update state, request plan revision
    - If `approved` or `approved_with_changes` → proceed
 
@@ -72,7 +72,7 @@ Execute the complete managed development workflow for a single goal from plannin
 
 ## Outputs
 
-- Plan, review, test report, signoff in `docs/plans/` and `docs/reviews/`
+- Plan, review, test report, signoff in `docs/workflow/plans/` and `docs/workflow/reviews/`
 - Updated workflow state with `DONE: yes` or clear blocker
 - Summary for user: completed work, open items, follow-ups on roadmap
 

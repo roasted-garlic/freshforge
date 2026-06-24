@@ -22,7 +22,7 @@ Ensure deployments and release-related changes are planned, tested, and human-ap
 ## Inputs
 
 - Plan with deployment section
-- `docs/DEPLOYMENT.md`, `docs/BACKEND.md`
+- `docs/standards/DEPLOYMENT.md`, `docs/architecture/BACKEND.md`
 - Test report showing build success
 
 ## Steps

@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Security Rules
 
-Read `docs/SECURITY.md` before any auth, data access, upload, dependency, or deployment work. Security rules override convenience.
+Read `docs/standards/SECURITY.md` before any auth, data access, upload, dependency, or deployment work. Security rules override convenience.
 
 ## Core Principles
 
@@ -57,6 +57,6 @@ Record approval in workflow state and signoff docs.
 
 ## Incident and Risk Posture
 
-- New risks go in `docs/RISK_REGISTER.md`.
-- Security decisions go in `docs/DECISIONS.md` when architectural.
+- New risks go in `docs/project/RISK_REGISTER.md`.
+- Security decisions go in `docs/project/DECISIONS.md` when architectural.
 - Prefer failing closed over failing open when validation is uncertain.

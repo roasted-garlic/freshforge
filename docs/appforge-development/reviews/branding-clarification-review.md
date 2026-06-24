@@ -4,7 +4,7 @@
 |-------|-------|
 | Date | 2026-06-23 |
 | Reviewer | Review Agent |
-| Plan | docs/plans/branding-clarification-plan.md |
+| Plan | docs/appforge-development/plans/branding-clarification-plan.md |
 | Verdict | **approved** |
 
 ---

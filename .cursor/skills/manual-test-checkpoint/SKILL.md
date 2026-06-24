@@ -46,7 +46,7 @@ Handle testing that requires human eyes, interaction, or environment access.
 ## Outputs
 
 - Manual test instructions delivered to user
-- Recorded result in workflow state and docs/reviews/
+- Recorded result in workflow state and docs/workflow/reviews/
 - Updated Test Status
 
 ## Stop Conditions

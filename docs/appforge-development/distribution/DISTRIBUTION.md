@@ -4,7 +4,7 @@
 
 ---
 
-The GitHub repository may include development tooling, CI, and `docs/appforge-development/`. The **starter surface** — the product installed by default — is defined in `docs/STARTER_SURFACE.md`.
+The GitHub repository may include development tooling, CI, and `docs/appforge-development/`. The **starter surface** — the product installed by default — is defined in `docs/appforge-development/distribution/STARTER_SURFACE.md`.
 
 | | AppForge development repo | Starter surface (default install) |
 |--|---------------------------|-----------------------------------|
@@ -20,7 +20,7 @@ The GitHub repository may include development tooling, CI, and `docs/appforge-de
 |--|---------------------------------------------|--------------------------------------|
 | Purpose | Build and maintain AppForge | Run agent-driven development in your app |
 | `docs/appforge-development/` | Maintainer plans, reviews, signoffs | **Not copied** |
-| `docs/plans/`, `docs/reviews/` | Clean in starter; dev history archived | Only `README.md` + `.gitkeep` |
+| `docs/workflow/plans/`, `docs/workflow/reviews/` | Clean in starter; dev history archived | Only `README.md` + `.gitkeep` |
 | Validation tooling | `package.json`, `scripts/`, `.github/` | Optional via `--include-validation` |
 | `README.md` | Full AppForge documentation | Optional via `--include-readme` (as `APPFORGE_README.md` on install) |
 | `node_modules/` | Local dev dependency | **Never copied or committed** |
@@ -128,9 +128,9 @@ node scripts/export-starter.mjs --out ./my-export --clean
 3. **Confirm clean workflow folders:**
 
    ```text
-   docs/plans/     → README.md, .gitkeep only
-   docs/reviews/   → README.md, .gitkeep only
-   docs/setup/     → README.md, .gitkeep only
+   docs/workflow/plans/     → README.md, .gitkeep only
+   docs/workflow/reviews/   → README.md, .gitkeep only
+   docs/workflow/setup/     → README.md, .gitkeep only
    ```
 
 4. **Run development-repo validation** (export first — `dist/` is not committed):
@@ -140,13 +140,13 @@ node scripts/export-starter.mjs --out ./my-export --clean
    npm run validate
    ```
 
-5. **Test install dry-run** against a temp folder (see `docs/TESTING.md`).
+5. **Test install dry-run** against a temp folder (see `docs/standards/TESTING.md`).
 
 ---
 
 ## Prepare Before Pushing to GitHub
 
-1. Ensure `docs/plans/`, `docs/reviews/`, and `docs/setup/` contain only `README.md` and `.gitkeep` in starter-facing locations.
+1. Ensure `docs/workflow/plans/`, `docs/workflow/reviews/`, and `docs/workflow/setup/` contain only `README.md` and `.gitkeep` in starter-facing locations.
 2. Archive completed managed-phase artifacts under `docs/appforge-development/`.
 3. Reset `.cursor/workflow/state.md` to match `state-template.md` in the dev repo (install/export always ship the template as `state.md`).
 4. Confirm `.gitignore` excludes `node_modules/`, `dist/`, env files, logs, and local temp folders.
@@ -172,7 +172,7 @@ node scripts/export-starter.mjs --out ./my-export --clean
 
 ## Why `docs/appforge-development/` Stays in the Development Repo Only
 
-This folder records AppForge maintenance history: completed plans, reviews, test reports, and signoffs from building the starter itself. Target application projects should not receive this context — they start with clean `docs/plans/` and `docs/reviews/` for their own work.
+This folder records AppForge maintenance history: completed plans, reviews, test reports, and signoffs from building the starter itself. Target application projects should not receive this context — they start with clean `docs/workflow/plans/` and `docs/workflow/reviews/` for their own work.
 
 Install and export scripts **always exclude** `docs/appforge-development/`.
 
@@ -209,10 +209,10 @@ rm -rf appforge-temp
 
 ## Related Documentation
 
-- `docs/STARTER_SURFACE.md` — starter surface definition (installed product)
-- `docs/INSTALLATION.md` — end-user install workflows
-- `docs/PACKAGING.md` — manual cleanup and packaging checklist
-- `docs/TESTING.md` — validation and install/export test commands
+- `docs/appforge-development/distribution/STARTER_SURFACE.md` — starter surface definition (installed product)
+- `docs/appforge-development/distribution/INSTALLATION.md` — end-user install workflows
+- `docs/appforge-development/distribution/PACKAGING.md` — manual cleanup and packaging checklist
+- `docs/standards/TESTING.md` — validation and install/export test commands
 
 ---
 
@@ -221,6 +221,6 @@ rm -rf appforge-temp
 | Date | Summary |
 |------|---------|
 | 2026-06-23 | CI runs export before validate; `dist/` is generated, not committed |
-| 2026-06-23 | Added starter surface definition reference (`docs/STARTER_SURFACE.md`) |
+| 2026-06-23 | Added starter surface definition reference (`docs/appforge-development/distribution/STARTER_SURFACE.md`) |
 | 2026-06-23 | Added workflow state-template install/export behavior |
 | 2026-06-23 | Initial distribution guide with install/export model |

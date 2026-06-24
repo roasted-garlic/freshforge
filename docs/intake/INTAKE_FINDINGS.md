@@ -5,8 +5,8 @@
 > **AppForge starter note:** When intake runs on a repo that **is** the AppForge starter (workflow kit only, no application code), findings describe the starter layout and documentation — not a product application.
 
 **Intake date:** `[TBD]`
-**Intake plan:** `docs/plans/project-intake-plan.md`
-**Signoff:** `docs/reviews/project-intake-signoff.md`
+**Intake plan:** `docs/workflow/plans/project-intake-plan.md`
+**Signoff:** `docs/workflow/reviews/project-intake-signoff.md`
 
 ---
 

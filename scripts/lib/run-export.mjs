@@ -140,7 +140,7 @@ function printSummary(summary, options, sourceRoot, topRoots) {
   }
 
   console.log('\nVerify with: npm run validate:structure (in development repo)');
-  console.log('See docs/DISTRIBUTION.md for packaging details.\n');
+  console.log('See docs/appforge-development/distribution/DISTRIBUTION.md for packaging details.\n');
 }
 
 /**

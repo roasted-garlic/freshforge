@@ -4,7 +4,7 @@
 |-------|-------|
 | Date | 2026-06-23 |
 | Tester | Test Agent |
-| Plan | docs/plans/branding-clarification-plan.md |
+| Plan | docs/appforge-development/plans/branding-clarification-plan.md |
 | Result | **passed** |
 
 ---
@@ -21,10 +21,10 @@
 |----------|---------|------------|
 | README.md Naming Standard | Historical label table row | yes |
 | AGENTS.md Naming Standard | Historical label bullet | yes |
-| docs/DECISIONS.md ADR-002 | Decision record | yes |
+| docs/project/DECISIONS.md ADR-002 | Decision record | yes |
 | docs/AI_RULES.md | Instruction not to use BuildPilot | yes |
-| docs/ROADMAP.md | Exit criterion checkbox text | yes |
-| docs/plans/, docs/reviews/ | Phase planning/review docs | yes |
+| docs/project/ROADMAP.md | Exit criterion checkbox text | yes |
+| docs/appforge-development/plans/, docs/appforge-development/reviews/ | Phase planning/review docs | yes |
 | .cursor/workflow/state.md | Goal description | yes |
 
 No ambiguous dual-naming (`AppForge / BuildPilot`, `BuildPilot workflow starter`) remains in user-facing entry docs.

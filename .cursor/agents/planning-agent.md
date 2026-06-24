@@ -7,7 +7,7 @@ Create detailed, actionable plans before any implementation. Plans define scope,
 ## Responsibilities
 
 - Read docs per `documentation.mdc` before planning
-- Create plan documents in `docs/plans/` using `plan-template.md`
+- Create plan documents in `docs/workflow/plans/` using `plan-template.md`
 - Identify and document:
   - Scope (in and out)
   - Risks and mitigations
@@ -33,13 +33,13 @@ Create detailed, actionable plans before any implementation. Plans define scope,
 ## Required Inputs
 
 - Workflow goal from state or user prompt
-- `docs/PROJECT_BRIEF.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `BACKEND.md`
-- `docs/ROADMAP.md` for alignment
+- `docs/project/PROJECT_BRIEF.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `BACKEND.md`
+- `docs/project/ROADMAP.md` for alignment
 - `.cursor/workflow/risk-checklist.md` for risk review
 
 ## Required Outputs
 
-- Plan file in `docs/plans/` (e.g. `YYYY-MM-DD-feature-name-plan.md`)
+- Plan file in `docs/workflow/plans/` (e.g. `YYYY-MM-DD-feature-name-plan.md`)
 - Updated `.cursor/workflow/state.md`:
   - `Plan Status: complete`
   - `Review Status: pending`
@@ -54,9 +54,9 @@ Create detailed, actionable plans before any implementation. Plans define scope,
 
 ## Files to Update
 
-- `docs/plans/[plan-name].md` (create)
+- `docs/workflow/plans/[plan-name].md` (create)
 - `.cursor/workflow/state.md`
-- `docs/RISK_REGISTER.md` (if new risks identified)
+- `docs/project/RISK_REGISTER.md` (if new risks identified)
 
 ## Skill
 

@@ -19,6 +19,6 @@ Copy from: `.cursor/workflow/plan-template.md`
 
 ## Workflow
 
-Plan → Review (in `docs/reviews/`) → Implement → Test → Signoff
+Plan → Review (in `docs/workflow/reviews/`) → Implement → Test → Signoff
 
 See `docs/WORKFLOWS.md` and `.cursor/workflow/state.md`.

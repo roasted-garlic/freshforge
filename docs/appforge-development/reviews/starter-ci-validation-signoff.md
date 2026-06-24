@@ -4,16 +4,16 @@
 |-------|-------|
 | Date | 2026-06-23 |
 | Signoff by | Signoff Agent |
-| Plan | docs/plans/starter-ci-validation-plan.md |
-| Review | docs/reviews/starter-ci-validation-review.md |
-| Test report | docs/reviews/starter-ci-validation-test-report.md |
+| Plan | docs/appforge-development/plans/starter-ci-validation-plan.md |
+| Review | docs/appforge-development/reviews/starter-ci-validation-review.md |
+| Test report | docs/appforge-development/reviews/starter-ci-validation-test-report.md |
 | Final status | **approved** |
 
 ---
 
 ## Summary
 
-Added lightweight validation for the AppForge workflow starter: structure checks, focused markdown linting, internal link verification, npm scripts, GitHub Actions CI, and documentation in `README.md` and `docs/TESTING.md`. No application source code.
+Added lightweight validation for the AppForge workflow starter: structure checks, focused markdown linting, internal link verification, npm scripts, GitHub Actions CI, and documentation in `README.md` and `docs/standards/TESTING.md`. No application source code.
 
 ---
 
@@ -31,16 +31,16 @@ Added lightweight validation for the AppForge workflow starter: structure checks
 - `scripts/validate-structure.mjs`
 - `scripts/validate-links.mjs`
 - `.github/workflows/validate.yml`
-- `docs/plans/starter-ci-validation-plan.md`
-- `docs/reviews/starter-ci-validation-review.md`
-- `docs/reviews/starter-ci-validation-test-report.md`
-- `docs/reviews/starter-ci-validation-signoff.md`
+- `docs/appforge-development/plans/starter-ci-validation-plan.md`
+- `docs/appforge-development/reviews/starter-ci-validation-review.md`
+- `docs/appforge-development/reviews/starter-ci-validation-test-report.md`
+- `docs/appforge-development/reviews/starter-ci-validation-signoff.md`
 
 ### Files Modified
 - `README.md` — Validation section, limitations update, quick reference
-- `docs/TESTING.md` — commands, CI, markdown scope
-- `docs/DECISIONS.md` — ADR-003
-- `docs/ROADMAP.md` — Phase 0 exit criteria
+- `docs/standards/TESTING.md` — commands, CI, markdown scope
+- `docs/project/DECISIONS.md` — ADR-003
+- `docs/project/ROADMAP.md` — Phase 0 exit criteria
 - `.cursor/workflow/state.md`
 
 ---

@@ -17,7 +17,7 @@ Execute approved changes with narrow scope, doc updates, and checkpoint discipli
 
 ## Inputs
 
-- Approved plan and review in `docs/plans/` and `docs/reviews/`
+- Approved plan and review in `docs/workflow/plans/` and `docs/workflow/reviews/`
 - `.cursor/workflow/state.md` with implement allowed
 - Architecture, coding, security, backend, data model rules
 

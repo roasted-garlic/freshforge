@@ -6,7 +6,7 @@
 | Author | Planning Agent |
 | Status | ready_for_review |
 | Workflow | managed-phase |
-| Related | docs/reviews/starter-ci-validation-review.md |
+| Related | docs/appforge-development/reviews/starter-ci-validation-review.md |
 
 ---
 
@@ -28,8 +28,8 @@ The starter is markdown-only with no `package.json` or CI today. Copy-paste adop
 - `markdownlint-cli2` for markdown formatting
 - `.gitignore` for `node_modules`
 - GitHub Actions workflow (standard for reusable starters; no external account beyond GitHub)
-- Document commands in `README.md` and `docs/TESTING.md`
-- ADR in `docs/DECISIONS.md`
+- Document commands in `README.md` and `docs/standards/TESTING.md`
+- ADR in `docs/project/DECISIONS.md`
 
 ### Out of Scope
 - Application source code
@@ -48,7 +48,7 @@ The starter is markdown-only with no `package.json` or CI today. Copy-paste adop
 - `scripts/validate-structure.mjs` (new)
 - `scripts/validate-links.mjs` (new)
 - `.github/workflows/validate.yml` (new)
-- `README.md`, `docs/TESTING.md`, `docs/DECISIONS.md`
+- `README.md`, `docs/standards/TESTING.md`, `docs/project/DECISIONS.md`
 - `.cursor/workflow/state.md`
 
 ### Architecture Impact
@@ -137,5 +137,5 @@ Remove `package.json`, scripts, workflow, and revert doc updates.
 ---
 
 ## Approval
-- Review doc: docs/reviews/starter-ci-validation-review.md
+- Review doc: docs/appforge-development/reviews/starter-ci-validation-review.md
 - Verdict: pending

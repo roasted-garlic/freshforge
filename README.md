@@ -99,47 +99,29 @@ AGENTS.md          # Universal AI entry point — read first every session
 
 docs/
 
-  AI_RULES.md      # Detailed agent behavior source of truth
+  AI_RULES.md          # Detailed agent behavior source of truth
+  WORKFLOWS.md         # Process baseline
 
-  CODING_STANDARDS.md
+  project/             # Product context and tracking
+    PROJECT_BRIEF.md, ROADMAP.md, PROJECT_HEALTH.md, TECH_DEBT.md, DECISIONS.md, RISK_REGISTER.md
 
-  SECURITY.md
+  architecture/        # Structure and data
+    ARCHITECTURE.md, BACKEND.md, DATA_MODEL.md
 
-  WORKFLOWS.md
+  standards/           # Conventions and quality gates
+    CODING_STANDARDS.md, STYLE_GUIDE.md, SECURITY.md, TESTING.md, DEPLOYMENT.md
 
-  TESTING.md
-
-  DEPLOYMENT.md
-
-  DECISIONS.md
-
-  RISK_REGISTER.md
-
-  PACKAGING.md         # Clean copy and packaging guide
-
-  PROJECT_BRIEF.md # Project-specific — customize per app
-
-  ARCHITECTURE.md
-
-  DATA_MODEL.md
-
-  BACKEND.md
-
-  STYLE_GUIDE.md
-
-  ROADMAP.md
-
-  PROJECT_HEALTH.md    # Health summary (populated during intake)
-
-  INTAKE_FINDINGS.md   # Intake inspection record
-
-  TECH_DEBT.md         # Tech debt register
+  intake/
+    INTAKE_FINDINGS.md
 
   plans/           # Plan documents (README + .gitkeep until your first plan)
 
   reviews/         # Reviews, test reports, signoffs (README + .gitkeep until work begins)
 
   setup/           # Optional local setup notes
+
+  appforge-development/   # Dev repo only — NOT installed into target projects
+    distribution/         # INSTALLATION, DISTRIBUTION, PACKAGING, STARTER_SURFACE
 
 ```
 
@@ -189,7 +171,7 @@ The **default installed product** is the starter surface:
 
 AppForge development tooling (`scripts/`, `package.json`, CI, validation) supports building and shipping that product — it is not installed by default.
 
-When you improve AppForge behavior for target projects, update **starter surface** files. See `docs/STARTER_SURFACE.md`.
+When you improve AppForge behavior for target projects, update **starter surface** files. See `docs/appforge-development/distribution/STARTER_SURFACE.md`.
 
 ---
 
@@ -203,7 +185,7 @@ When you improve AppForge behavior for target projects, update **starter surface
 | `README.md` | Full AppForge docs | Optional (`--include-readme` → `APPFORGE_README.md`) |
 | `node_modules/` | Local dev only | Never copied — do not manual-copy |
 
-Push this repo to GitHub as the development source. Users install with `npx github:roasted-garlic/appforge install`. See `docs/DISTRIBUTION.md`.
+Push this repo to GitHub as the development source. Users install with `npx github:roasted-garlic/appforge install`. See `docs/appforge-development/distribution/DISTRIBUTION.md`.
 
 
 
@@ -251,7 +233,7 @@ node appforge-temp/scripts/install-appforge.mjs --target .
 rm -rf appforge-temp
 ```
 
-Full workflows: `docs/INSTALLATION.md`.
+Full workflows: `docs/appforge-development/distribution/INSTALLATION.md`.
 
 
 
@@ -271,7 +253,7 @@ node scripts/export-starter.mjs --clean --dry-run
 
 Default export: `AGENTS.md`, `.cursor/`, and `docs/` only. Never includes `docs/appforge-development/`, `node_modules/`, dev artifacts, or live development `state.md`. Maps `state-template.md` → `state.md`.
 
-Details: `docs/DISTRIBUTION.md` and `docs/PACKAGING.md`.
+Details: `docs/appforge-development/distribution/DISTRIBUTION.md` and `docs/appforge-development/distribution/PACKAGING.md`.
 
 ### Workflow state in dev vs installed starter
 
@@ -433,7 +415,7 @@ Plan → Review → Implement → Test → Signoff
 
 
 
-- No implementation without a plan in `docs/plans/`
+- No implementation without a plan in `docs/workflow/plans/`
 
 - No implementation without review approval
 
@@ -719,7 +701,7 @@ npm run export:starter:full
 
 CI runs validation via `.github/workflows/validate.yml` on push and pull requests.
 
-When installing into an application repo, pass `--include-validation` if you want these checks in the target project. See `docs/TESTING.md`.
+When installing into an application repo, pass `--include-validation` if you want these checks in the target project. See `docs/standards/TESTING.md`.
 
 
 
@@ -733,7 +715,7 @@ Use `npm run export:starter` or the install script — they automatically exclud
 
 Before pushing this development repo to GitHub:
 
-1. Confirm `docs/plans/`, `docs/reviews/`, and `docs/setup/` contain only `README.md` and `.gitkeep`.
+1. Confirm `docs/workflow/plans/`, `docs/workflow/reviews/`, and `docs/workflow/setup/` contain only `README.md` and `.gitkeep`.
 2. Archive completed phase artifacts under `docs/appforge-development/`.
 3. Confirm `.cursor/workflow/state.md` matches `state-template.md`.
 4. Run `npm run validate`.
@@ -745,7 +727,7 @@ After installing into a target repo:
 | Existing codebase with application code | **Existing Project** (`Intake`) |
 | New or blank project | **New Project Bootstrap** (`Bootstrap`) |
 
-Full details: `docs/PACKAGING.md`, `docs/DISTRIBUTION.md`, `docs/INSTALLATION.md`.
+Full details: `docs/appforge-development/distribution/PACKAGING.md`, `docs/appforge-development/distribution/DISTRIBUTION.md`, `docs/appforge-development/distribution/INSTALLATION.md`.
 
 
 
@@ -779,11 +761,11 @@ Full details: `docs/PACKAGING.md`, `docs/DISTRIBUTION.md`, `docs/INSTALLATION.md
 
 | Run starter validation | `npm run validate` or `npm run validate:starter` |
 
-| Install into another repo | `docs/INSTALLATION.md` |
+| Install into another repo | `docs/appforge-development/distribution/INSTALLATION.md` |
 
-| Export clean starter | `npm run export:starter` — see `docs/DISTRIBUTION.md` |
+| Export clean starter | `npm run export:starter` — see `docs/appforge-development/distribution/DISTRIBUTION.md` |
 
-| Prepare clean copy for another repo | `docs/PACKAGING.md` |
+| Prepare clean copy for another repo | `docs/appforge-development/distribution/PACKAGING.md` |
 
 
 

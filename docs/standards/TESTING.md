@@ -90,7 +90,7 @@ node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
 
 ### Starter surface verification
 
-The **starter surface** is the default installed product: `AGENTS.md`, `.cursor/`, `docs/`. See `docs/STARTER_SURFACE.md`.
+The **starter surface** is the default installed product: `AGENTS.md`, `.cursor/`, `docs/`. See `docs/appforge-development/distribution/STARTER_SURFACE.md`.
 
 ```bash
 npm run validate
@@ -102,7 +102,7 @@ After export, inspect `dist/appforge-starter/`:
 | Check | Expected |
 |-------|----------|
 | Top-level roots | `AGENTS.md`, `.cursor/`, `docs/` only |
-| `docs/STARTER_SURFACE.md` | Present in export |
+| `docs/appforge-development/distribution/STARTER_SURFACE.md` | Present in export |
 | `docs/appforge-development/` | Absent |
 | `.cursor/workflow/state.md` | Clean idle (from `state-template.md`) |
 | Starter behavior changes | Visible in exported `.cursor/` and `docs/` |
@@ -116,7 +116,7 @@ After `npm run export:starter`:
 1. Open `dist/appforge-starter/`
 2. Confirm top-level entries: `AGENTS.md`, `.cursor/`, `docs/` only (default)
 3. Confirm `docs/appforge-development/` is absent
-4. Confirm `docs/plans/`, `docs/reviews/`, `docs/setup/` contain only `README.md` and `.gitkeep`
+4. Confirm `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` contain only `README.md` and `.gitkeep`
 5. Confirm `dist/appforge-starter/.cursor/workflow/state.md` matches `state-template.md` (no dev phase history)
 6. Confirm no `node_modules/`, `.git/`, `.env`, or log files
 
@@ -128,7 +128,7 @@ node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
 
 Confirm summary lists only `AGENTS.md`, `.cursor/`, and `docs/` for default install. Confirm dry-run shows `state-template.md → state.md` and does not copy development `state.md`. With `--include-readme`, expect `APPFORGE_README.md`. With `--include-validation`, expect `scripts/`, `package.json`, etc.
 
-See `docs/INSTALLATION.md` and `docs/DISTRIBUTION.md` for full workflows.
+See `docs/appforge-development/distribution/INSTALLATION.md` and `docs/appforge-development/distribution/DISTRIBUTION.md` for full workflows.
 
 ---
 
@@ -202,7 +202,7 @@ PRs to `main` / `master` should pass validation when CI is enabled.
 | Date | Summary |
 |------|---------|
 | 2026-06-23 | CI runs `export:starter` before `validate`; document local export-first order |
-| 2026-06-23 | Added starter surface verification tests and `docs/STARTER_SURFACE.md` |
+| 2026-06-23 | Added starter surface verification tests and `docs/appforge-development/distribution/STARTER_SURFACE.md` |
 | 2026-06-23 | Added CLI install/export test commands (`bin/appforge.mjs`) |
 | 2026-06-23 | Added workflow state-template install/export and full state validation |
 | 2026-06-23 | Added distribution/install test commands and export inspection |

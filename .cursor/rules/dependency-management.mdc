@@ -29,7 +29,7 @@ Consider before recommending a new package:
 
 ## Documentation
 
-- Record significant dependency choices in `docs/DECISIONS.md` (ADR format)
+- Record significant dependency choices in `docs/project/DECISIONS.md` (ADR format)
 - Note new env or build requirements in `BACKEND.md` or `DEPLOYMENT.md` if applicable
 - During intake, dependency concerns go in `TECH_DEBT.md` and `PROJECT_HEALTH.md`
 

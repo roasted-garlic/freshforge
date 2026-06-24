@@ -29,11 +29,11 @@ Continue without asking unless manual testing, visual review, production deploy,
 - 
 
 ## Suggested Docs to Read First
-- [ ] docs/PROJECT_BRIEF.md
-- [ ] docs/ARCHITECTURE.md
-- [ ] docs/DATA_MODEL.md
-- [ ] docs/BACKEND.md
-- [ ] docs/ROADMAP.md
+- [ ] docs/project/PROJECT_BRIEF.md
+- [ ] docs/architecture/ARCHITECTURE.md
+- [ ] docs/architecture/DATA_MODEL.md
+- [ ] docs/architecture/BACKEND.md
+- [ ] docs/project/ROADMAP.md
 
 ## Human Checkpoints Anticipated
 <!-- List any known approvals needed upfront -->

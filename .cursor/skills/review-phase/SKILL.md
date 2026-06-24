@@ -17,7 +17,7 @@ Validate plans (and optionally implementations) against project rules and docs. 
 
 ## Inputs
 
-- Plan in `docs/plans/`
+- Plan in `docs/workflow/plans/`
 - Implementation diff (if reviewing code)
 - `.cursor/workflow/review-template.md`
 - Rules: architecture, security, data-model, backend, testing, documentation
@@ -37,7 +37,7 @@ Validate plans (and optionally implementations) against project rules and docs. 
    - [ ] Human checkpoints identified
    - [ ] Roadmap alignment
    - [ ] No silent scope expansion
-4. Create `docs/reviews/[name]-review.md` from template
+4. Create `docs/workflow/reviews/[name]-review.md` from template
 5. Set verdict: **approved** | **approved_with_changes** | **blocked**
 6. Update workflow state:
    - `Review Status: [verdict]`
@@ -46,7 +46,7 @@ Validate plans (and optionally implementations) against project rules and docs. 
 
 ## Outputs
 
-- Review document in `docs/reviews/`
+- Review document in `docs/workflow/reviews/`
 - Updated workflow state
 - Required changes list for planning agent if not approved
 

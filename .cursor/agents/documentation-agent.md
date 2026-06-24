@@ -33,16 +33,16 @@ Create, update, and maintain project documentation. Distinguish universal baseli
 ## Required Outputs
 
 **Intake:**
-- `docs/plans/project-intake-plan.md` (first)
+- `docs/workflow/plans/project-intake-plan.md` (first)
 - Updated project-specific docs from repo inspection
-- `docs/PROJECT_HEALTH.md`, `docs/INTAKE_FINDINGS.md`, `docs/TECH_DEBT.md`
-- Updated `docs/RISK_REGISTER.md` with AI-discovered risks
+- `docs/project/PROJECT_HEALTH.md`, `docs/intake/INTAKE_FINDINGS.md`, `docs/project/TECH_DEBT.md`
+- Updated `docs/project/RISK_REGISTER.md` with AI-discovered risks
 - Updated universal docs where repo reveals gaps
 - Recommended cleanup phases on `ROADMAP.md` (not implemented during intake)
-- `docs/reviews/project-intake-signoff.md`
+- `docs/workflow/reviews/project-intake-signoff.md`
 
 **Bootstrap:**
-- `docs/plans/new-project-bootstrap-plan.md`
+- `docs/workflow/plans/new-project-bootstrap-plan.md`
 - Populated project-specific doc templates
 - Recommended initial `ROADMAP.md`
 - Signoff doc when questionnaire and docs complete

@@ -48,7 +48,7 @@ Examples:
   npx github:roasted-garlic/appforge install --dry-run
   npx github:roasted-garlic/appforge install --target ../my-app --include-readme
 
-See docs/INSTALLATION.md for more.
+See docs/appforge-development/distribution/INSTALLATION.md for more.
 `);
 }
 

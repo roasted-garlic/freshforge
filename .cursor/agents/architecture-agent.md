@@ -25,7 +25,7 @@ Review layer boundaries, project structure, dependency direction, coupling, scal
 ## Required Inputs
 
 - Plan or implementation under review
-- `docs/ARCHITECTURE.md`
+- `docs/architecture/ARCHITECTURE.md`
 - Repo structure (folders, imports, module graph if available)
 
 ## Required Outputs
@@ -43,9 +43,9 @@ Review layer boundaries, project structure, dependency direction, coupling, scal
 
 ## Files to Update
 
-- `docs/reviews/*` (architecture section)
-- `docs/ARCHITECTURE.md` (when structure changes approved)
-- `docs/DECISIONS.md` (ADRs)
+- `docs/workflow/reviews/*` (architecture section)
+- `docs/architecture/ARCHITECTURE.md` (when structure changes approved)
+- `docs/project/DECISIONS.md` (ADRs)
 - `.cursor/workflow/state.md`
 
 ## Related Rules

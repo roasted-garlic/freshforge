@@ -2,7 +2,7 @@
 
 > How to ship, install, export, and verify a **clean** AppForge workflow starter package.
 
-**Starter surface** (the installed product): `AGENTS.md`, `.cursor/`, `docs/` — see `docs/STARTER_SURFACE.md`.
+**Starter surface** (the installed product): `AGENTS.md`, `.cursor/`, `docs/` — see `docs/appforge-development/distribution/STARTER_SURFACE.md`.
 
 **Distribution tools** (`bin/appforge.mjs`, `scripts/install-appforge.mjs`, `scripts/export-starter.mjs`) deliver the starter surface but are not part of the default installed product.
 
@@ -14,7 +14,7 @@
 |--|-----------------------------------|--------------------------|
 | Purpose | Build and maintain AppForge | Drop into another project |
 | `docs/appforge-development/` | Maintainer history | **Excluded** |
-| `docs/plans/`, `docs/reviews/` | Clean in starter; dev artifacts archived | Only `README.md` + `.gitkeep` |
+| `docs/workflow/plans/`, `docs/workflow/reviews/` | Clean in starter; dev artifacts archived | Only `README.md` + `.gitkeep` |
 | Validation tooling | Present in dev repo | Optional (`--include-validation`) |
 | `README.md` | Full dev documentation | Optional (`--include-readme`) |
 | `node_modules/` | Local only | **Never copied** |
@@ -30,8 +30,8 @@ The GitHub repository may include development tooling, CI, and `docs/appforge-de
 | Entry point | `AGENTS.md` |
 | Cursor workflow | `.cursor/rules/`, `.cursor/agents/`, `.cursor/skills/`, `.cursor/workflow/`, `.cursor/hooks.json` |
 | Baseline docs | `docs/AI_RULES.md`, `SECURITY.md`, `WORKFLOWS.md`, `TESTING.md`, `CODING_STANDARDS.md`, `DEPLOYMENT.md`, `DECISIONS.md`, `RISK_REGISTER.md`, `PACKAGING.md`, `INSTALLATION.md`, `DISTRIBUTION.md` |
-| Project templates | `docs/PROJECT_BRIEF.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `BACKEND.md`, `STYLE_GUIDE.md`, `ROADMAP.md`, `PROJECT_HEALTH.md`, `INTAKE_FINDINGS.md`, `TECH_DEBT.md` |
-| Empty workflow folders | `docs/plans/`, `docs/reviews/`, `docs/setup/` (each with `README.md` and `.gitkeep` only) |
+| Project templates | `docs/project/PROJECT_BRIEF.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `BACKEND.md`, `STYLE_GUIDE.md`, `ROADMAP.md`, `PROJECT_HEALTH.md`, `INTAKE_FINDINGS.md`, `TECH_DEBT.md` |
+| Empty workflow folders | `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` (each with `README.md` and `.gitkeep` only) |
 | Idle workflow state | `.cursor/workflow/state.md` from `state-template.md` (`Current Mode: idle`, `DONE: no`) |
 
 ### Optional with flags
@@ -48,8 +48,8 @@ The GitHub repository may include development tooling, CI, and `docs/appforge-de
 | Item | Reason |
 |------|--------|
 | `docs/appforge-development/` | AppForge maintainer history only |
-| Completed plans in `docs/plans/` | Filtered; only README + .gitkeep |
-| Completed reviews in `docs/reviews/` | Same |
+| Completed plans in `docs/workflow/plans/` | Filtered; only README + .gitkeep |
+| Completed reviews in `docs/workflow/reviews/` | Same |
 | `node_modules/` | Regenerate with `npm install` if using validation |
 | `.git/`, `.env*`, logs, archives, temp folders | Local or target-specific |
 
@@ -83,7 +83,7 @@ npm run export:starter:full         # includes README + validation
 node scripts/export-starter.mjs --clean --dry-run
 ```
 
-Details: `docs/DISTRIBUTION.md`.
+Details: `docs/appforge-development/distribution/DISTRIBUTION.md`.
 
 ---
 
@@ -123,13 +123,13 @@ Phase: starter-package-cleanup
 Goal: Prepare clean starter package
 ```
 
-Archive completed phase plans and signoffs to `docs/appforge-development/plans/` and `docs/appforge-development/reviews/`. Starter-facing `docs/plans/` and `docs/reviews/` must remain clean (only `README.md` and `.gitkeep`).
+Archive completed phase plans and signoffs to `docs/appforge-development/plans/` and `docs/appforge-development/reviews/`. Starter-facing `docs/workflow/plans/` and `docs/workflow/reviews/` must remain clean (only `README.md` and `.gitkeep`).
 
 ### Manual checklist
 
-1. Move completed plans from `docs/plans/` to `docs/appforge-development/plans/`.
-2. Move completed reviews, test reports, and signoffs from `docs/reviews/` to `docs/appforge-development/reviews/`.
-3. Leave only `README.md` and `.gitkeep` in `docs/plans/`, `docs/reviews/`, and `docs/setup/`.
+1. Move completed plans from `docs/workflow/plans/` to `docs/appforge-development/plans/`.
+2. Move completed reviews, test reports, and signoffs from `docs/workflow/reviews/` to `docs/appforge-development/reviews/`.
+3. Leave only `README.md` and `.gitkeep` in `docs/workflow/plans/`, `docs/workflow/reviews/`, and `docs/workflow/setup/`.
 4. Reset project-specific docs if they contain AppForge-dev content.
 5. Reset `.cursor/workflow/state.md` to match `state-template.md`.
 6. Do **not** copy `docs/appforge-development/` into target repos.
@@ -141,9 +141,9 @@ Archive completed phase plans and signoffs to `docs/appforge-development/plans/`
 ### Folder contents
 
 ```text
-docs/plans/     → README.md, .gitkeep only
-docs/reviews/   → README.md, .gitkeep only
-docs/setup/     → README.md, .gitkeep only
+docs/workflow/plans/     → README.md, .gitkeep only
+docs/workflow/reviews/   → README.md, .gitkeep only
+docs/workflow/setup/     → README.md, .gitkeep only
 ```
 
 ### Workflow state
@@ -180,6 +180,6 @@ Search starter-facing docs (exclude `docs/appforge-development/`) for completed 
 
 | Date | Summary |
 |------|---------|
-| 2026-06-23 | Added starter surface reference (`docs/STARTER_SURFACE.md`) |
+| 2026-06-23 | Added starter surface reference (`docs/appforge-development/distribution/STARTER_SURFACE.md`) |
 | 2026-06-23 | Added install/export scripts; default package is AGENTS.md + .cursor + docs |
 | 2026-06-23 | Initial packaging guide |

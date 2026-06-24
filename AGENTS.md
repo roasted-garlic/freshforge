@@ -2,6 +2,8 @@
 
 > **Read this file first** in any repository that uses the **AppForge** workflow starter.
 
+This project uses the AppForge workflow starter. The active workflow surface is `AGENTS.md`, `.cursor/`, and `docs/`. AppForge development and distribution documentation is not part of installed target projects.
+
 ---
 
 ## Start Every Session
@@ -22,7 +24,7 @@ All scoped work follows:
 
 | Gate | Rule |
 |------|------|
-| Implement | Requires plan in `docs/plans/` **and** review approval |
+| Implement | Requires plan in `docs/workflow/plans/` **and** review approval |
 | Signoff | Requires tests run **or** failures documented honestly |
 | Scope | Never silently expand beyond approved plan |
 
@@ -148,16 +150,35 @@ Details: `.cursor/agents/`
 
 ---
 
-## Key Docs After Intake
+## Key Docs
 
-| Doc | Purpose |
-|-----|---------|
-| `docs/AI_RULES.md` | Detailed agent rules |
-| `docs/PROJECT_BRIEF.md` | Product context |
-| `docs/PROJECT_HEALTH.md` | Health summary and priorities |
-| `docs/INTAKE_FINDINGS.md` | Intake inspection record |
-| `docs/TECH_DEBT.md` | Tracked debt items |
-| `docs/RISK_REGISTER.md` | Active risks |
+| Area | Path |
+|------|------|
+| Core workflow | `docs/AI_RULES.md`, `docs/WORKFLOWS.md` |
+| Project context | `docs/project/PROJECT_BRIEF.md`, `ROADMAP.md`, `PROJECT_HEALTH.md`, `TECH_DEBT.md`, `DECISIONS.md`, `RISK_REGISTER.md` |
+| Architecture | `docs/architecture/ARCHITECTURE.md`, `BACKEND.md`, `DATA_MODEL.md` |
+| Standards | `docs/standards/CODING_STANDARDS.md`, `STYLE_GUIDE.md`, `SECURITY.md`, `TESTING.md`, `DEPLOYMENT.md` |
+| Intake | `docs/intake/INTAKE_FINDINGS.md` |
+| Workflow artifacts | `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` |
+
+---
+
+## Workflow Artifacts vs Permanent Docs
+
+AppForge separates **durable project documentation** from **temporary workflow artifacts**:
+
+| Type | Location | Purpose |
+|------|----------|---------|
+| **Permanent docs** | `docs/project/`, `docs/architecture/`, `docs/standards/`, `docs/intake/` | Product context, architecture, standards — updated when behavior changes |
+| **Workflow artifacts** | `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` | Active phase plans, reviews, test reports, signoffs, setup notes |
+
+Rules:
+
+- Create new plans in `docs/workflow/plans/` before implementation.
+- Store reviews, test reports, and signoffs in `docs/workflow/reviews/`.
+- Use `docs/workflow/setup/` for project-specific setup notes after intake or bootstrap.
+- Keep workflow artifact folders clean between phases (README + `.gitkeep` only when idle).
+- Do not archive AppForge development history in workflow artifact folders — that belongs in `docs/appforge-development/` (development repo only).
 
 ---
 
@@ -187,10 +208,10 @@ AppForge is used to build itself, but it also distributes a **starter surface** 
 Rules:
 
 - If a change should affect **installed projects**, update **starter surface** files — not development-only docs or scripts alone.
-- Do not put AppForge development history in starter-facing `docs/plans/` or `docs/reviews/`.
+- Do not put AppForge development history in starter-facing `docs/workflow/plans/` or `docs/workflow/reviews/`.
 - Do not install or export `docs/appforge-development/`.
 
-Source of truth: `docs/STARTER_SURFACE.md`.
+Source of truth: `docs/appforge-development/distribution/STARTER_SURFACE.md`.
 
 ---
 

@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Testing Rules
 
-Read `docs/TESTING.md` before signoff. Testing requirements apply to all project types; exact commands come from the project's package scripts or documented tooling.
+Read `docs/standards/TESTING.md` before signoff. Testing requirements apply to all project types; exact commands come from the project's package scripts or documented tooling.
 
 ## Required Checks Before Signoff
 
@@ -50,6 +50,6 @@ If a command does not exist in the project:
 
 ## Test Documentation Updates
 
-When adding tests or changing commands, update `docs/TESTING.md` in the same workflow.
+When adding tests or changing commands, update `docs/standards/TESTING.md` in the same workflow.
 
 Use skill `test-phase` for structured test execution and reporting.

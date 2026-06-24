@@ -57,7 +57,7 @@ When a decision affects architecture, security, data, backend, or workflow:
 AppForge developed inside its own workflow left completed plans, reviews, and signoffs in starter-facing folders, confusing adopters copying the kit.
 
 **Decision**
-Archive AppForge development artifacts under `docs/appforge-development/`. Keep `docs/plans/`, `docs/reviews/`, and `docs/setup/` clean (README + `.gitkeep` only) before copying. Document process in `docs/PACKAGING.md`.
+Archive AppForge development artifacts under `docs/appforge-development/`. Keep `docs/workflow/plans/`, `docs/workflow/reviews/`, and `docs/workflow/setup/` clean (README + `.gitkeep` only) before copying. Document process in `docs/appforge-development/distribution/PACKAGING.md`.
 
 **Consequences**
 - Positive: Clear separation between maintainer history and adopters' workflow folders

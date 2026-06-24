@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Architecture Rules
 
-Read `docs/ARCHITECTURE.md` before structural changes. These rules apply regardless of stack (web, mobile, desktop, API, monolith, or serverless).
+Read `docs/architecture/ARCHITECTURE.md` before structural changes. These rules apply regardless of stack (web, mobile, desktop, API, monolith, or serverless).
 
 ## Layered Architecture
 
@@ -75,4 +75,4 @@ Adapt naming to the stack (e.g. ViewModels in mobile, handlers in API apps), but
 - Suspected layer violation or circular dependency
 - Performance or scalability concerns affecting structure
 
-Record significant structural decisions in `docs/DECISIONS.md`.
+Record significant structural decisions in `docs/project/DECISIONS.md`.

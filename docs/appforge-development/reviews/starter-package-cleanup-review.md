@@ -4,7 +4,7 @@
 |-------|-------|
 | Date | 2026-06-23 |
 | Reviewer | Review Agent |
-| Plan | docs/plans/starter-package-cleanup-plan.md |
+| Plan | docs/appforge-development/plans/starter-package-cleanup-plan.md |
 | Verdict | **approved** |
 
 ---

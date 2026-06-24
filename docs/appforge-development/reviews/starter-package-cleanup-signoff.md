@@ -13,7 +13,7 @@
 
 ## Summary
 
-Prepared AppForge for clean copy-paste reuse: archived AppForge development workflow artifacts under `docs/appforge-development/`, reset starter-facing folders and workflow state, restored `ROADMAP.md` to template, added `docs/PACKAGING.md` and README packaging guidance, extended structure validation for clean folders.
+Prepared AppForge for clean copy-paste reuse: archived AppForge development workflow artifacts under `docs/appforge-development/`, reset starter-facing folders and workflow state, restored `ROADMAP.md` to template, added `docs/appforge-development/distribution/PACKAGING.md` and README packaging guidance, extended structure validation for clean folders.
 
 ---
 
@@ -24,8 +24,8 @@ Prepared AppForge for clean copy-paste reuse: archived AppForge development work
 - `docs/appforge-development/reviews/` (archive)
 - `docs/appforge-development/intake/README.md`
 - `docs/appforge-development/health/README.md`
-- `docs/PACKAGING.md`
-- `docs/plans/.gitkeep`, `docs/reviews/.gitkeep`, `docs/setup/.gitkeep`
+- `docs/appforge-development/distribution/PACKAGING.md`
+- `docs/workflow/plans/.gitkeep`, `docs/workflow/reviews/.gitkeep`, `docs/workflow/setup/.gitkeep`
 
 ## Files moved / archived
 
@@ -48,15 +48,15 @@ Prepared AppForge for clean copy-paste reuse: archived AppForge development work
 ## Files reset
 
 - `.cursor/workflow/state.md` → idle starter state
-- `docs/ROADMAP.md` → reusable template (removed AppForge dev phase history)
+- `docs/project/ROADMAP.md` → reusable template (removed AppForge dev phase history)
 
 ## Starter-facing folders cleaned
 
 | Folder | Contents |
 |--------|----------|
-| `docs/plans/` | README.md, .gitkeep |
-| `docs/reviews/` | README.md, .gitkeep |
-| `docs/setup/` | README.md, .gitkeep |
+| `docs/workflow/plans/` | README.md, .gitkeep |
+| `docs/workflow/reviews/` | README.md, .gitkeep |
+| `docs/workflow/setup/` | README.md, .gitkeep |
 
 ## Tests
 
@@ -74,8 +74,8 @@ Prepared AppForge for clean copy-paste reuse: archived AppForge development work
 ## Manual review notes
 
 - `docs/appforge-development/` remains in the **maintainer** repo for history; **exclude** when copying to target projects.
-- `docs/DECISIONS.md` ADRs (workflow, naming, validation, packaging) ship with the starter — they document starter capabilities, not target-app history.
-- `docs/TESTING.md` documents validation commands — appropriate for starter maintenance.
+- `docs/project/DECISIONS.md` ADRs (workflow, naming, validation, packaging) ship with the starter — they document starter capabilities, not target-app history.
+- `docs/standards/TESTING.md` documents validation commands — appropriate for starter maintenance.
 
 ---
 
@@ -83,4 +83,4 @@ Prepared AppForge for clean copy-paste reuse: archived AppForge development work
 
 **approved** — AppForge is ready to copy into a new or existing project after excluding `docs/appforge-development/`.
 
-**Recommended next action:** Copy into target repo (see `docs/PACKAGING.md`), then run **Intake** or **Bootstrap**.
+**Recommended next action:** Copy into target repo (see `docs/appforge-development/distribution/PACKAGING.md`), then run **Intake** or **Bootstrap**.

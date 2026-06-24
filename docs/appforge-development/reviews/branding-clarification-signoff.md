@@ -4,9 +4,9 @@
 |-------|-------|
 | Date | 2026-06-23 |
 | Signoff by | Signoff Agent |
-| Plan | docs/plans/branding-clarification-plan.md |
-| Review | docs/reviews/branding-clarification-review.md |
-| Test report | docs/reviews/branding-clarification-test-report.md |
+| Plan | docs/appforge-development/plans/branding-clarification-plan.md |
+| Review | docs/appforge-development/reviews/branding-clarification-review.md |
+| Test report | docs/appforge-development/reviews/branding-clarification-test-report.md |
 | Final status | **approved** |
 
 ---
@@ -25,23 +25,23 @@ Standardized the reusable Cursor workflow starter under the canonical name **App
 - Template docs (`PROJECT_BRIEF`, `ARCHITECTURE`, etc.) clarify they describe target applications, not the starter itself
 
 ### Files Created
-- docs/plans/branding-clarification-plan.md
-- docs/reviews/branding-clarification-review.md
-- docs/reviews/branding-clarification-test-report.md
-- docs/reviews/branding-clarification-signoff.md
+- docs/appforge-development/plans/branding-clarification-plan.md
+- docs/appforge-development/reviews/branding-clarification-review.md
+- docs/appforge-development/reviews/branding-clarification-test-report.md
+- docs/appforge-development/reviews/branding-clarification-signoff.md
 
 ### Files Modified
 - README.md
 - AGENTS.md
 - docs/AI_RULES.md
 - docs/WORKFLOWS.md
-- docs/PROJECT_BRIEF.md
-- docs/ARCHITECTURE.md
-- docs/ROADMAP.md
-- docs/INTAKE_FINDINGS.md
-- docs/PROJECT_HEALTH.md
-- docs/TECH_DEBT.md
-- docs/DECISIONS.md
+- docs/project/PROJECT_BRIEF.md
+- docs/architecture/ARCHITECTURE.md
+- docs/project/ROADMAP.md
+- docs/intake/INTAKE_FINDINGS.md
+- docs/project/PROJECT_HEALTH.md
+- docs/project/TECH_DEBT.md
+- docs/project/DECISIONS.md
 - .cursor/workflow/state.md
 
 ### Documentation Updated

@@ -12,7 +12,7 @@ When AppForge is developed using its own managed phases, generated artifacts acc
 - Intake findings (when run on the starter repo)
 - Health snapshots
 
-These files are useful for AppForge maintainers but confuse adopters who expect empty `docs/plans/` and `docs/reviews/` folders ready for **their** project work.
+These files are useful for AppForge maintainers but confuse adopters who expect empty `docs/workflow/plans/` and `docs/workflow/reviews/` folders ready for **their** project work.
 
 ---
 
@@ -31,12 +31,12 @@ These files are useful for AppForge maintainers but confuse adopters who expect 
 
 Before copying AppForge into another repository:
 
-1. Run the **starter-package-cleanup** managed phase (or follow `docs/PACKAGING.md` manually).
+1. Run the **starter-package-cleanup** managed phase (or follow `docs/appforge-development/distribution/PACKAGING.md` manually).
 2. **Exclude** `docs/appforge-development/` from the copy.
-3. Confirm `docs/plans/`, `docs/reviews/`, and `docs/setup/` contain only `README.md` and `.gitkeep`.
+3. Confirm `docs/workflow/plans/`, `docs/workflow/reviews/`, and `docs/workflow/setup/` contain only `README.md` and `.gitkeep`.
 4. Confirm `.cursor/workflow/state.md` is idle.
 
-See `docs/PACKAGING.md` for the full checklist.
+See `docs/appforge-development/distribution/PACKAGING.md` for the full checklist.
 
 ---
 

@@ -9,11 +9,11 @@
 
 ## Summary
 
-Defined the starter surface as `AGENTS.md`, `.cursor/`, and `docs/`. Added `docs/STARTER_SURFACE.md`, impact classification in rules and AI_RULES, and validation for export surface. Future managed phases must classify whether changes affect installed projects.
+Defined the starter surface as `AGENTS.md`, `.cursor/`, and `docs/`. Added `docs/appforge-development/distribution/STARTER_SURFACE.md`, impact classification in rules and AI_RULES, and validation for export surface. Future managed phases must classify whether changes affect installed projects.
 
 ## Files Created
 
-- `docs/STARTER_SURFACE.md`
+- `docs/appforge-development/distribution/STARTER_SURFACE.md`
 
 ## Files Updated
 
@@ -21,10 +21,10 @@ Defined the starter surface as `AGENTS.md`, `.cursor/`, and `docs/`. Added `docs
 - `docs/AI_RULES.md`
 - `.cursor/rules/workflow.mdc`
 - `.cursor/rules/documentation.mdc`
-- `docs/DISTRIBUTION.md`
-- `docs/PACKAGING.md`
+- `docs/appforge-development/distribution/DISTRIBUTION.md`
+- `docs/appforge-development/distribution/PACKAGING.md`
 - `docs/WORKFLOWS.md`
-- `docs/TESTING.md`
+- `docs/standards/TESTING.md`
 - `README.md`
 - `scripts/validate-structure.mjs`
 

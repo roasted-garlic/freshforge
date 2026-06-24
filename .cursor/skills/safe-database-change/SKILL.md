@@ -21,7 +21,7 @@ Ensure persisted data changes are planned, reviewed, documented, and approved be
 ## Inputs
 
 - Plan with migration impact section
-- `docs/DATA_MODEL.md`
+- `docs/architecture/DATA_MODEL.md`
 - Current schema/migration files (read)
 
 ## Steps

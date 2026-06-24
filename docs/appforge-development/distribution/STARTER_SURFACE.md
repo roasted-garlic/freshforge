@@ -16,7 +16,7 @@ It is the product AppForge distributes. Improvements to agent behavior, workflow
 |------|----------|
 | `AGENTS.md` | Universal AI entry point |
 | `.cursor/` | Rules, agents, skills, workflow templates, command aliases, hooks, idle state template |
-| `docs/` | Baseline docs, project templates, empty `plans/` / `reviews/` / `setup/` |
+| `docs/` | Baseline docs, project templates, empty `workflow/plans/`, `workflow/reviews/`, `workflow/setup/` |
 
 Default install command:
 
@@ -54,12 +54,16 @@ Session entry point, workflow summary, gates, and mode overview.
 
 ### `docs/`
 
-| Category | Examples |
-|----------|----------|
-| Baseline | `AI_RULES.md`, `SECURITY.md`, `WORKFLOWS.md`, `TESTING.md`, `CODING_STANDARDS.md` |
-| Process | `INSTALLATION.md`, `DISTRIBUTION.md`, `PACKAGING.md`, **`STARTER_SURFACE.md`** |
-| Project templates | `PROJECT_BRIEF.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `BACKEND.md`, … |
-| Empty workflow folders | `docs/plans/`, `docs/reviews/`, `docs/setup/` (README + `.gitkeep` only) |
+| Category | Path |
+|----------|------|
+| Core workflow | `AI_RULES.md`, `WORKFLOWS.md` (docs root) |
+| Project context | `project/PROJECT_BRIEF.md`, `ROADMAP.md`, `PROJECT_HEALTH.md`, `TECH_DEBT.md`, `DECISIONS.md`, `RISK_REGISTER.md` |
+| Architecture | `architecture/ARCHITECTURE.md`, `BACKEND.md`, `DATA_MODEL.md` |
+| Standards | `standards/CODING_STANDARDS.md`, `STYLE_GUIDE.md`, `SECURITY.md`, `TESTING.md`, `DEPLOYMENT.md` |
+| Intake | `intake/INTAKE_FINDINGS.md` |
+| Active phase work | `workflow/plans/`, `workflow/reviews/`, `workflow/setup/` (README + `.gitkeep` only in clean starter) |
+
+Distribution, installation, packaging, and starter-surface maintainer docs live under `docs/appforge-development/distribution/` in the **development repo only** — not in installed projects.
 
 ### Not installed by default
 
@@ -128,7 +132,7 @@ Every AppForge managed phase should classify impact in one or more areas:
 ### Common mistakes to avoid
 
 - Changing starter behavior only in `docs/appforge-development/` or dev-only scripts
-- Putting completed AppForge phase history in `docs/plans/` or `docs/reviews/`
+- Putting completed AppForge phase history in `docs/workflow/plans/` or `docs/workflow/reviews/`
 - Assuming changes to `scripts/` affect installed projects (they do not by default)
 - Shipping `docs/appforge-development/` in install/export output
 
@@ -156,27 +160,28 @@ npm run export:starter
 
 Structure validation checks:
 
-- `docs/STARTER_SURFACE.md` exists
+- `docs/appforge-development/distribution/STARTER_SURFACE.md` exists in the **development repo**
 - Default export roots: `AGENTS.md`, `.cursor/`, `docs/` only
-- `docs/appforge-development/` excluded
+- `docs/appforge-development/` excluded from export/install
 - Exported `state.md` is clean idle (from `state-template.md`)
-- `docs/plans/`, `docs/reviews/`, `docs/setup/` contain only README + `.gitkeep`
+- `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` contain only README + `.gitkeep`
+- Reorganized doc folders present: `docs/project/`, `docs/architecture/`, `docs/standards/`, `docs/intake/`
 
 ### Manual
 
 1. Inspect `dist/appforge-starter/` after export.
 2. Confirm top-level: `AGENTS.md`, `.cursor/`, `docs/`.
-3. Confirm `docs/STARTER_SURFACE.md` is present in export.
-4. Confirm `docs/appforge-development/` is absent.
+3. Confirm `docs/AI_RULES.md`, `docs/WORKFLOWS.md`, and subfolders `project/`, `architecture/`, `standards/`, `intake/` are present.
+4. Confirm `docs/appforge-development/` and legacy flat paths (`docs/INSTALLATION.md`, etc.) are absent.
 5. Confirm no `node_modules/`, `scripts/`, or `.github/` (unless full export with `--include-validation`).
 
 ---
 
 ## Related Documentation
 
-- `docs/DISTRIBUTION.md` — install/export model
-- `docs/PACKAGING.md` — packaging checklist
-- `docs/INSTALLATION.md` — user install workflows
+- `docs/appforge-development/distribution/DISTRIBUTION.md` — install/export model
+- `docs/appforge-development/distribution/PACKAGING.md` — packaging checklist
+- `docs/appforge-development/distribution/INSTALLATION.md` — user install workflows
 - `AGENTS.md` — Starter Surface Awareness section
 
 ---

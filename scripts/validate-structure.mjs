@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Validates required AppForge workflow starter files and development-repo distribution tooling.
- * See README.md, docs/PACKAGING.md, and docs/DISTRIBUTION.md.
+ * See README.md and docs/appforge-development/distribution/.
  */
 
 import { access, readdir, readFile } from 'node:fs/promises';
@@ -24,43 +24,39 @@ const ROOT = path.resolve(__dirname, '..');
 /** @type {readonly string[]} */
 const REQUIRED_STARTER_FILES = [
   'AGENTS.md',
-  'README.md',
   '.cursor/hooks.json',
   '.cursor/workflow/state.md',
   '.cursor/workflow/state-template.md',
   '.cursor/workflow/command-aliases.md',
   '.cursor/workflow/plan-template.md',
   'docs/AI_RULES.md',
-  'docs/CODING_STANDARDS.md',
-  'docs/SECURITY.md',
   'docs/WORKFLOWS.md',
-  'docs/TESTING.md',
-  'docs/DEPLOYMENT.md',
-  'docs/DECISIONS.md',
-  'docs/RISK_REGISTER.md',
-  'docs/PACKAGING.md',
-  'docs/INSTALLATION.md',
-  'docs/DISTRIBUTION.md',
-  'docs/STARTER_SURFACE.md',
-  'docs/PROJECT_BRIEF.md',
-  'docs/ARCHITECTURE.md',
-  'docs/DATA_MODEL.md',
-  'docs/BACKEND.md',
-  'docs/STYLE_GUIDE.md',
-  'docs/ROADMAP.md',
-  'docs/PROJECT_HEALTH.md',
-  'docs/INTAKE_FINDINGS.md',
-  'docs/TECH_DEBT.md',
-  'docs/plans/README.md',
-  'docs/plans/.gitkeep',
-  'docs/reviews/README.md',
-  'docs/reviews/.gitkeep',
-  'docs/setup/README.md',
-  'docs/setup/.gitkeep',
+  'docs/project/PROJECT_BRIEF.md',
+  'docs/project/ROADMAP.md',
+  'docs/project/PROJECT_HEALTH.md',
+  'docs/project/TECH_DEBT.md',
+  'docs/project/DECISIONS.md',
+  'docs/project/RISK_REGISTER.md',
+  'docs/architecture/ARCHITECTURE.md',
+  'docs/architecture/BACKEND.md',
+  'docs/architecture/DATA_MODEL.md',
+  'docs/standards/CODING_STANDARDS.md',
+  'docs/standards/STYLE_GUIDE.md',
+  'docs/standards/SECURITY.md',
+  'docs/standards/TESTING.md',
+  'docs/standards/DEPLOYMENT.md',
+  'docs/intake/INTAKE_FINDINGS.md',
+  'docs/workflow/plans/README.md',
+  'docs/workflow/plans/.gitkeep',
+  'docs/workflow/reviews/README.md',
+  'docs/workflow/reviews/.gitkeep',
+  'docs/workflow/setup/README.md',
+  'docs/workflow/setup/.gitkeep',
 ];
 
 /** @type {readonly string[]} */
 const REQUIRED_DEVELOPMENT_FILES = [
+  'README.md',
   'package.json',
   'scripts/validate-structure.mjs',
   'scripts/validate-links.mjs',
@@ -72,6 +68,10 @@ const REQUIRED_DEVELOPMENT_FILES = [
   'bin/appforge.mjs',
   '.markdownlint-cli2.jsonc',
   '.github/workflows/validate.yml',
+  'docs/appforge-development/distribution/INSTALLATION.md',
+  'docs/appforge-development/distribution/DISTRIBUTION.md',
+  'docs/appforge-development/distribution/PACKAGING.md',
+  'docs/appforge-development/distribution/STARTER_SURFACE.md',
 ];
 
 /** @type {readonly string[]} */
@@ -80,15 +80,63 @@ const REQUIRED_DIRS = [
   '.cursor/agents',
   '.cursor/skills',
   '.cursor/workflow',
-  'docs/plans',
-  'docs/reviews',
-  'docs/setup',
+  'docs/project',
+  'docs/architecture',
+  'docs/standards',
+  'docs/intake',
+  'docs/workflow',
+  'docs/workflow/plans',
+  'docs/workflow/reviews',
+  'docs/workflow/setup',
   'docs/appforge-development',
+  'docs/appforge-development/distribution',
   'scripts',
   '.github/workflows',
 ];
 
-const STARTER_CLEAN_DIRS = ['docs/plans', 'docs/reviews', 'docs/setup'];
+/** Old flat paths that must not exist in the dev repo or default export. */
+const FORBIDDEN_LEGACY_DOC_PATHS = [
+  'docs/INSTALLATION.md',
+  'docs/DISTRIBUTION.md',
+  'docs/PACKAGING.md',
+  'docs/STARTER_SURFACE.md',
+  'docs/PROJECT_BRIEF.md',
+  'docs/ROADMAP.md',
+  'docs/PROJECT_HEALTH.md',
+  'docs/TECH_DEBT.md',
+  'docs/DECISIONS.md',
+  'docs/RISK_REGISTER.md',
+  'docs/ARCHITECTURE.md',
+  'docs/BACKEND.md',
+  'docs/DATA_MODEL.md',
+  'docs/CODING_STANDARDS.md',
+  'docs/STYLE_GUIDE.md',
+  'docs/SECURITY.md',
+  'docs/TESTING.md',
+  'docs/DEPLOYMENT.md',
+  'docs/INTAKE_FINDINGS.md',
+];
+
+/** Old flat workflow paths that must not exist in the dev repo or default export. */
+const FORBIDDEN_OLD_WORKFLOW_DIRS = [
+  'docs/plans',
+  'docs/reviews',
+  'docs/setup',
+];
+
+/** Subfolders that must appear in default export/install output. */
+const REQUIRED_EXPORT_DOC_DIRS = [
+  'docs/project',
+  'docs/architecture',
+  'docs/standards',
+  'docs/intake',
+  'docs/workflow',
+  'docs/workflow/plans',
+  'docs/workflow/reviews',
+  'docs/workflow/setup',
+];
+
+const STARTER_CLEAN_DIRS = ['docs/workflow/plans', 'docs/workflow/reviews', 'docs/workflow/setup'];
 const ALLOWED_STARTER_DIR_ENTRIES = new Set(['README.md', '.gitkeep']);
 
 const EXPECTED_DEFAULT_ROOTS = ['.cursor', 'AGENTS.md', 'docs'];
@@ -100,6 +148,29 @@ async function exists(target) {
   } catch {
     return false;
   }
+}
+
+async function checkForbiddenLegacyDocPaths(baseLabel, basePath) {
+  const violations = [];
+  for (const rel of FORBIDDEN_LEGACY_DOC_PATHS) {
+    if (await exists(path.join(basePath, rel))) {
+      violations.push(`${baseLabel} must not include legacy path: ${rel}`);
+    }
+  }
+  return violations;
+}
+
+async function checkForbiddenOldWorkflowDirs(baseLabel, basePath) {
+  const violations = [];
+  for (const rel of FORBIDDEN_OLD_WORKFLOW_DIRS) {
+    const full = path.join(basePath, rel);
+    if (!(await exists(full))) continue;
+    const entries = await readdir(full);
+    if (entries.length > 0) {
+      violations.push(`${baseLabel} must not include old workflow path: ${rel} (found: ${entries.join(', ')})`);
+    }
+  }
+  return violations;
 }
 
 async function checkCleanStarterDirs() {
@@ -142,6 +213,7 @@ async function checkDefaultDistributionOutput() {
   });
 
   const copied = items.filter((item) => item.action === 'copy');
+  const copiedRels = new Set(copied.map((item) => item.targetRel));
   const topRoots = getTopLevelRoots(copied).sort();
 
   for (const expected of EXPECTED_DEFAULT_ROOTS) {
@@ -166,12 +238,22 @@ async function checkDefaultDistributionOutput() {
     violations.push('default output did not exclude docs/appforge-development/');
   }
 
-  violations.push(...validateStateMapping(items));
-
-  const hasStarterSurfaceDoc = copied.some((item) => item.targetRel === 'docs/STARTER_SURFACE.md');
-  if (!hasStarterSurfaceDoc) {
-    violations.push('default export must include docs/STARTER_SURFACE.md in starter surface');
+  for (const rel of REQUIRED_STARTER_FILES) {
+    if (!copiedRels.has(rel)) {
+      violations.push(`default output missing required starter file: ${rel}`);
+    }
   }
+
+  for (const rel of REQUIRED_EXPORT_DOC_DIRS) {
+    const hasDir = copied.some(
+      (item) => item.targetRel === rel || item.targetRel.startsWith(`${rel}/`),
+    );
+    if (!hasDir) {
+      violations.push(`default output missing required doc folder: ${rel}`);
+    }
+  }
+
+  violations.push(...validateStateMapping(items));
 
   const templateContent = await readFile(path.join(ROOT, STATE_TEMPLATE_REL), 'utf8');
   violations.push(...validateCleanStateContent(templateContent).map((v) => `state-template.md: ${v}`));
@@ -214,8 +296,10 @@ async function checkDefaultInstallDryRun() {
   return violations;
 }
 
-async function checkExportedStateClean() {
-  const exportStatePath = path.join(ROOT, 'dist', 'appforge-starter', STATE_TARGET_REL);
+async function checkExportedStarter() {
+  const exportRoot = path.join(ROOT, 'dist', 'appforge-starter');
+  const exportStatePath = path.join(exportRoot, STATE_TARGET_REL);
+
   if (!(await exists(exportStatePath))) {
     return [
       'The starter export is missing. Run `npm run export:starter` before structure validation, or ensure CI runs export before validate.',
@@ -223,20 +307,40 @@ async function checkExportedStateClean() {
     ];
   }
 
+  const violations = [];
+
   const content = await readFile(exportStatePath, 'utf8');
   const templateContent = await readFile(path.join(ROOT, STATE_TEMPLATE_REL), 'utf8');
-  const violations = validateCleanStateContent(content);
+  violations.push(...validateCleanStateContent(content));
 
   if (content.replace(/\r\n/g, '\n').trim() !== templateContent.replace(/\r\n/g, '\n').trim()) {
     violations.push('exported state.md does not match state-template.md');
   }
 
-  if (!(await exists(path.join(ROOT, 'dist', 'appforge-starter', 'docs', 'STARTER_SURFACE.md')))) {
-    violations.push('exported starter missing docs/STARTER_SURFACE.md');
+  violations.push(...(await checkForbiddenLegacyDocPaths('exported starter', exportRoot)));
+
+  violations.push(...(await checkForbiddenOldWorkflowDirs('exported starter', exportRoot)));
+
+  for (const rel of FORBIDDEN_OLD_WORKFLOW_DIRS) {
+    if (await exists(path.join(exportRoot, rel))) {
+      violations.push(`exported starter must not include old workflow path: ${rel}`);
+    }
   }
 
-  if (await exists(path.join(ROOT, 'dist', 'appforge-starter', 'docs', 'appforge-development'))) {
+  if (await exists(path.join(exportRoot, 'docs', 'appforge-development'))) {
     violations.push('exported starter must not include docs/appforge-development/');
+  }
+
+  for (const rel of REQUIRED_EXPORT_DOC_DIRS) {
+    if (!(await exists(path.join(exportRoot, rel)))) {
+      violations.push(`exported starter missing folder: ${rel}`);
+    }
+  }
+
+  for (const rel of ['docs/AI_RULES.md', 'docs/WORKFLOWS.md']) {
+    if (!(await exists(path.join(exportRoot, rel)))) {
+      violations.push(`exported starter missing: ${rel}`);
+    }
   }
 
   return violations;
@@ -262,6 +366,24 @@ async function main() {
   if (missing.length > 0) {
     console.error('Structure validation failed. Missing required paths:\n');
     for (const item of missing) {
+      console.error(`  - ${item}`);
+    }
+    process.exit(1);
+  }
+
+  const legacyViolations = await checkForbiddenLegacyDocPaths('development repo', ROOT);
+  if (legacyViolations.length > 0) {
+    console.error('Structure validation failed. Legacy doc paths must be removed:\n');
+    for (const item of legacyViolations) {
+      console.error(`  - ${item}`);
+    }
+    process.exit(1);
+  }
+
+  const oldWorkflowViolations = await checkForbiddenOldWorkflowDirs('development repo', ROOT);
+  if (oldWorkflowViolations.length > 0) {
+    console.error('Structure validation failed. Old workflow paths must be removed:\n');
+    for (const item of oldWorkflowViolations) {
       console.error(`  - ${item}`);
     }
     process.exit(1);
@@ -303,10 +425,10 @@ async function main() {
     process.exit(1);
   }
 
-  const exportedStateViolations = await checkExportedStateClean();
-  if (exportedStateViolations.length > 0) {
-    console.error('Structure validation failed. Exported starter state checks:\n');
-    for (const item of exportedStateViolations) {
+  const exportedViolations = await checkExportedStarter();
+  if (exportedViolations.length > 0) {
+    console.error('Structure validation failed. Exported starter checks:\n');
+    for (const item of exportedViolations) {
       console.error(`  - ${item}`);
     }
     process.exit(1);

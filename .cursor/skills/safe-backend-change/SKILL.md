@@ -24,7 +24,7 @@ Ensure backend-related changes follow security review and human approval for pro
 ## Inputs
 
 - Plan with backend impact section
-- `docs/BACKEND.md`, `docs/SECURITY.md`, `docs/DATA_MODEL.md`
+- `docs/architecture/BACKEND.md`, `docs/standards/SECURITY.md`, `docs/architecture/DATA_MODEL.md`
 - Security Agent review
 
 ## Steps

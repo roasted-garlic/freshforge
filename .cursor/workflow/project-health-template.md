@@ -1,6 +1,6 @@
 # Project Health — Intake Template
 
-> Copy into `docs/PROJECT_HEALTH.md` during Existing Project Intake. Replace `[TBD]` and ratings with inspection findings.
+> Copy into `docs/project/PROJECT_HEALTH.md` during Existing Project Intake. Replace `[TBD]` and ratings with inspection findings.
 
 ---
 

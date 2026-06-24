@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Code Quality Rules
 
-Read `docs/CODING_STANDARDS.md` for project conventions. These priorities apply universally.
+Read `docs/standards/CODING_STANDARDS.md` for project conventions. These priorities apply universally.
 
 ## Priorities
 

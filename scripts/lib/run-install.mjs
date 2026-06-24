@@ -142,7 +142,7 @@ function printSummary(summary, options, sourceRoot, topRoots) {
   console.log('\n--- Next step in Cursor ---\n');
   console.log('  Existing codebase: type "Existing Project" or "Intake"');
   console.log('  New or blank project: type "New Project" or "Bootstrap"');
-  console.log('\nSee docs/INSTALLATION.md for details.\n');
+  console.log('\nSee docs/appforge-development/distribution/INSTALLATION.md for details.\n');
 }
 
 /**

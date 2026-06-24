@@ -43,8 +43,8 @@ Treat as **Start Existing Project Intake** with full intake goals, autonomy, and
 Create or update during intake:
 
 **Plan & signoff:**
-- `docs/plans/project-intake-plan.md` — **first**, before other doc work
-- `docs/reviews/project-intake-signoff.md` — at completion
+- `docs/workflow/plans/project-intake-plan.md` — **first**, before other doc work
+- `docs/workflow/reviews/project-intake-signoff.md` — at completion
 
 **Project docs:**
 - `PROJECT_BRIEF.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `BACKEND.md`

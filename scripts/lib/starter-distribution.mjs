@@ -77,8 +77,11 @@ export const FORBIDDEN_STATE_STRINGS = [
   'Signoff Status: approved',
 ];
 
-const STARTER_CLEAN_SUBDIRS = ['plans', 'reviews', 'setup'];
+const STARTER_CLEAN_SUBDIRS = ['workflow/plans', 'workflow/reviews', 'workflow/setup'];
 const ALLOWED_CLEAN_ENTRIES = new Set(['README.md', '.gitkeep']);
+
+/** Legacy workflow dirs replaced by docs/workflow/ (starter-workflow-folder-cleanup). */
+const FORBIDDEN_OLD_WORKFLOW_PREFIXES = ['docs/plans', 'docs/reviews', 'docs/setup'];
 
 const EXCLUDED_DIR_NAMES = new Set([
   'node_modules',
@@ -132,7 +135,7 @@ function isExcludedDocsPath(relPosix) {
   }
 
   for (const sub of STARTER_CLEAN_SUBDIRS) {
-    const prefix = `docs/${sub}/`;
+    const prefix = `docs/${sub.replace(/^\//, '')}/`;
     if (normalized.startsWith(prefix)) {
       const rest = normalized.slice(prefix.length);
       if (!rest) return false;
@@ -146,11 +149,21 @@ function isExcludedDocsPath(relPosix) {
   return false;
 }
 
+function isForbiddenOldWorkflowPath(relPosix) {
+  const normalized = relPosix.replace(/\\/g, '/');
+  return FORBIDDEN_OLD_WORKFLOW_PREFIXES.some(
+    (prefix) => normalized === prefix || normalized.startsWith(`${prefix}/`),
+  );
+}
+
 /**
  * @param {string} relPosix
  */
 function isAlwaysExcludedRel(relPosix) {
   const normalized = relPosix.replace(/\\/g, '/');
+  if (isForbiddenOldWorkflowPath(normalized)) {
+    return true;
+  }
   const segments = normalized.split('/');
 
   for (const segment of segments) {
@@ -207,6 +220,15 @@ async function walkSource(sourceRoot, rel, options) {
   if (info.isDirectory()) {
     const entries = await readdir(full);
     if (entries.length === 0) {
+      if (isAlwaysExcludedRel(relPosix)) {
+        items.push({
+          sourceRel: relPosix,
+          targetRel: relPosix,
+          action: 'exclude',
+          reason: 'legacy or excluded empty directory',
+        });
+        return items;
+      }
       items.push({
         sourceRel: relPosix,
         targetRel: relPosix,
@@ -423,6 +445,29 @@ export function getTopLevelRoots(items) {
 /**
  * @param {string} relPosix
  */
+/** Legacy flat doc paths removed by starter-docs-surface-cleanup. */
+const FORBIDDEN_LEGACY_DOC_PATHS = new Set([
+  'docs/INSTALLATION.md',
+  'docs/DISTRIBUTION.md',
+  'docs/PACKAGING.md',
+  'docs/STARTER_SURFACE.md',
+  'docs/PROJECT_BRIEF.md',
+  'docs/ROADMAP.md',
+  'docs/PROJECT_HEALTH.md',
+  'docs/TECH_DEBT.md',
+  'docs/DECISIONS.md',
+  'docs/RISK_REGISTER.md',
+  'docs/ARCHITECTURE.md',
+  'docs/BACKEND.md',
+  'docs/DATA_MODEL.md',
+  'docs/CODING_STANDARDS.md',
+  'docs/STYLE_GUIDE.md',
+  'docs/SECURITY.md',
+  'docs/TESTING.md',
+  'docs/DEPLOYMENT.md',
+  'docs/INTAKE_FINDINGS.md',
+]);
+
 export function isForbiddenInDefaultOutput(relPosix) {
   const normalized = relPosix.replace(/\\/g, '/');
   if (normalized === 'node_modules' || normalized.startsWith('node_modules/')) return true;
@@ -430,6 +475,8 @@ export function isForbiddenInDefaultOutput(relPosix) {
   if (normalized === 'docs/appforge-development' || normalized.startsWith('docs/appforge-development/')) {
     return true;
   }
+  if (FORBIDDEN_LEGACY_DOC_PATHS.has(normalized)) return true;
+  if (isForbiddenOldWorkflowPath(normalized)) return true;
   if (normalized === 'README.md') return true;
   if (normalized === 'package.json' || normalized === 'package-lock.json') return true;
   if (normalized === 'scripts' || normalized.startsWith('scripts/')) return true;

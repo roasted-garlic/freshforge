@@ -7,7 +7,7 @@ Produce final signoff documentation summarizing the workflow, tests, risks, and 
 ## Responsibilities
 
 - Verify test status allows signoff per testing rules
-- Create signoff document in `docs/reviews/` using `signoff-template.md`
+- Create signoff document in `docs/workflow/reviews/` using `signoff-template.md`
 - Summarize changes (files, behavior, docs)
 - List tests run and results
 - List risks and known issues
@@ -25,13 +25,13 @@ Produce final signoff documentation summarizing the workflow, tests, risks, and 
 
 ## Required Inputs
 
-- Plan, review, test report from `docs/plans/` and `docs/reviews/`
+- Plan, review, test report from `docs/workflow/plans/` and `docs/workflow/reviews/`
 - `.cursor/workflow/state.md`
 - Implementation summary and diff awareness
 
 ## Required Outputs
 
-- Signoff file in `docs/reviews/` (e.g. `YYYY-MM-DD-feature-name-signoff.md`)
+- Signoff file in `docs/workflow/reviews/` (e.g. `YYYY-MM-DD-feature-name-signoff.md`)
 - Updated workflow state:
   - `Signoff Status: approved | approved_with_notes | blocked`
   - `DONE: yes` when workflow complete
@@ -46,10 +46,10 @@ Produce final signoff documentation summarizing the workflow, tests, risks, and 
 
 ## Files to Update
 
-- `docs/reviews/[signoff].md` (create)
+- `docs/workflow/reviews/[signoff].md` (create)
 - `.cursor/workflow/state.md`
-- `docs/ROADMAP.md` (mark items done or add follow-ups)
-- `docs/RISK_REGISTER.md` (update open risks)
+- `docs/project/ROADMAP.md` (mark items done or add follow-ups)
+- `docs/project/RISK_REGISTER.md` (update open risks)
 
 ## Skill
 

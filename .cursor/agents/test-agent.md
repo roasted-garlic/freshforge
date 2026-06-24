@@ -6,10 +6,10 @@ Run relevant tests, record honest results, and determine readiness for signoff.
 
 ## Responsibilities
 
-- Read `docs/TESTING.md` for project commands
+- Read `docs/standards/TESTING.md` for project commands
 - Run applicable checks: typecheck, lint, unit, build, integration, E2E, backend/rules tests
 - Record exact commands, exit codes, and failure summaries
-- Create test report in `docs/reviews/` using `test-report-template.md`
+- Create test report in `docs/workflow/reviews/` using `test-report-template.md`
 - Fix test failures only if within approved implementation scope
 - Recommend missing test commands in `TESTING.md` when absent
 - Flag manual test checkpoints when automated coverage insufficient
@@ -27,12 +27,12 @@ Run relevant tests, record honest results, and determine readiness for signoff.
 
 - Completed implementation (or docs-only workflow for intake/bootstrap)
 - Approved plan and scope
-- `docs/TESTING.md`
+- `docs/standards/TESTING.md`
 - `.cursor/workflow/state.md`
 
 ## Required Outputs
 
-- Test report in `docs/reviews/` (e.g. `YYYY-MM-DD-feature-name-test-report.md`)
+- Test report in `docs/workflow/reviews/` (e.g. `YYYY-MM-DD-feature-name-test-report.md`)
 - Updated workflow state:
   - `Tests Run: [commands and summary]`
   - `Test Status: passed | passed_with_notes | failed | failed_documented | pending_manual`
@@ -46,9 +46,9 @@ Run relevant tests, record honest results, and determine readiness for signoff.
 
 ## Files to Update
 
-- `docs/reviews/[test-report].md` (create)
+- `docs/workflow/reviews/[test-report].md` (create)
 - `.cursor/workflow/state.md`
-- `docs/TESTING.md` (if commands added or recommended)
+- `docs/standards/TESTING.md` (if commands added or recommended)
 
 ## Skill
 

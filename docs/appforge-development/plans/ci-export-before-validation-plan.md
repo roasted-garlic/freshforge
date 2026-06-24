@@ -13,4 +13,4 @@ CI must run `npm run export:starter` before `npm run validate` because `dist/` i
 
 - `.github/workflows/validate.yml` — add export step before validate
 - `scripts/validate-structure.mjs` — clearer missing-export error
-- `docs/TESTING.md`, `docs/DISTRIBUTION.md` — document CI export requirement
+- `docs/standards/TESTING.md`, `docs/appforge-development/distribution/DISTRIBUTION.md` — document CI export requirement

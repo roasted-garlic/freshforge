@@ -4,7 +4,7 @@
 |-------|-------|
 | Date | YYYY-MM-DD |
 | Tester | Test Agent |
-| Plan | docs/plans/[plan].md |
+| Plan | docs/workflow/plans/[plan].md |
 | Implementation | [commit/session reference if available] |
 | Overall | **passed** / **passed_with_notes** / **failed** / **failed_documented** / **pending_manual** |
 

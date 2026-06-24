@@ -22,11 +22,11 @@ AppForge is maintained in a development repo with validation tooling, CI, and `d
 
 ### In Scope
 
-- `docs/INSTALLATION.md` — install workflows A–F
-- `docs/DISTRIBUTION.md` — dev repo vs starter, export, exclusions
+- `docs/appforge-development/distribution/INSTALLATION.md` — install workflows A–F
+- `docs/appforge-development/distribution/DISTRIBUTION.md` — dev repo vs starter, export, exclusions
 - `scripts/install-appforge.mjs` — `--target`, `--include-readme`, `--include-validation`, `--force`, `--dry-run`
 - `scripts/export-starter.mjs` — `--out`, `--include-readme`, `--include-validation`, `--clean`, `--dry-run`
-- Update `README.md`, `docs/PACKAGING.md`, `docs/TESTING.md`, `docs/WORKFLOWS.md`, `package.json`, `scripts/validate-structure.mjs`, `.gitignore`
+- Update `README.md`, `docs/appforge-development/distribution/PACKAGING.md`, `docs/standards/TESTING.md`, `docs/WORKFLOWS.md`, `package.json`, `scripts/validate-structure.mjs`, `.gitignore`
 - Shared copy/exclude logic: default `AGENTS.md` + `.cursor/` + `docs/`; optional README as `APPFORGE_README.md`; optional validation bundle
 - Always exclude: `docs/appforge-development/`, non-starter files in `docs/plans|reviews|setup`, `node_modules`, `.git`, logs, archives, env, temp, local export folders
 - `validate:starter` npm script; structure validation for dev repo + export/install dry-run checks
@@ -45,10 +45,10 @@ AppForge is maintained in a development repo with validation tooling, CI, and `d
 
 | Action | Path |
 |--------|------|
-| Create | `docs/INSTALLATION.md`, `docs/DISTRIBUTION.md` |
+| Create | `docs/appforge-development/distribution/INSTALLATION.md`, `docs/appforge-development/distribution/DISTRIBUTION.md` |
 | Create | `scripts/install-appforge.mjs`, `scripts/export-starter.mjs` |
 | Create | `scripts/lib/starter-distribution.mjs` (shared copy logic) |
-| Update | `README.md`, `docs/PACKAGING.md`, `docs/TESTING.md`, `docs/WORKFLOWS.md` |
+| Update | `README.md`, `docs/appforge-development/distribution/PACKAGING.md`, `docs/standards/TESTING.md`, `docs/WORKFLOWS.md` |
 | Update | `package.json`, `scripts/validate-structure.mjs`, `.gitignore` |
 | Archive | `docs/appforge-development/plans/distribution-and-installer-plan.md` |
 | Archive | `docs/appforge-development/reviews/distribution-and-installer-signoff.md` |
@@ -122,7 +122,7 @@ Revert new scripts and doc changes; restore prior `package.json` scripts and `.g
 
 ## Documentation Updates Required
 
-- [x] `docs/INSTALLATION.md`, `docs/DISTRIBUTION.md` (new)
+- [x] `docs/appforge-development/distribution/INSTALLATION.md`, `docs/appforge-development/distribution/DISTRIBUTION.md` (new)
 - [x] `README.md`, `PACKAGING.md`, `TESTING.md`, `WORKFLOWS.md`
 
 ## Open Questions

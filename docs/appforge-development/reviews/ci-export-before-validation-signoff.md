@@ -23,8 +23,8 @@ GitHub Actions now runs `npm run export:starter` before `npm run validate`. `dis
 
 - `.github/workflows/validate.yml`
 - `scripts/validate-structure.mjs` (error message)
-- `docs/TESTING.md`
-- `docs/DISTRIBUTION.md`
+- `docs/standards/TESTING.md`
+- `docs/appforge-development/distribution/DISTRIBUTION.md`
 
 ## GitHub CI
 

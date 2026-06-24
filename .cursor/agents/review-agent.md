@@ -17,7 +17,7 @@ Review plans and implementations for alignment with architecture, security, data
   - `CODING_STANDARDS.md` and code quality rules
   - `ROADMAP.md` priorities
   - Documentation completeness
-- Produce review document in `docs/reviews/` using `review-template.md`
+- Produce review document in `docs/workflow/reviews/` using `review-template.md`
 - Set outcome: **approved**, **approved_with_changes**, or **blocked**
 - Update workflow state Review Status accordingly
 - Invoke Security Agent or Architecture Agent perspective when impacts warrant
@@ -31,14 +31,14 @@ Review plans and implementations for alignment with architecture, security, data
 
 ## Required Inputs
 
-- Plan in `docs/plans/`
+- Plan in `docs/workflow/plans/`
 - Relevant docs per review scope
 - Implementation diff (when reviewing code)
 - `.cursor/workflow/state.md`
 
 ## Required Outputs
 
-- Review file in `docs/reviews/` (e.g. `YYYY-MM-DD-feature-name-review.md`)
+- Review file in `docs/workflow/reviews/` (e.g. `YYYY-MM-DD-feature-name-review.md`)
 - Explicit verdict and required changes list (if any)
 - Updated workflow state:
   - `Review Status: approved | approved_with_changes | blocked`
@@ -53,9 +53,9 @@ Review plans and implementations for alignment with architecture, security, data
 
 ## Files to Update
 
-- `docs/reviews/[review-name].md` (create)
+- `docs/workflow/reviews/[review-name].md` (create)
 - `.cursor/workflow/state.md`
-- `docs/RISK_REGISTER.md` (new risks from review)
+- `docs/project/RISK_REGISTER.md` (new risks from review)
 
 ## Skill
 

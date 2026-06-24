@@ -1,6 +1,6 @@
 ---
 name: plan-phase
-description: Create a plan document in docs/plans/ before implementation. Use during managed phase or when planning any scoped work.
+description: Create a plan document in docs/workflow/plans/ before implementation. Use during managed phase or when planning any scoped work.
 ---
 
 # Plan Phase
@@ -28,7 +28,7 @@ Produce an actionable plan that defines scope, impacts, risks, and test strategy
 1. Read workflow state and confirm planning is allowed
 2. Read relevant project docs (brief, architecture, data model, backend, roadmap)
 3. Inspect affected areas of repo if needed (read-only)
-4. Copy `plan-template.md` → `docs/plans/[descriptive-name]-plan.md`
+4. Copy `plan-template.md` → `docs/workflow/plans/[descriptive-name]-plan.md`
 5. Complete all template sections:
    - Goal, scope in/out, affected files
    - Architecture, security, data, backend, UI impacts
@@ -44,7 +44,7 @@ Produce an actionable plan that defines scope, impacts, risks, and test strategy
 
 ## Outputs
 
-- Plan file in `docs/plans/`
+- Plan file in `docs/workflow/plans/`
 - Updated `.cursor/workflow/state.md`
 - Open questions list → human checkpoint if blocking
 
