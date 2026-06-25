@@ -212,12 +212,3 @@ Rules:
 - Do not install or export `docs/freshforge-development/`.
 
 Source of truth: `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
-
----
-
-## Naming Standard
-
-- **FreshForge** is the canonical name for this workflow starter (rules, skills, agents, docs, and `AGENTS.md`).
-- **AppForge** is a historical label (formerly the starter name before the FreshForge rename) — do not use it for current project references in documentation.
-- **BuildPilot** is a historical label (e.g. local folder name) — do not use it for current project references in documentation.
-- Application product names live in `PROJECT_BRIEF.md` after intake or bootstrap; they are separate from the FreshForge starter name.

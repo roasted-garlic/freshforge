@@ -4,7 +4,7 @@
 
 > Detailed agent behavior for this repository. **Docs are source of truth; rules are behavior instructions.**
 
-> **Naming:** This repository is the **FreshForge** workflow starter — a reusable Cursor kit, not an application. See **Naming Standard** in `README.md` and `AGENTS.md`. Do not refer to the starter as BuildPilot in current documentation.
+> **Naming:** This repository is the **FreshForge** workflow starter — a reusable Cursor kit, not an application.
 
 
 

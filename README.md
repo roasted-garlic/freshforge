@@ -58,22 +58,6 @@ This repository is **not an application**. It is a **starter kit** you copy into
 
 
 
-## Naming Standard
-
-| Term | Meaning |
-|------|---------|
-| **FreshForge** | Canonical name for this reusable Cursor workflow starter |
-| **AppForge** | Historical starter name (before FreshForge rename) — not used in current docs |
-| **BuildPilot** | Historical folder/repo label only — not used in docs for the current project |
-
-When copying FreshForge into an application repository, use **FreshForge** in documentation and agent prompts. Application product names belong in `PROJECT_BRIEF.md`, not in workflow starter branding.
-
-
-
----
-
-
-
 ## Repository Layout
 
 
