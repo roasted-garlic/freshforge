@@ -11,6 +11,12 @@ import {
   resolveSourceRoot,
   summarizeItems,
 } from './starter-distribution.mjs';
+import {
+  createVersionJson,
+  detectInstallState,
+  getPackageVersion,
+  writeVersion,
+} from './freshforge-version.mjs';
 
 /**
  * @param {string[]} argv
@@ -185,6 +191,19 @@ export async function runInstall(argv, { sourceRoot }) {
 
   for (const item of toWrite) {
     await writeItem(item, root, targetRoot, options.dryRun);
+  }
+
+  if (!options.dryRun) {
+    const packageVersion = await getPackageVersion(root);
+    const installState = await detectInstallState(targetRoot);
+    const versionData = createVersionJson(packageVersion, {
+      previousName: installState.version?.previousName ?? null,
+      installedAt: new Date().toISOString(),
+      migrationHistory: installState.version?.migrationHistory ?? [],
+    });
+    await writeVersion(targetRoot, versionData);
+  } else {
+    console.log('  [write] .freshforge/version.json → installation metadata');
   }
 
   const topRoots = getTopLevelRoots(toWrite);

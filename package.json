@@ -1,5 +1,6 @@
 {
   "name": "freshforge",
+  "version": "0.2.0",
   "private": true,
   "description": "FreshForge — reusable Cursor AI workflow starter with install, export, and validation CLI",
   "bin": {
@@ -13,7 +14,10 @@
     "validate:links": "node scripts/validate-links.mjs",
     "export:starter": "node scripts/export-starter.mjs",
     "export:starter:full": "node scripts/export-starter.mjs --include-readme --include-validation",
-    "install:freshforge": "node scripts/install-freshforge.mjs"
+    "install:freshforge": "node scripts/install-freshforge.mjs",
+    "migrate:dry-run": "node bin/freshforge.mjs migrate --dry-run",
+    "doctor": "node bin/freshforge.mjs doctor",
+    "validate:migrations": "node scripts/validate-migrations.mjs"
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.17.2"

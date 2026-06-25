@@ -2,7 +2,7 @@
 
 > How to ship, install, export, and verify a **clean** FreshForge workflow starter package.
 
-**Starter surface** (the installed product): `AGENTS.md`, `.cursor/`, `docs/` — see `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
+**Starter surface** (the installed product): `AGENTS.md`, `.cursor/`, `docs/`, `.freshforge/version.json` — see `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
 
 **Distribution tools** (`bin/freshforge.mjs`, `scripts/install-freshforge.mjs`, `scripts/export-starter.mjs`) deliver the starter surface but are not part of the default installed product.
 
@@ -19,7 +19,7 @@
 | `README.md` | Full dev documentation | Optional (`--include-readme`) |
 | `node_modules/` | Local only | **Never copied** |
 
-The GitHub repository may include development tooling, CI, and `docs/freshforge-development/`. The **default** install and export includes only `AGENTS.md`, `.cursor/`, and `docs/`.
+The GitHub repository may include development tooling, CI, and `docs/freshforge-development/`. The **default** install and export includes `AGENTS.md`, `.cursor/`, `docs/`, and `.freshforge/version.json`.
 
 ---
 
@@ -33,6 +33,7 @@ The GitHub repository may include development tooling, CI, and `docs/freshforge-
 | Project templates | `docs/project/PROJECT_BRIEF.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `BACKEND.md`, `STYLE_GUIDE.md`, `ROADMAP.md`, `PROJECT_HEALTH.md`, `INTAKE_FINDINGS.md`, `TECH_DEBT.md` |
 | Empty workflow folders | `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` (each with `README.md` and `.gitkeep` only) |
 | Idle workflow state | `.cursor/workflow/state.md` from `state-template.md` (`Current Mode: idle`, `DONE: no`) |
+| Installation metadata | `.freshforge/version.json` |
 
 ### Optional with flags
 
@@ -48,6 +49,7 @@ The GitHub repository may include development tooling, CI, and `docs/freshforge-
 | Item | Reason |
 |------|--------|
 | `docs/freshforge-development/` | FreshForge maintainer history only |
+| `.freshforge/backups/` | Migration backups (created in target projects) |
 | Completed plans in `docs/workflow/plans/` | Filtered; only README + .gitkeep |
 | Completed reviews in `docs/workflow/reviews/` | Same |
 | `node_modules/` | Regenerate with `npm install` if using validation |

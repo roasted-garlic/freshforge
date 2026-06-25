@@ -9,7 +9,7 @@ The GitHub repository may include development tooling, CI, and `docs/freshforge-
 | | FreshForge development repo | Starter surface (default install) |
 |--|---------------------------|-----------------------------------|
 | **Product** | Builds and maintains FreshForge | What target projects receive |
-| **Default paths** | Full repo | `AGENTS.md`, `.cursor/`, `docs/` only |
+| **Default paths** | Full repo | `AGENTS.md`, `.cursor/`, `docs/`, `.freshforge/` only |
 | **Install/export scripts** | Distribution tools | Not included by default |
 
 ---
@@ -36,6 +36,7 @@ Both the `freshforge` CLI and `install-freshforge.mjs` / `export-starter.mjs` co
 - `AGENTS.md`
 - `.cursor/`
 - `docs/` (with exclusions below)
+- `.freshforge/version.json` (not `.freshforge/backups/`)
 
 They do **not** include by default:
 
@@ -70,11 +71,13 @@ They do **not** include by default:
 | `AGENTS.md` | Session entry point |
 | `.cursor/rules/`, `agents/`, `skills/`, `workflow/`, `hooks.json` | Agent workflow system |
 | `docs/` | Baseline docs, project templates, empty `plans/` / `reviews/` / `setup/` |
+| `.freshforge/version.json` | Installation metadata |
 
 ### Never copied
 
 | Item | Reason |
 |------|--------|
+| `.freshforge/backups/` | Migration backups (target-local only) |
 | `docs/freshforge-development/` | Maintainer-only history |
 | Completed plans/reviews in starter folders | Dev artifacts filtered out |
 | `node_modules/` | Regenerate with `npm install` if using validation |
@@ -141,6 +144,20 @@ node scripts/export-starter.mjs --out ./my-export --clean
    ```
 
 5. **Test install dry-run** against a temp folder (see `docs/standards/TESTING.md`).
+
+---
+
+## Upgrade Existing Installations
+
+Target projects with older AppForge or FreshForge workflow files should use **migrate**, not `install --force`:
+
+```bash
+npx github:roasted-garlic/freshforge doctor
+npx github:roasted-garlic/freshforge migrate --dry-run
+npx github:roasted-garlic/freshforge migrate
+```
+
+See `docs/freshforge-development/migrations/README.md` for the migration registry and safety rules.
 
 ---
 

@@ -25,7 +25,7 @@ import path from 'node:path';
  * @property {string} [reason]
  */
 
-export const DEFAULT_ROOT_ENTRIES = ['AGENTS.md', '.cursor', 'docs'];
+export const DEFAULT_ROOT_ENTRIES = ['AGENTS.md', '.cursor', 'docs', '.freshforge'];
 
 export const VALIDATION_ENTRIES = [
   'scripts',
@@ -130,7 +130,15 @@ function isExcludedFileName(name) {
 function isExcludedDocsPath(relPosix) {
   const normalized = relPosix.replace(/\\/g, '/');
 
+  if (normalized === '.freshforge/backups' || normalized.startsWith('.freshforge/backups/')) {
+    return true;
+  }
+
   if (normalized === 'docs/freshforge-development' || normalized.startsWith('docs/freshforge-development/')) {
+    return true;
+  }
+
+  if (normalized === 'docs/appforge-development' || normalized.startsWith('docs/appforge-development/')) {
     return true;
   }
 
@@ -473,6 +481,12 @@ export function isForbiddenInDefaultOutput(relPosix) {
   if (normalized === 'node_modules' || normalized.startsWith('node_modules/')) return true;
   if (normalized === '.git' || normalized.startsWith('.git/')) return true;
   if (normalized === 'docs/freshforge-development' || normalized.startsWith('docs/freshforge-development/')) {
+    return true;
+  }
+  if (normalized === 'docs/appforge-development' || normalized.startsWith('docs/appforge-development/')) {
+    return true;
+  }
+  if (normalized === '.freshforge/backups' || normalized.startsWith('.freshforge/backups/')) {
     return true;
   }
   if (FORBIDDEN_LEGACY_DOC_PATHS.has(normalized)) return true;

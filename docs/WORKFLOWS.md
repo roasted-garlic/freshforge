@@ -522,6 +522,16 @@ npx github:roasted-garlic/freshforge install → open in Cursor → intake or bo
 npx github:roasted-garlic/freshforge install
 ```
 
+### Upgrade existing installation
+
+```bash
+npx github:roasted-garlic/freshforge doctor
+npx github:roasted-garlic/freshforge migrate --dry-run
+npx github:roasted-garlic/freshforge migrate
+```
+
+Preserves project-specific docs; writes `.freshforge/version.json` and backups under `.freshforge/backups/`.
+
 ### Fallback
 
 ```bash

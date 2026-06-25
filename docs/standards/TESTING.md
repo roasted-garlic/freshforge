@@ -65,9 +65,14 @@ npx github:roasted-garlic/freshforge install --dry-run
 node bin/freshforge.mjs install --dry-run
 node bin/freshforge.mjs install --target ./tmp-install-test --dry-run
 node bin/freshforge.mjs export --dry-run
+node bin/freshforge.mjs migrate --dry-run
+node bin/freshforge.mjs doctor
 
 # Export clean starter to dist/freshforge-starter/
 npm run export:starter
+
+# Migration fixture validation
+npm run validate:migrations
 
 # Legacy script entry points (fallback / development)
 node scripts/install-freshforge.mjs --target ./tmp-install-test --dry-run
@@ -82,6 +87,9 @@ node scripts/install-freshforge.mjs --target ./tmp-install-test --dry-run
 | `validate:links` | Relative `[text](path)` links point to existing files |
 | `validate` / `validate:starter` | Runs all of the above in sequence |
 | `export:starter` | Export default starter to `dist/freshforge-starter/` |
+| `validate:migrations` | Doctor and migrate against `test-fixtures/` |
+| `migrate:dry-run` | Preview migrate against cwd |
+| `doctor` | Inspect workflow installation health |
 | `export:starter:full` | Export with `--include-readme --include-validation` |
 | `install:freshforge` | Install starter via legacy script entry point |
 | `bin/freshforge.mjs` | CLI: `install`, `export`, `validate` |

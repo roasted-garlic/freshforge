@@ -24,6 +24,7 @@ const ROOT = path.resolve(__dirname, '..');
 /** @type {readonly string[]} */
 const REQUIRED_STARTER_FILES = [
   'AGENTS.md',
+  '.freshforge/version.json',
   '.cursor/hooks.json',
   '.cursor/workflow/state.md',
   '.cursor/workflow/state-template.md',
@@ -65,6 +66,11 @@ const REQUIRED_DEVELOPMENT_FILES = [
   'scripts/lib/starter-distribution.mjs',
   'scripts/lib/run-install.mjs',
   'scripts/lib/run-export.mjs',
+  'scripts/lib/run-migrate.mjs',
+  'scripts/lib/run-doctor.mjs',
+  'scripts/lib/freshforge-version.mjs',
+  'scripts/lib/freshforge-migrations.mjs',
+  'scripts/validate-migrations.mjs',
   'bin/freshforge.mjs',
   '.markdownlint-cli2.jsonc',
   '.github/workflows/validate.yml',
@@ -139,7 +145,7 @@ const REQUIRED_EXPORT_DOC_DIRS = [
 const STARTER_CLEAN_DIRS = ['docs/workflow/plans', 'docs/workflow/reviews', 'docs/workflow/setup'];
 const ALLOWED_STARTER_DIR_ENTRIES = new Set(['README.md', '.gitkeep']);
 
-const EXPECTED_DEFAULT_ROOTS = ['.cursor', 'AGENTS.md', 'docs'];
+const EXPECTED_DEFAULT_ROOTS = ['.cursor', '.freshforge', 'AGENTS.md', 'docs'];
 
 async function exists(target) {
   try {
@@ -329,6 +335,14 @@ async function checkExportedStarter() {
 
   if (await exists(path.join(exportRoot, 'docs', 'freshforge-development'))) {
     violations.push('exported starter must not include docs/freshforge-development/');
+  }
+
+  if (await exists(path.join(exportRoot, '.freshforge', 'backups'))) {
+    violations.push('exported starter must not include .freshforge/backups/');
+  }
+
+  if (!(await exists(path.join(exportRoot, '.freshforge', 'version.json')))) {
+    violations.push('exported starter missing .freshforge/version.json');
   }
 
   for (const rel of REQUIRED_EXPORT_DOC_DIRS) {

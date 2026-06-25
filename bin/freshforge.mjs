@@ -11,6 +11,8 @@ import { fileURLToPath } from 'node:url';
 import { printInstallUsage, runInstall } from '../scripts/lib/run-install.mjs';
 import { runExport } from '../scripts/lib/run-export.mjs';
 import { runValidate } from '../scripts/lib/run-validate.mjs';
+import { printMigrateUsage, runMigrate } from '../scripts/lib/run-migrate.mjs';
+import { printDoctorUsage, runDoctor } from '../scripts/lib/run-doctor.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PACKAGE_ROOT = path.resolve(__dirname, '..');
@@ -21,6 +23,8 @@ function printRootUsage() {
 Usage:
   freshforge install [options]    Install starter into a project (default: current directory)
   freshforge export [options]     Export a clean starter copy
+  freshforge migrate [options]    Upgrade an existing workflow installation safely
+  freshforge doctor [options]     Inspect workflow installation health (read-only)
   freshforge validate             Run package validation checks
 
 Recommended install:
@@ -47,6 +51,8 @@ Examples:
   npx github:roasted-garlic/freshforge install
   npx github:roasted-garlic/freshforge install --dry-run
   npx github:roasted-garlic/freshforge install --target ../my-app --include-readme
+  npx github:roasted-garlic/freshforge migrate --dry-run
+  npx github:roasted-garlic/freshforge doctor
 
 See docs/freshforge-development/distribution/INSTALLATION.md for more.
 `);
@@ -71,6 +77,12 @@ async function main() {
       break;
     case 'export':
       exitCode = await runExport(rest, context);
+      break;
+    case 'migrate':
+      exitCode = await runMigrate(rest, context);
+      break;
+    case 'doctor':
+      exitCode = await runDoctor(rest, context);
       break;
     case 'validate':
       exitCode = await runValidate(rest, context);

@@ -17,6 +17,7 @@ It is the product FreshForge distributes. Improvements to agent behavior, workfl
 | `AGENTS.md` | Universal AI entry point |
 | `.cursor/` | Rules, agents, skills, workflow templates, command aliases, hooks, idle state template |
 | `docs/` | Baseline docs, project templates, empty `workflow/plans/`, `workflow/reviews/`, `workflow/setup/` |
+| `.freshforge/version.json` | Installation metadata (version, source, migration history) |
 
 Default install command:
 
@@ -73,6 +74,7 @@ Distribution, installation, packaging, and starter-surface maintainer docs live 
 - `.github/` (CI)
 - `.markdownlint-cli2.jsonc`
 - `docs/freshforge-development/` (maintainer history)
+- `.freshforge/backups/` (migration backups — created in target projects only)
 - `node_modules/`, `dist/`, env files, logs, archives, temp folders
 
 ---
@@ -145,7 +147,17 @@ Every FreshForge managed phase should classify impact in one or more areas:
 3. **Export and inspect** — `npm run export:starter` then open `dist/freshforge-starter/`.
 4. **Read the plan** — Managed phases must list impact area and starter files changed.
 
-Installed projects are affected when users re-run install with `--force`, or when they receive a new export. Existing targets are not auto-updated.
+Installed projects are affected when users re-run install with `--force`, run `freshforge migrate`, or receive a new export. Existing targets are not auto-updated.
+
+### Upgrade path
+
+```bash
+npx github:roasted-garlic/freshforge doctor
+npx github:roasted-garlic/freshforge migrate --dry-run
+npx github:roasted-garlic/freshforge migrate
+```
+
+See `docs/freshforge-development/migrations/README.md` for migration registry details.
 
 ---
 
@@ -161,7 +173,7 @@ npm run export:starter
 Structure validation checks:
 
 - `docs/freshforge-development/distribution/STARTER_SURFACE.md` exists in the **development repo**
-- Default export roots: `AGENTS.md`, `.cursor/`, `docs/` only
+- Default export roots: `AGENTS.md`, `.cursor/`, `docs/`, `.freshforge/` only
 - `docs/freshforge-development/` excluded from export/install
 - Exported `state.md` is clean idle (from `state-template.md`)
 - `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` contain only README + `.gitkeep`
@@ -170,7 +182,7 @@ Structure validation checks:
 ### Manual
 
 1. Inspect `dist/freshforge-starter/` after export.
-2. Confirm top-level: `AGENTS.md`, `.cursor/`, `docs/`.
+2. Confirm top-level: `AGENTS.md`, `.cursor/`, `docs/`, `.freshforge/`.
 3. Confirm `docs/AI_RULES.md`, `docs/WORKFLOWS.md`, and subfolders `project/`, `architecture/`, `standards/`, `intake/` are present.
 4. Confirm `docs/freshforge-development/` and legacy flat paths (`docs/INSTALLATION.md`, etc.) are absent.
 5. Confirm no `node_modules/`, `scripts/`, or `.github/` (unless full export with `--include-validation`).
@@ -190,4 +202,5 @@ Structure validation checks:
 
 | Date | Summary |
 |------|---------|
+| 2026-06-24 | Added `.freshforge/version.json`; migrate/doctor upgrade path |
 | 2026-06-23 | Initial starter surface definition |

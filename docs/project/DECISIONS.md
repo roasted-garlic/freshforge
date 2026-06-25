@@ -45,6 +45,31 @@ When a decision affects architecture, security, data, backend, or workflow:
 
 ## Decisions
 
+### ADR-006: Versioned migration system for installed starters
+
+| Field | Value |
+|-------|-------|
+| Date | 2026-06-24 |
+| Status | accepted |
+| Deciders | Project team |
+
+**Context**
+Projects with older AppForge or FreshForge workflow installations need a safe upgrade path. Re-running `install --force` risks overwriting project-specific documentation.
+
+**Options considered**
+1. One-off AppForge rename script — not reusable for future releases
+2. General migration registry with `migrate` and `doctor` CLI commands — extensible, safe classification of controlled vs project-specific files
+
+**Decision**
+Implement a versioned migration system with `.freshforge/version.json`, `freshforge migrate`, `freshforge doctor`, backups, and a registered migration list. First migration: `legacy-appforge-to-freshforge`.
+
+**Consequences**
+- Positive: Safe upgrades; future migrations register without CLI redesign
+- Negative: Additional distribution complexity and fixture maintenance
+- Follow-ups: Publish to npm; add migrations for future starter releases
+
+---
+
 ### ADR-005: Canonical project name is FreshForge
 
 | Field | Value |

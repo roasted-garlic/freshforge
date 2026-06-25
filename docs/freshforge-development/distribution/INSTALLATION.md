@@ -12,7 +12,7 @@ From your **target project directory** (existing repo or new folder):
 npx github:roasted-garlic/freshforge install
 ```
 
-No temporary clone or cleanup required. Default install copies **only** `AGENTS.md`, `.cursor/`, and `docs/`.
+No temporary clone or cleanup required. Default install copies **only** `AGENTS.md`, `.cursor/`, `docs/`, and `.freshforge/version.json`.
 
 ### Optional flags
 
@@ -147,6 +147,53 @@ On Windows PowerShell: `Remove-Item -Recurse -Force freshforge-temp`
 
 ---
 
+---
+
+## Workflow G: Upgrade Existing Installation (Migrate)
+
+If the project already has an older **AppForge** or **FreshForge** workflow installation:
+
+```bash
+npx github:roasted-garlic/freshforge doctor
+npx github:roasted-garlic/freshforge migrate --dry-run
+npx github:roasted-garlic/freshforge migrate
+```
+
+### Migrate options
+
+| Flag | Effect |
+|------|--------|
+| `--target <path>` | Target project directory (default: cwd) |
+| `--dry-run` | Preview planned changes without writing |
+| `--from appforge` | Hint legacy AppForge source |
+| `--force-workflow` | Overwrite FreshForge-controlled workflow files from current starter |
+
+Migrate **preserves** project-specific docs under `docs/project/`, `docs/architecture/`, `docs/standards/`, and `docs/intake/`. It **never** modifies application source, `.env`, Firebase config, or target `package.json`.
+
+Backups are written to `.freshforge/backups/<timestamp>/` before changes.
+
+### Future npm command
+
+```bash
+npx freshforge migrate
+npx freshforge doctor
+```
+
+---
+
+## Workflow H: Inspect Installation (Doctor)
+
+Read-only health check:
+
+```bash
+npx github:roasted-garlic/freshforge doctor
+npx github:roasted-garlic/freshforge doctor --target ../some-project
+```
+
+Doctor reports installed version, legacy AppForge references, old doc layout, and recommended fix commands.
+
+---
+
 ## Conflict Behavior
 
 The installer does not overwrite existing files unless you pass `--force`. Run `--dry-run` first to preview.
@@ -165,5 +212,6 @@ The installer does not overwrite existing files unless you pass `--force`. Run `
 
 | Date | Summary |
 |------|---------|
+| 2026-06-24 | Added migrate and doctor upgrade workflows; `.freshforge/version.json` in default install |
 | 2026-06-23 | Added recommended `npx github:roasted-garlic/freshforge install` CLI flow |
 | 2026-06-23 | Initial installation guide |

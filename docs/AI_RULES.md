@@ -341,6 +341,9 @@ Default installed product:
 - `AGENTS.md`
 - `.cursor/`
 - `docs/` (excluding `docs/freshforge-development/`)
+- `.freshforge/version.json` (installation metadata; not `.freshforge/backups/`)
+
+Upgrade existing installs with `freshforge migrate` and inspect with `freshforge doctor` — see `docs/freshforge-development/migrations/README.md`.
 
 
 

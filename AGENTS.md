@@ -194,6 +194,20 @@ Rules:
 
 ---
 
+## Upgrading an Existing Installation
+
+If the project already has an older AppForge or FreshForge workflow install:
+
+```bash
+npx github:roasted-garlic/freshforge doctor
+npx github:roasted-garlic/freshforge migrate --dry-run
+npx github:roasted-garlic/freshforge migrate
+```
+
+Migrate preserves project-specific docs under `docs/project/`, `docs/architecture/`, `docs/standards/`, and `docs/intake/`. Installation metadata lives in `.freshforge/version.json`.
+
+---
+
 ## Starter Surface Awareness
 
 FreshForge is used to build itself, but it also distributes a **starter surface** into target projects. Before changing behavior, classify the impact:

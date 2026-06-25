@@ -38,3 +38,5 @@ Thumbs.db
 freshforge-temp/
 freshforge-starter/
 tmp-install-test/
+tmp-test-legacy-appforge/
+test-fixtures/
