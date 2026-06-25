@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Shared file collection and exclusion rules for AppForge install/export.
+ * Shared file collection and exclusion rules for FreshForge install/export.
  */
 
 import { readdir, stat } from 'node:fs/promises';
@@ -12,7 +12,7 @@ import path from 'node:path';
  * @typedef {Object} CollectOptions
  * @property {boolean} includeReadme
  * @property {boolean} includeValidation
- * @property {boolean} [readmeAsAppforgeReadme] - install copies README as APPFORGE_README.md
+ * @property {boolean} [readmeAsFreshforgeReadme] - install copies README as FRESHFORGE_README.md
  * @property {string} [targetRoot] - set for install conflict detection
  * @property {boolean} [force]
  */
@@ -36,7 +36,7 @@ export const VALIDATION_ENTRIES = [
 ];
 
 export const README_SOURCE = 'README.md';
-export const README_TARGET = 'APPFORGE_README.md';
+export const README_TARGET = 'FRESHFORGE_README.md';
 
 /** Canonical clean starter state — never ship live dev state.md. */
 export const STATE_TEMPLATE_REL = '.cursor/workflow/state-template.md';
@@ -94,8 +94,8 @@ const EXCLUDED_DIR_NAMES = new Set([
   'temp',
   'tmp',
   'logs',
-  'appforge-temp',
-  'appforge-starter',
+  'freshforge-temp',
+  'freshforge-starter',
   'tmp-install-test',
 ]);
 
@@ -130,7 +130,7 @@ function isExcludedFileName(name) {
 function isExcludedDocsPath(relPosix) {
   const normalized = relPosix.replace(/\\/g, '/');
 
-  if (normalized === 'docs/appforge-development' || normalized.startsWith('docs/appforge-development/')) {
+  if (normalized === 'docs/freshforge-development' || normalized.startsWith('docs/freshforge-development/')) {
     return true;
   }
 
@@ -245,7 +245,7 @@ async function walkSource(sourceRoot, rel, options) {
 
   let targetRel = relPosix;
 
-  if (options.includeReadme && options.readmeAsAppforgeReadme && relPosix === README_SOURCE) {
+  if (options.includeReadme && options.readmeAsFreshforgeReadme && relPosix === README_SOURCE) {
     targetRel = README_TARGET;
   }
 
@@ -313,7 +313,7 @@ export async function collectStarterFiles(sourceRoot, options) {
       await stat(readmePath);
       let action = /** @type {Action} */ ('copy');
       let reason;
-      const targetRel = options.readmeAsAppforgeReadme ? README_TARGET : README_SOURCE;
+      const targetRel = options.readmeAsFreshforgeReadme ? README_TARGET : README_SOURCE;
 
       if (options.targetRoot) {
         const targetPath = path.join(options.targetRoot, targetRel);
@@ -321,7 +321,7 @@ export async function collectStarterFiles(sourceRoot, options) {
           await stat(targetPath);
           if (!options.force) {
             action = 'conflict';
-            reason = 'APPFORGE_README.md already exists';
+            reason = 'FRESHFORGE_README.md already exists';
           }
         } catch {
           // ok
@@ -472,7 +472,7 @@ export function isForbiddenInDefaultOutput(relPosix) {
   const normalized = relPosix.replace(/\\/g, '/');
   if (normalized === 'node_modules' || normalized.startsWith('node_modules/')) return true;
   if (normalized === '.git' || normalized.startsWith('.git/')) return true;
-  if (normalized === 'docs/appforge-development' || normalized.startsWith('docs/appforge-development/')) {
+  if (normalized === 'docs/freshforge-development' || normalized.startsWith('docs/freshforge-development/')) {
     return true;
   }
   if (FORBIDDEN_LEGACY_DOC_PATHS.has(normalized)) return true;

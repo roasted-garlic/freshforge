@@ -2,7 +2,7 @@
 
 > **Project-specific** — customize during intake or bootstrap. Describes structure, boundaries, and dependency rules.
 
-> **AppForge starter note:** In the AppForge workflow starter repository, this file is a **template for target application architecture**. The starter's own layout (`AGENTS.md`, `.cursor/`, `docs/`) is described in `README.md`.
+> **FreshForge starter note:** In the FreshForge workflow starter repository, this file is a **template for target application architecture**. The starter's own layout (`AGENTS.md`, `.cursor/`, `docs/`) is described in `README.md`.
 
 ---
 

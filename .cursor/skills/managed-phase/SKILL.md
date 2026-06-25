@@ -1,6 +1,6 @@
 ---
 name: managed-phase
-description: Run Plan → Review → Implement → Test → Signoff. Use for Managed Phase or aliases (Continue Workflow, Next Phase, Run Phase, Continue AppForge, etc.).
+description: Run Plan → Review → Implement → Test → Signoff. Use for Managed Phase or aliases (Continue Workflow, Next Phase, Run Phase, Continue FreshForge, etc.).
 ---
 
 # Managed Phase
@@ -9,7 +9,7 @@ description: Run Plan → Review → Implement → Test → Signoff. Use for Man
 
 If the user says any of the following, **start or continue this skill** (case-insensitive):
 
-`Managed Phase` · `Start Phase` · `Run Phase` · `Next Phase` · `Continue Workflow` · `Continue AppForge`
+`Managed Phase` · `Start Phase` · `Run Phase` · `Next Phase` · `Continue Workflow` · `Continue FreshForge`
 
 Equivalent: **Start or continue managed phase** using `.cursor/workflow/state.md`. See `.cursor/workflow/command-aliases.md`.
 

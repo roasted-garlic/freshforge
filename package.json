@@ -1,9 +1,9 @@
 {
-  "name": "appforge",
+  "name": "freshforge",
   "private": true,
-  "description": "AppForge — reusable Cursor AI workflow starter with install, export, and validation CLI",
+  "description": "FreshForge — reusable Cursor AI workflow starter with install, export, and validation CLI",
   "bin": {
-    "appforge": "./bin/appforge.mjs"
+    "freshforge": "./bin/freshforge.mjs"
   },
   "scripts": {
     "validate": "npm run validate:structure && npm run validate:markdown && npm run validate:links",
@@ -13,7 +13,7 @@
     "validate:links": "node scripts/validate-links.mjs",
     "export:starter": "node scripts/export-starter.mjs",
     "export:starter:full": "node scripts/export-starter.mjs --include-readme --include-validation",
-    "install:appforge": "node scripts/install-appforge.mjs"
+    "install:freshforge": "node scripts/install-freshforge.mjs"
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.17.2"

@@ -1,8 +1,8 @@
-# AI Agents — AppForge Entry Point
+# AI Agents — FreshForge Entry Point
 
-> **Read this file first** in any repository that uses the **AppForge** workflow starter.
+> **Read this file first** in any repository that uses the **FreshForge** workflow starter.
 
-This project uses the AppForge workflow starter. The active workflow surface is `AGENTS.md`, `.cursor/`, and `docs/`. AppForge development and distribution documentation is not part of installed target projects.
+This project uses the FreshForge workflow starter. The active workflow surface is `AGENTS.md`, `.cursor/`, and `docs/`. FreshForge development and distribution documentation is not part of installed target projects.
 
 ---
 
@@ -81,7 +81,7 @@ See `.cursor/rules/human-checkpoints.mdc`.
 
 ## Command Aliases
 
-AppForge supports **short natural commands**. When the user sends a message that matches an alias (case-insensitive), treat it as the full workflow — do not ask for confirmation.
+FreshForge supports **short natural commands**. When the user sends a message that matches an alias (case-insensitive), treat it as the full workflow — do not ask for confirmation.
 
 Canonical mapping: `.cursor/workflow/command-aliases.md`
 
@@ -99,7 +99,7 @@ Canonical mapping: `.cursor/workflow/command-aliases.md`
 
 ### Managed Phase
 
-**Say any of:** `Managed Phase` · `Start Phase` · `Run Phase` · `Next Phase` · `Continue Workflow` · `Continue AppForge`
+**Say any of:** `Managed Phase` · `Start Phase` · `Run Phase` · `Next Phase` · `Continue Workflow` · `Continue FreshForge`
 
 → **Start or continue** Plan → Review → Implement → Test → Signoff using `.cursor/workflow/state.md`. Stop for human checkpoints.
 
@@ -165,7 +165,7 @@ Details: `.cursor/agents/`
 
 ## Workflow Artifacts vs Permanent Docs
 
-AppForge separates **durable project documentation** from **temporary workflow artifacts**:
+FreshForge separates **durable project documentation** from **temporary workflow artifacts**:
 
 | Type | Location | Purpose |
 |------|----------|---------|
@@ -178,7 +178,7 @@ Rules:
 - Store reviews, test reports, and signoffs in `docs/workflow/reviews/`.
 - Use `docs/workflow/setup/` for project-specific setup notes after intake or bootstrap.
 - Keep workflow artifact folders clean between phases (README + `.gitkeep` only when idle).
-- Do not archive AppForge development history in workflow artifact folders — that belongs in `docs/appforge-development/` (development repo only).
+- Do not archive FreshForge development history in workflow artifact folders — that belongs in `docs/freshforge-development/` (development repo only).
 
 ---
 
@@ -196,27 +196,28 @@ Rules:
 
 ## Starter Surface Awareness
 
-AppForge is used to build itself, but it also distributes a **starter surface** into target projects. Before changing behavior, classify the impact:
+FreshForge is used to build itself, but it also distributes a **starter surface** into target projects. Before changing behavior, classify the impact:
 
 | Area | Location | Affects installed projects? |
 |------|----------|----------------------------|
-| **Starter Surface** | `AGENTS.md`, `.cursor/`, `docs/` (not `docs/appforge-development/`) | **Yes** |
+| **Starter Surface** | `AGENTS.md`, `.cursor/`, `docs/` (not `docs/freshforge-development/`) | **Yes** |
 | **Development Tooling** | `scripts/`, `package.json`, `.github/`, `.markdownlint-cli2.jsonc` | Only with `--include-validation` |
 | **Distribution/Installer** | `bin/`, install/export scripts | Delivery mechanism only |
-| **Development History** | `docs/appforge-development/` | **No** |
+| **Development History** | `docs/freshforge-development/` | **No** |
 
 Rules:
 
 - If a change should affect **installed projects**, update **starter surface** files — not development-only docs or scripts alone.
-- Do not put AppForge development history in starter-facing `docs/workflow/plans/` or `docs/workflow/reviews/`.
-- Do not install or export `docs/appforge-development/`.
+- Do not put FreshForge development history in starter-facing `docs/workflow/plans/` or `docs/workflow/reviews/`.
+- Do not install or export `docs/freshforge-development/`.
 
-Source of truth: `docs/appforge-development/distribution/STARTER_SURFACE.md`.
+Source of truth: `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
 
 ---
 
 ## Naming Standard
 
-- **AppForge** is the canonical name for this workflow starter (rules, skills, agents, docs, and `AGENTS.md`).
+- **FreshForge** is the canonical name for this workflow starter (rules, skills, agents, docs, and `AGENTS.md`).
+- **AppForge** is a historical label (formerly the starter name before the FreshForge rename) — do not use it for current project references in documentation.
 - **BuildPilot** is a historical label (e.g. local folder name) — do not use it for current project references in documentation.
-- Application product names live in `PROJECT_BRIEF.md` after intake or bootstrap; they are separate from the AppForge starter name.
+- Application product names live in `PROJECT_BRIEF.md` after intake or bootstrap; they are separate from the FreshForge starter name.

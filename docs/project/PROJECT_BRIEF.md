@@ -2,7 +2,7 @@
 
 > **Project-specific** — customize during intake or bootstrap. Product source of truth for *what* and *why*.
 
-> **AppForge starter note:** In the AppForge workflow starter repository, this file is a **template for the application you build**, not a description of AppForge itself. AppForge is the reusable workflow kit documented in `README.md` and `AGENTS.md`.
+> **FreshForge starter note:** In the FreshForge workflow starter repository, this file is a **template for the application you build**, not a description of FreshForge itself. FreshForge is the reusable workflow kit documented in `README.md` and `AGENTS.md`.
 
 ---
 

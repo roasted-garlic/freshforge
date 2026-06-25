@@ -4,7 +4,7 @@
 
 > Detailed agent behavior for this repository. **Docs are source of truth; rules are behavior instructions.**
 
-> **Naming:** This repository is the **AppForge** workflow starter — a reusable Cursor kit, not an application. See **Naming Standard** in `README.md` and `AGENTS.md`. Do not refer to the starter as BuildPilot in current documentation.
+> **Naming:** This repository is the **FreshForge** workflow starter — a reusable Cursor kit, not an application. See **Naming Standard** in `README.md` and `AGENTS.md`. Do not refer to the starter as BuildPilot in current documentation.
 
 
 
@@ -234,7 +234,7 @@ The **Managing Agent** controls phase transitions. **Specialist agents do not fr
 
 ## Command Aliases
 
-AppForge supports **short commands**. When the user's message matches an alias (case-insensitive), execute the mapped workflow — do not ask which mode they meant.
+FreshForge supports **short commands**. When the user's message matches an alias (case-insensitive), execute the mapped workflow — do not ask which mode they meant.
 
 Canonical reference: `.cursor/workflow/command-aliases.md` and `AGENTS.md`.
 
@@ -248,7 +248,7 @@ Canonical reference: `.cursor/workflow/command-aliases.md` and `AGENTS.md`.
 
 ### Managed Phase
 
-`Managed Phase` · `Start Phase` · `Run Phase` · `Next Phase` · `Continue Workflow` · `Continue AppForge`
+`Managed Phase` · `Start Phase` · `Run Phase` · `Next Phase` · `Continue Workflow` · `Continue FreshForge`
 
 Managed phase aliases **start or continue** from `.cursor/workflow/state.md`.
 
@@ -322,11 +322,11 @@ Continue through Plan, Review, Implement, Test, and Signoff **without asking** u
 
 
 
-## Starter Surface (AppForge Development)
+## Starter Surface (FreshForge Development)
 
 
 
-When working on the **AppForge development repository** (not a target app), distinguish the **starter surface** — the distributed product — from development-only files.
+When working on the **FreshForge development repository** (not a target app), distinguish the **starter surface** — the distributed product — from development-only files.
 
 
 
@@ -340,11 +340,11 @@ Default installed product:
 
 - `AGENTS.md`
 - `.cursor/`
-- `docs/` (excluding `docs/appforge-development/`)
+- `docs/` (excluding `docs/freshforge-development/`)
 
 
 
-Source of truth: `docs/appforge-development/distribution/STARTER_SURFACE.md`.
+Source of truth: `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
 
 
 
@@ -352,7 +352,7 @@ Source of truth: `docs/appforge-development/distribution/STARTER_SURFACE.md`.
 
 
 
-Every AppForge managed phase plan must classify impact in one or more areas:
+Every FreshForge managed phase plan must classify impact in one or more areas:
 
 
 
@@ -360,7 +360,7 @@ Every AppForge managed phase plan must classify impact in one or more areas:
 - **Development Tooling** — validation, CI, package scripts
 - **Distribution/Installer** — install/export CLI and scripts
 - **Documentation** — docs that describe behavior (surface vs dev-only)
-- **Development History** — phase artifacts under `docs/appforge-development/`
+- **Development History** — phase artifacts under `docs/freshforge-development/`
 
 
 
@@ -369,10 +369,10 @@ Every AppForge managed phase plan must classify impact in one or more areas:
 
 
 - **Starter behavior changes** must update starter surface files if they should affect installed projects.
-- Do not make starter behavior changes only in development-only docs, `docs/appforge-development/`, or maintainer scripts.
+- Do not make starter behavior changes only in development-only docs, `docs/freshforge-development/`, or maintainer scripts.
 - **Development-only changes** must not be documented as if they affect default installed behavior.
-- Archive AppForge phase history in `docs/appforge-development/`, not in `docs/workflow/plans/` or `docs/workflow/reviews/`.
-- Never install or export `docs/appforge-development/`.
+- Archive FreshForge phase history in `docs/freshforge-development/`, not in `docs/workflow/plans/` or `docs/workflow/reviews/`.
+- Never install or export `docs/freshforge-development/`.
 
 
 

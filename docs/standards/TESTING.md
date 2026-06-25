@@ -1,6 +1,6 @@
 # Testing
 
-> AppForge workflow starter validation and testing expectations. For application projects using AppForge, customize commands during intake or bootstrap.
+> FreshForge workflow starter validation and testing expectations. For application projects using FreshForge, customize commands during intake or bootstrap.
 
 ---
 
@@ -8,7 +8,7 @@
 
 This repository is a **markdown-only workflow starter**, not an application. Automated checks verify:
 
-- Required AppForge files and folders exist
+- Required FreshForge files and folders exist
 - Markdown formatting (markdownlint)
 - Relative markdown link targets resolve
 
@@ -58,19 +58,19 @@ npm run validate:links
 
 ```bash
 # Recommended install (from target project)
-npx github:roasted-garlic/appforge install
-npx github:roasted-garlic/appforge install --dry-run
+npx github:roasted-garlic/freshforge install
+npx github:roasted-garlic/freshforge install --dry-run
 
 # CLI (local development)
-node bin/appforge.mjs install --dry-run
-node bin/appforge.mjs install --target ./tmp-install-test --dry-run
-node bin/appforge.mjs export --dry-run
+node bin/freshforge.mjs install --dry-run
+node bin/freshforge.mjs install --target ./tmp-install-test --dry-run
+node bin/freshforge.mjs export --dry-run
 
-# Export clean starter to dist/appforge-starter/
+# Export clean starter to dist/freshforge-starter/
 npm run export:starter
 
 # Legacy script entry points (fallback / development)
-node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
+node scripts/install-freshforge.mjs --target ./tmp-install-test --dry-run
 ```
 
 ### What each check does
@@ -81,60 +81,60 @@ node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
 | `validate:markdown` | Markdownlint on `README.md`, `AGENTS.md`, and `docs/**/*.md` (see `.markdownlint-cli2.jsonc`) |
 | `validate:links` | Relative `[text](path)` links point to existing files |
 | `validate` / `validate:starter` | Runs all of the above in sequence |
-| `export:starter` | Export default starter to `dist/appforge-starter/` |
+| `export:starter` | Export default starter to `dist/freshforge-starter/` |
 | `export:starter:full` | Export with `--include-readme --include-validation` |
-| `install:appforge` | Install starter via legacy script entry point |
-| `bin/appforge.mjs` | CLI: `install`, `export`, `validate` |
+| `install:freshforge` | Install starter via legacy script entry point |
+| `bin/freshforge.mjs` | CLI: `install`, `export`, `validate` |
 
 **Markdown scope:** Focused rules only (`MD001`, `MD034`, `MD042`, `MD047`). `.cursor/` workflow templates are excluded to keep validation low-noise.
 
 ### Starter surface verification
 
-The **starter surface** is the default installed product: `AGENTS.md`, `.cursor/`, `docs/`. See `docs/appforge-development/distribution/STARTER_SURFACE.md`.
+The **starter surface** is the default installed product: `AGENTS.md`, `.cursor/`, `docs/`. See `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
 
 ```bash
 npm run validate
 npm run export:starter
 ```
 
-After export, inspect `dist/appforge-starter/`:
+After export, inspect `dist/freshforge-starter/`:
 
 | Check | Expected |
 |-------|----------|
 | Top-level roots | `AGENTS.md`, `.cursor/`, `docs/` only |
-| `docs/appforge-development/distribution/STARTER_SURFACE.md` | Present in export |
-| `docs/appforge-development/` | Absent |
+| `docs/freshforge-development/distribution/STARTER_SURFACE.md` | Present in export |
+| `docs/freshforge-development/` | Absent |
 | `.cursor/workflow/state.md` | Clean idle (from `state-template.md`) |
 | Starter behavior changes | Visible in exported `.cursor/` and `docs/` |
 
-Structure validation enforces starter surface rules automatically. Re-run export after starter surface changes to confirm they appear in `dist/appforge-starter/`.
+Structure validation enforces starter surface rules automatically. Re-run export after starter surface changes to confirm they appear in `dist/freshforge-starter/`.
 
 ### Manual inspection: export output
 
 After `npm run export:starter`:
 
-1. Open `dist/appforge-starter/`
+1. Open `dist/freshforge-starter/`
 2. Confirm top-level entries: `AGENTS.md`, `.cursor/`, `docs/` only (default)
-3. Confirm `docs/appforge-development/` is absent
+3. Confirm `docs/freshforge-development/` is absent
 4. Confirm `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` contain only `README.md` and `.gitkeep`
-5. Confirm `dist/appforge-starter/.cursor/workflow/state.md` matches `state-template.md` (no dev phase history)
+5. Confirm `dist/freshforge-starter/.cursor/workflow/state.md` matches `state-template.md` (no dev phase history)
 6. Confirm no `node_modules/`, `.git/`, `.env`, or log files
 
 ### Manual inspection: install dry-run
 
 ```bash
-node scripts/install-appforge.mjs --target ./tmp-install-test --dry-run
+node scripts/install-freshforge.mjs --target ./tmp-install-test --dry-run
 ```
 
-Confirm summary lists only `AGENTS.md`, `.cursor/`, and `docs/` for default install. Confirm dry-run shows `state-template.md → state.md` and does not copy development `state.md`. With `--include-readme`, expect `APPFORGE_README.md`. With `--include-validation`, expect `scripts/`, `package.json`, etc.
+Confirm summary lists only `AGENTS.md`, `.cursor/`, and `docs/` for default install. Confirm dry-run shows `state-template.md → state.md` and does not copy development `state.md`. With `--include-readme`, expect `FRESHFORGE_README.md`. With `--include-validation`, expect `scripts/`, `package.json`, etc.
 
-See `docs/appforge-development/distribution/INSTALLATION.md` and `docs/appforge-development/distribution/DISTRIBUTION.md` for full workflows.
+See `docs/freshforge-development/distribution/INSTALLATION.md` and `docs/freshforge-development/distribution/DISTRIBUTION.md` for full workflows.
 
 ---
 
 ## Test Types (Application Projects)
 
-After copying AppForge into an application repo, intake or bootstrap should fill in:
+After copying FreshForge into an application repo, intake or bootstrap should fill in:
 
 ### Unit Tests
 - **Location:** `[TBD path]`
@@ -163,7 +163,7 @@ After copying AppForge into an application repo, intake or bootstrap should fill
 
 ### Local validation order
 
-`dist/` is **generated output** and is gitignored — do not commit it. Structure validation checks exported files under `dist/appforge-starter/`, so generate the export first:
+`dist/` is **generated output** and is gitignored — do not commit it. Structure validation checks exported files under `dist/freshforge-starter/`, so generate the export first:
 
 ```bash
 npm run export:starter
@@ -185,7 +185,7 @@ npm run validate:structure
 |----------|-------------|------------|
 | GitHub Actions | `.github/workflows/validate.yml` | `npm ci` → `npm run export:starter` → `npm run validate` |
 
-CI generates `dist/appforge-starter/` during the workflow because `dist/` is not committed. The export step must run **before** validation.
+CI generates `dist/freshforge-starter/` during the workflow because `dist/` is not committed. The export step must run **before** validation.
 
 PRs to `main` / `master` should pass validation when CI is enabled.
 
@@ -202,8 +202,8 @@ PRs to `main` / `master` should pass validation when CI is enabled.
 | Date | Summary |
 |------|---------|
 | 2026-06-23 | CI runs `export:starter` before `validate`; document local export-first order |
-| 2026-06-23 | Added starter surface verification tests and `docs/appforge-development/distribution/STARTER_SURFACE.md` |
-| 2026-06-23 | Added CLI install/export test commands (`bin/appforge.mjs`) |
+| 2026-06-23 | Added starter surface verification tests and `docs/freshforge-development/distribution/STARTER_SURFACE.md` |
+| 2026-06-23 | Added CLI install/export test commands (`bin/freshforge.mjs`) |
 | 2026-06-23 | Added workflow state-template install/export and full state validation |
 | 2026-06-23 | Added distribution/install test commands and export inspection |
 | 2026-06-23 | Added starter validation commands and CI |

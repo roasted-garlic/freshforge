@@ -1,8 +1,8 @@
-# AppForge — AI Development Workflow Starter
+# FreshForge — AI Development Workflow Starter
 
 
 
-A reusable, copy-paste workflow system for Cursor called **AppForge** that enforces safe, repeatable, agent-driven development: **Plan → Review → Implement → Test → Signoff**.
+A reusable, copy-paste workflow system for Cursor called **FreshForge** that enforces safe, repeatable, agent-driven development: **Plan → Review → Implement → Test → Signoff**.
 
 
 
@@ -62,10 +62,11 @@ This repository is **not an application**. It is a **starter kit** you copy into
 
 | Term | Meaning |
 |------|---------|
-| **AppForge** | Canonical name for this reusable Cursor workflow starter |
+| **FreshForge** | Canonical name for this reusable Cursor workflow starter |
+| **AppForge** | Historical starter name (before FreshForge rename) — not used in current docs |
 | **BuildPilot** | Historical folder/repo label only — not used in docs for the current project |
 
-When copying AppForge into an application repository, use **AppForge** in documentation and agent prompts. Application product names belong in `PROJECT_BRIEF.md`, not in workflow starter branding.
+When copying FreshForge into an application repository, use **FreshForge** in documentation and agent prompts. Application product names belong in `PROJECT_BRIEF.md`, not in workflow starter branding.
 
 
 
@@ -120,7 +121,7 @@ docs/
 
   setup/           # Optional local setup notes
 
-  appforge-development/   # Dev repo only — NOT installed into target projects
+  freshforge-development/   # Dev repo only — NOT installed into target projects
     distribution/         # INSTALLATION, DISTRIBUTION, PACKAGING, STARTER_SURFACE
 
 ```
@@ -167,11 +168,11 @@ The **default installed product** is the starter surface:
 
 - `AGENTS.md`
 - `.cursor/`
-- `docs/` (excluding `docs/appforge-development/`)
+- `docs/` (excluding `docs/freshforge-development/`)
 
-AppForge development tooling (`scripts/`, `package.json`, CI, validation) supports building and shipping that product — it is not installed by default.
+FreshForge development tooling (`scripts/`, `package.json`, CI, validation) supports building and shipping that product — it is not installed by default.
 
-When you improve AppForge behavior for target projects, update **starter surface** files. See `docs/appforge-development/distribution/STARTER_SURFACE.md`.
+When you improve FreshForge behavior for target projects, update **starter surface** files. See `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
 
 ---
 
@@ -179,13 +180,13 @@ When you improve AppForge behavior for target projects, update **starter surface
 
 | | This repository (development source) | Target project after default install |
 |--|-------------------------------------|--------------------------------------|
-| Purpose | Build and maintain AppForge | Run workflow in your application |
-| `docs/appforge-development/` | Maintainer history | Not copied |
+| Purpose | Build and maintain FreshForge | Run workflow in your application |
+| `docs/freshforge-development/` | Maintainer history | Not copied |
 | Validation / CI | Present here | Optional (`--include-validation`) |
-| `README.md` | Full AppForge docs | Optional (`--include-readme` → `APPFORGE_README.md`) |
+| `README.md` | Full FreshForge docs | Optional (`--include-readme` → `FRESHFORGE_README.md`) |
 | `node_modules/` | Local dev only | Never copied — do not manual-copy |
 
-Push this repo to GitHub as the development source. Users install with `npx github:roasted-garlic/appforge install`. See `docs/appforge-development/distribution/DISTRIBUTION.md`.
+Push this repo to GitHub as the development source. Users install with `npx github:roasted-garlic/freshforge install`. See `docs/freshforge-development/distribution/DISTRIBUTION.md`.
 
 
 
@@ -193,25 +194,25 @@ Push this repo to GitHub as the development source. Users install with `npx gith
 
 
 
-## Installing AppForge Into a Project
+## Installing FreshForge Into a Project
 
 **Recommended:**
 
 ```bash
-npx github:roasted-garlic/appforge install
+npx github:roasted-garlic/freshforge install
 ```
 
 **Default install** copies only `AGENTS.md`, `.cursor/`, and `docs/`.
 
 Optional flags: `--include-readme`, `--include-validation`, `--target <path>`, `--force`, `--dry-run`.
 
-Future npm: `npx appforge install`
+Future npm: `npx freshforge install`
 
 ### Existing Project Quick Start
 
 ```bash
 cd my-existing-app
-npx github:roasted-garlic/appforge install
+npx github:roasted-garlic/freshforge install
 ```
 
 Open in Cursor and run **Existing Project** (or `Intake`).
@@ -220,7 +221,7 @@ Open in Cursor and run **Existing Project** (or `Intake`).
 
 ```bash
 mkdir my-new-app && cd my-new-app
-npx github:roasted-garlic/appforge install
+npx github:roasted-garlic/freshforge install
 ```
 
 Open in Cursor and run **New Project** or **Bootstrap**.
@@ -228,12 +229,12 @@ Open in Cursor and run **New Project** or **Bootstrap**.
 ### Fallback (clone temp repo)
 
 ```bash
-git clone https://github.com/roasted-garlic/appforge.git appforge-temp
-node appforge-temp/scripts/install-appforge.mjs --target .
-rm -rf appforge-temp
+git clone https://github.com/roasted-garlic/freshforge.git freshforge-temp
+node freshforge-temp/scripts/install-freshforge.mjs --target .
+rm -rf freshforge-temp
 ```
 
-Full workflows: `docs/appforge-development/distribution/INSTALLATION.md`.
+Full workflows: `docs/freshforge-development/distribution/INSTALLATION.md`.
 
 
 
@@ -246,18 +247,18 @@ Full workflows: `docs/appforge-development/distribution/INSTALLATION.md`.
 Maintainers export a clean copy from this development repo:
 
 ```bash
-npm run export:starter              # → dist/appforge-starter/
+npm run export:starter              # → dist/freshforge-starter/
 npm run export:starter:full         # includes README + validation tooling
 node scripts/export-starter.mjs --clean --dry-run
 ```
 
-Default export: `AGENTS.md`, `.cursor/`, and `docs/` only. Never includes `docs/appforge-development/`, `node_modules/`, dev artifacts, or live development `state.md`. Maps `state-template.md` → `state.md`.
+Default export: `AGENTS.md`, `.cursor/`, and `docs/` only. Never includes `docs/freshforge-development/`, `node_modules/`, dev artifacts, or live development `state.md`. Maps `state-template.md` → `state.md`.
 
-Details: `docs/appforge-development/distribution/DISTRIBUTION.md` and `docs/appforge-development/distribution/PACKAGING.md`.
+Details: `docs/freshforge-development/distribution/DISTRIBUTION.md` and `docs/freshforge-development/distribution/PACKAGING.md`.
 
 ### Workflow state in dev vs installed starter
 
-This development repo uses `.cursor/workflow/state.md` during AppForge maintenance. **Install and export never ship that file.** They always write `.cursor/workflow/state-template.md` to `.cursor/workflow/state.md` in the target so new projects start with a clean idle state.
+This development repo uses `.cursor/workflow/state.md` during FreshForge maintenance. **Install and export never ship that file.** They always write `.cursor/workflow/state-template.md` to `.cursor/workflow/state.md` in the target so new projects start with a clean idle state.
 
 
 
@@ -393,7 +394,7 @@ You do not need the full copy-paste prompts. Type a **short command** and the ag
 |----------|------------------|
 | **Existing Project Intake** | `Existing Project` · `Intake` · `Analyze this repo` · `Document this project` |
 | **New Project Bootstrap** | `New Project` · `Bootstrap` · `Start App` · `Blank Project` |
-| **Managed Phase** | `Continue Workflow` · `Next Phase` · `Run Phase` · `Continue AppForge` |
+| **Managed Phase** | `Continue Workflow` · `Next Phase` · `Run Phase` · `Continue FreshForge` |
 
 Full lists: `AGENTS.md` and `.cursor/workflow/command-aliases.md`.
 
@@ -696,8 +697,8 @@ npm run export:starter:full
 | `npm run validate:structure` | Required files, clean folders, idle state, default install/export output |
 | `npm run validate:markdown` | Markdown formatting (markdownlint) |
 | `npm run validate:links` | Relative markdown link targets |
-| `npm run export:starter` | Export clean starter to `dist/appforge-starter/` |
-| `npm run install:appforge` | Install starter into a target directory |
+| `npm run export:starter` | Export clean starter to `dist/freshforge-starter/` |
+| `npm run install:freshforge` | Install starter into a target directory |
 
 CI runs validation via `.github/workflows/validate.yml` on push and pull requests.
 
@@ -711,12 +712,12 @@ When installing into an application repo, pass `--include-validation` if you wan
 
 ## Preparing a Clean Starter Copy
 
-Use `npm run export:starter` or the install script — they automatically exclude `docs/appforge-development/`, dev artifacts, and `node_modules/`.
+Use `npm run export:starter` or the install script — they automatically exclude `docs/freshforge-development/`, dev artifacts, and `node_modules/`.
 
 Before pushing this development repo to GitHub:
 
 1. Confirm `docs/workflow/plans/`, `docs/workflow/reviews/`, and `docs/workflow/setup/` contain only `README.md` and `.gitkeep`.
-2. Archive completed phase artifacts under `docs/appforge-development/`.
+2. Archive completed phase artifacts under `docs/freshforge-development/`.
 3. Confirm `.cursor/workflow/state.md` matches `state-template.md`.
 4. Run `npm run validate`.
 
@@ -727,7 +728,7 @@ After installing into a target repo:
 | Existing codebase with application code | **Existing Project** (`Intake`) |
 | New or blank project | **New Project Bootstrap** (`Bootstrap`) |
 
-Full details: `docs/appforge-development/distribution/PACKAGING.md`, `docs/appforge-development/distribution/DISTRIBUTION.md`, `docs/appforge-development/distribution/INSTALLATION.md`.
+Full details: `docs/freshforge-development/distribution/PACKAGING.md`, `docs/freshforge-development/distribution/DISTRIBUTION.md`, `docs/freshforge-development/distribution/INSTALLATION.md`.
 
 
 
@@ -761,11 +762,11 @@ Full details: `docs/appforge-development/distribution/PACKAGING.md`, `docs/appfo
 
 | Run starter validation | `npm run validate` or `npm run validate:starter` |
 
-| Install into another repo | `docs/appforge-development/distribution/INSTALLATION.md` |
+| Install into another repo | `docs/freshforge-development/distribution/INSTALLATION.md` |
 
-| Export clean starter | `npm run export:starter` — see `docs/appforge-development/distribution/DISTRIBUTION.md` |
+| Export clean starter | `npm run export:starter` — see `docs/freshforge-development/distribution/DISTRIBUTION.md` |
 
-| Prepare clean copy for another repo | `docs/appforge-development/distribution/PACKAGING.md` |
+| Prepare clean copy for another repo | `docs/freshforge-development/distribution/PACKAGING.md` |
 
 
 

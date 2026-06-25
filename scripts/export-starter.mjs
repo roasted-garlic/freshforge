@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * Export a clean AppForge starter copy from the development repository.
+ * Export a clean FreshForge starter copy from the development repository.
  *
- * Default: AGENTS.md, .cursor/, docs/ → dist/appforge-starter/
+ * Default: AGENTS.md, .cursor/, docs/ → dist/freshforge-starter/
  * Optional: --include-readme, --include-validation
  *
- * CLI: npx github:roasted-garlic/appforge export
+ * CLI: npx github:roasted-garlic/freshforge export
  */
 
 import path from 'node:path';

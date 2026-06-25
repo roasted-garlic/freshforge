@@ -15,12 +15,12 @@ Equivalent full command: **Start Existing Project Intake** — see `.cursor/work
 
 ## Purpose
 
-Onboard an established codebase into AppForge by **inspecting actual repo files** and producing accurate documentation, health assessment, findings, and tech debt register — without modifying application code.
+Onboard an established codebase into FreshForge by **inspecting actual repo files** and producing accurate documentation, health assessment, findings, and tech debt register — without modifying application code.
 
 ## When to Use
 
 - User sends an **intake alias** (e.g. `Intake`, `Analyze this repo`, `Existing Project`)
-- AppForge copied into an existing project
+- FreshForge copied into an existing project
 - User prompt: "Start Existing Project Intake"
 - Project-specific docs are empty templates, outdated, or misaligned with code
 - Need AI-discovered risks, gaps, and recommended cleanup phases

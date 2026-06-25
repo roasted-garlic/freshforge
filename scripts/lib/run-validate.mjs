@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Run AppForge validation checks from the CLI.
+ * Run FreshForge validation checks from the CLI.
  */
 
 import { spawn } from 'node:child_process';
@@ -34,9 +34,9 @@ function runCommand(command, args) {
 }
 
 export function printValidateUsage() {
-  console.log(`Usage: appforge validate
+  console.log(`Usage: freshforge validate
 
-Runs structure, markdown, and link validation for the AppForge package.
+Runs structure, markdown, and link validation for the FreshForge package.
 `);
 }
 

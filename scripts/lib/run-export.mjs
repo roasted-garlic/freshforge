@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Shared export logic for AppForge starter files.
+ * Shared export logic for FreshForge starter files.
  */
 
 import { copyFile, mkdir, rm, stat } from 'node:fs/promises';
@@ -16,7 +16,7 @@ import {
  * @param {string} sourceRoot
  */
 export function getDefaultExportOut(sourceRoot) {
-  return path.join(resolveSourceRoot(sourceRoot), 'dist', 'appforge-starter');
+  return path.join(resolveSourceRoot(sourceRoot), 'dist', 'freshforge-starter');
 }
 
 /**
@@ -65,10 +65,10 @@ export function parseExportArgs(argv, sourceRoot) {
 }
 
 export function printExportUsage() {
-  console.log(`Usage: appforge export [options]
+  console.log(`Usage: freshforge export [options]
 
 Options:
-  --out <path>            Output directory (default: dist/appforge-starter)
+  --out <path>            Output directory (default: dist/freshforge-starter)
   --include-readme        Export README.md
   --include-validation    Also export scripts/, package.json, package-lock.json,
                           .markdownlint-cli2.jsonc, .github/workflows/validate.yml
@@ -140,7 +140,7 @@ function printSummary(summary, options, sourceRoot, topRoots) {
   }
 
   console.log('\nVerify with: npm run validate:structure (in development repo)');
-  console.log('See docs/appforge-development/distribution/DISTRIBUTION.md for packaging details.\n');
+  console.log('See docs/freshforge-development/distribution/DISTRIBUTION.md for packaging details.\n');
 }
 
 /**

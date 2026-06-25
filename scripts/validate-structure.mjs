@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Validates required AppForge workflow starter files and development-repo distribution tooling.
- * See README.md and docs/appforge-development/distribution/.
+ * Validates required FreshForge workflow starter files and development-repo distribution tooling.
+ * See README.md and docs/freshforge-development/distribution/.
  */
 
 import { access, readdir, readFile } from 'node:fs/promises';
@@ -60,18 +60,18 @@ const REQUIRED_DEVELOPMENT_FILES = [
   'package.json',
   'scripts/validate-structure.mjs',
   'scripts/validate-links.mjs',
-  'scripts/install-appforge.mjs',
+  'scripts/install-freshforge.mjs',
   'scripts/export-starter.mjs',
   'scripts/lib/starter-distribution.mjs',
   'scripts/lib/run-install.mjs',
   'scripts/lib/run-export.mjs',
-  'bin/appforge.mjs',
+  'bin/freshforge.mjs',
   '.markdownlint-cli2.jsonc',
   '.github/workflows/validate.yml',
-  'docs/appforge-development/distribution/INSTALLATION.md',
-  'docs/appforge-development/distribution/DISTRIBUTION.md',
-  'docs/appforge-development/distribution/PACKAGING.md',
-  'docs/appforge-development/distribution/STARTER_SURFACE.md',
+  'docs/freshforge-development/distribution/INSTALLATION.md',
+  'docs/freshforge-development/distribution/DISTRIBUTION.md',
+  'docs/freshforge-development/distribution/PACKAGING.md',
+  'docs/freshforge-development/distribution/STARTER_SURFACE.md',
 ];
 
 /** @type {readonly string[]} */
@@ -88,8 +88,8 @@ const REQUIRED_DIRS = [
   'docs/workflow/plans',
   'docs/workflow/reviews',
   'docs/workflow/setup',
-  'docs/appforge-development',
-  'docs/appforge-development/distribution',
+  'docs/freshforge-development',
+  'docs/freshforge-development/distribution',
   'scripts',
   '.github/workflows',
 ];
@@ -233,9 +233,9 @@ async function checkDefaultDistributionOutput() {
     }
   }
 
-  const excludedMustInclude = items.some((item) => item.sourceRel.startsWith('docs/appforge-development'));
+  const excludedMustInclude = items.some((item) => item.sourceRel.startsWith('docs/freshforge-development'));
   if (!excludedMustInclude) {
-    violations.push('default output did not exclude docs/appforge-development/');
+    violations.push('default output did not exclude docs/freshforge-development/');
   }
 
   for (const rel of REQUIRED_STARTER_FILES) {
@@ -297,13 +297,13 @@ async function checkDefaultInstallDryRun() {
 }
 
 async function checkExportedStarter() {
-  const exportRoot = path.join(ROOT, 'dist', 'appforge-starter');
+  const exportRoot = path.join(ROOT, 'dist', 'freshforge-starter');
   const exportStatePath = path.join(exportRoot, STATE_TARGET_REL);
 
   if (!(await exists(exportStatePath))) {
     return [
       'The starter export is missing. Run `npm run export:starter` before structure validation, or ensure CI runs export before validate.',
-      'Expected: dist/appforge-starter/.cursor/workflow/state.md',
+      'Expected: dist/freshforge-starter/.cursor/workflow/state.md',
     ];
   }
 
@@ -327,8 +327,8 @@ async function checkExportedStarter() {
     }
   }
 
-  if (await exists(path.join(exportRoot, 'docs', 'appforge-development'))) {
-    violations.push('exported starter must not include docs/appforge-development/');
+  if (await exists(path.join(exportRoot, 'docs', 'freshforge-development'))) {
+    violations.push('exported starter must not include docs/freshforge-development/');
   }
 
   for (const rel of REQUIRED_EXPORT_DOC_DIRS) {
@@ -437,7 +437,7 @@ async function main() {
   console.log(
     `Structure validation passed (${REQUIRED_STARTER_FILES.length} starter files, ${REQUIRED_DEVELOPMENT_FILES.length} development files, ${REQUIRED_DIRS.length} directories, distribution checks OK).`,
   );
-  console.log('Note: docs/appforge-development/ is expected in the development repo and excluded from install/export.');
+  console.log('Note: docs/freshforge-development/ is expected in the development repo and excluded from install/export.');
 }
 
 main().catch((err) => {

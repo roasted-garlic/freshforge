@@ -2,7 +2,7 @@
 
 > **Project-specific** — populated during Existing Project Intake or updated after major reviews. Summary of overall health and recommended next phases.
 
-> **AppForge starter note:** For the AppForge workflow starter repository itself, health ratings apply to documentation completeness, workflow consistency, and starter maintainability — not application runtime quality.
+> **FreshForge starter note:** For the FreshForge workflow starter repository itself, health ratings apply to documentation completeness, workflow consistency, and starter maintainability — not application runtime quality.
 
 **Last updated:** `[TBD — YYYY-MM-DD]`
 **Source:** `[initial template | project-intake | manual review]`

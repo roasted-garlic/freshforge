@@ -45,6 +45,32 @@ When a decision affects architecture, security, data, backend, or workflow:
 
 ## Decisions
 
+### ADR-005: Canonical project name is FreshForge
+
+| Field | Value |
+|-------|-------|
+| Date | 2026-06-24 |
+| Status | accepted |
+| Deciders | Project team |
+| Supersedes | ADR-002 |
+
+**Context**
+The workflow starter was renamed from **AppForge** to **FreshForge** across CLI, package, paths, and documentation. ADR-002 established AppForge as canonical; this ADR updates the canonical name after the hard rename.
+
+**Options considered**
+1. Keep AppForge as display name with freshforge package slug — confusing dual branding
+2. Hard rename to FreshForge everywhere — single canonical name; AppForge and BuildPilot historical only
+
+**Decision**
+Use **FreshForge** as the canonical name everywhere the starter is described. **AppForge** and **BuildPilot** may appear only in historical notes (e.g. former package name, local folder name), clearly labeled.
+
+**Consequences**
+- Positive: Consistent branding in README, AGENTS.md, CLI, and workflow docs
+- Negative: Existing installs referencing `github:roasted-garlic/appforge` must migrate
+- Follow-ups: Update remote repo name when ready
+
+---
+
 ### ADR-004: Separate development archive from clean starter package
 
 | Field | Value |
@@ -54,10 +80,10 @@ When a decision affects architecture, security, data, backend, or workflow:
 | Deciders | Project team |
 
 **Context**
-AppForge developed inside its own workflow left completed plans, reviews, and signoffs in starter-facing folders, confusing adopters copying the kit.
+FreshForge developed inside its own workflow left completed plans, reviews, and signoffs in starter-facing folders, confusing adopters copying the kit.
 
 **Decision**
-Archive AppForge development artifacts under `docs/appforge-development/`. Keep `docs/workflow/plans/`, `docs/workflow/reviews/`, and `docs/workflow/setup/` clean (README + `.gitkeep` only) before copying. Document process in `docs/appforge-development/distribution/PACKAGING.md`.
+Archive FreshForge development artifacts under `docs/freshforge-development/`. Keep `docs/workflow/plans/`, `docs/workflow/reviews/`, and `docs/workflow/setup/` clean (README + `.gitkeep` only) before copying. Document process in `docs/freshforge-development/distribution/PACKAGING.md`.
 
 **Consequences**
 - Positive: Clear separation between maintainer history and adopters' workflow folders
@@ -75,7 +101,7 @@ Archive AppForge development artifacts under `docs/appforge-development/`. Keep 
 | Deciders | Project team |
 
 **Context**
-The AppForge starter is markdown-only with no application tests. Contributors and adopters need a simple way to verify required workflow files, markdown quality, and internal links.
+The FreshForge starter is markdown-only with no application tests. Contributors and adopters need a simple way to verify required workflow files, markdown quality, and internal links.
 
 **Options considered**
 1. Shell-only scripts — no Node dependency but weak markdown linting
@@ -97,7 +123,7 @@ Add a private `package.json` with `validate`, `validate:structure`, `validate:ma
 | Field | Value |
 |-------|-------|
 | Date | 2026-06-23 |
-| Status | accepted |
+| Status | superseded (by ADR-005) |
 | Deciders | Project team |
 
 **Context**
@@ -113,7 +139,7 @@ Use **AppForge** as the canonical name everywhere the starter is described. **Bu
 **Consequences**
 - Positive: Consistent branding in README, AGENTS.md, and workflow docs
 - Negative: Local clone folder may still be named BuildPilot until manually renamed
-- Follow-ups: None required for workflow behavior
+- Follow-ups: Superseded by ADR-005 (FreshForge rename)
 
 ---
 

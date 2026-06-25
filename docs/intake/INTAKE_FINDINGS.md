@@ -2,7 +2,7 @@
 
 > **Generated during Existing Project Intake.** Inspection record of what the agent found in the repository. Do not treat as product requirements until human-validated.
 
-> **AppForge starter note:** When intake runs on a repo that **is** the AppForge starter (workflow kit only, no application code), findings describe the starter layout and documentation — not a product application.
+> **FreshForge starter note:** When intake runs on a repo that **is** the FreshForge starter (workflow kit only, no application code), findings describe the starter layout and documentation — not a product application.
 
 **Intake date:** `[TBD]`
 **Intake plan:** `docs/workflow/plans/project-intake-plan.md`

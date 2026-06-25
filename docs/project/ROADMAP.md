@@ -2,7 +2,7 @@
 
 > **Project-specific** — customize during intake or bootstrap. Living plan for phases and priorities.
 
-> **Template note:** Customize this file for **your application** during intake or bootstrap. It does not describe AppForge workflow starter maintenance.
+> **Template note:** Customize this file for **your application** during intake or bootstrap. It does not describe FreshForge workflow starter maintenance.
 
 ---
 

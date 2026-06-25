@@ -1,4 +1,4 @@
-# AppForge Command Aliases
+# FreshForge Command Aliases
 
 > Short user messages map to full workflows. Agents must recognize aliases **case-insensitively** and treat a matching alias exactly like the full workflow command.
 
@@ -91,7 +91,7 @@ Do not implement app code until the user approves the first implementation phase
 - Run Phase
 - Next Phase
 - Continue Workflow
-- Continue AppForge
+- Continue FreshForge
 
 **Equivalent to:**
 

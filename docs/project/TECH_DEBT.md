@@ -2,7 +2,7 @@
 
 > **Project-specific** — populated during Existing Project Intake and updated during managed phases. Tracks known debt; fixes require approved managed phases.
 
-> **AppForge starter note:** Debt items for the AppForge starter concern workflow docs, rules, skills, and templates — not application code unless the starter is copied into an app repo.
+> **FreshForge starter note:** Debt items for the FreshForge starter concern workflow docs, rules, skills, and templates — not application code unless the starter is copied into an app repo.
 
 **Last reviewed:** `[TBD — YYYY-MM-DD]`
 

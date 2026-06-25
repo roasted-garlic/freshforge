@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Shared install logic for AppForge starter files.
+ * Shared install logic for FreshForge starter files.
  */
 
 import { copyFile, mkdir, stat } from 'node:fs/promises';
@@ -57,11 +57,11 @@ export function parseInstallArgs(argv) {
 }
 
 export function printInstallUsage() {
-  console.log(`Usage: appforge install [options]
+  console.log(`Usage: freshforge install [options]
 
 Options:
   --target <path>         Target project directory (default: current working directory)
-  --include-readme        Copy README.md as APPFORGE_README.md (never overwrites README.md)
+  --include-readme        Copy README.md as FRESHFORGE_README.md (never overwrites README.md)
   --include-validation    Also copy scripts/, package.json, package-lock.json,
                           .markdownlint-cli2.jsonc, .github/workflows/validate.yml
   --force                 Overwrite existing target files
@@ -103,7 +103,7 @@ function printSummary(summary, options, sourceRoot, topRoots) {
   console.log(`Mode: ${options.dryRun ? 'dry-run' : 'install'}`);
   console.log(`Target: ${path.resolve(options.target)}`);
   console.log(`Source: ${sourceRoot}`);
-  console.log(`Include README: ${options.includeReadme ? 'yes (as APPFORGE_README.md)' : 'no'}`);
+  console.log(`Include README: ${options.includeReadme ? 'yes (as FRESHFORGE_README.md)' : 'no'}`);
   console.log(`Include validation: ${options.includeValidation ? 'yes' : 'no'}`);
   console.log(`Force overwrite: ${options.force ? 'yes' : 'no'}`);
 
@@ -142,7 +142,7 @@ function printSummary(summary, options, sourceRoot, topRoots) {
   console.log('\n--- Next step in Cursor ---\n');
   console.log('  Existing codebase: type "Existing Project" or "Intake"');
   console.log('  New or blank project: type "New Project" or "Bootstrap"');
-  console.log('\nSee docs/appforge-development/distribution/INSTALLATION.md for details.\n');
+  console.log('\nSee docs/freshforge-development/distribution/INSTALLATION.md for details.\n');
 }
 
 /**
@@ -161,7 +161,7 @@ export async function runInstall(argv, { sourceRoot }) {
   const items = await collectStarterFiles(root, {
     includeReadme: options.includeReadme,
     includeValidation: options.includeValidation,
-    readmeAsAppforgeReadme: true,
+    readmeAsFreshforgeReadme: true,
     targetRoot,
     force: options.force,
   });

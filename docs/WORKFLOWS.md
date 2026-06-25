@@ -2,9 +2,9 @@
 
 
 
-> Universal process baseline for agent-driven development in this repository (**AppForge** workflow starter).
+> Universal process baseline for agent-driven development in this repository (**FreshForge** workflow starter).
 
-This project uses the AppForge workflow starter. The active workflow surface is `AGENTS.md`, `.cursor/`, and `docs/`. AppForge development and distribution documentation is not part of installed target projects.
+This project uses the FreshForge workflow starter. The active workflow surface is `AGENTS.md`, `.cursor/`, and `docs/`. FreshForge development and distribution documentation is not part of installed target projects.
 
 ---
 
@@ -58,7 +58,7 @@ Workflow output lives under `docs/workflow/` — separate from permanent project
 
 Permanent docs (`docs/project/`, `docs/architecture/`, `docs/standards/`, `docs/intake/`) describe what the product **is**. Workflow folders hold **phase artifacts** for the current or recent managed phase.
 
-When idle, workflow folders contain only `README.md` and `.gitkeep`. Archive completed AppForge development phase history under `docs/appforge-development/` (development repo only — never installed or exported).
+When idle, workflow folders contain only `README.md` and `.gitkeep`. Archive completed FreshForge development phase history under `docs/freshforge-development/` (development repo only — never installed or exported).
 
 ---
 
@@ -74,7 +74,7 @@ See `.cursor/workflow/command-aliases.md`.
 |----------|--------|
 | `Existing Project`, `Intake`, `Analyze this repo`, `Document this project`, … | **Existing Project Intake** |
 | `New Project`, `Bootstrap`, `Start App`, `Blank Project`, … | **New Project Bootstrap** |
-| `Continue Workflow`, `Next Phase`, `Run Phase`, `Continue AppForge`, … | **Managed Phase** (start or continue from state) |
+| `Continue Workflow`, `Next Phase`, `Run Phase`, `Continue FreshForge`, … | **Managed Phase** (start or continue from state) |
 
 Full alias lists: `AGENTS.md`, `docs/AI_RULES.md`.
 
@@ -88,7 +88,7 @@ Full alias lists: `AGENTS.md`, `docs/AI_RULES.md`.
 
 
 
-**When:** AppForge dropped into an established codebase with application code.
+**When:** FreshForge dropped into an established codebase with application code.
 
 
 
@@ -504,44 +504,44 @@ See `.cursor/agents/` for details.
 
 
 
-## AppForge Installation Workflow
+## FreshForge Installation Workflow
 
-**When:** Installing AppForge from the GitHub development repository into a new or existing project.
+**When:** Installing FreshForge from the GitHub development repository into a new or existing project.
 
-**Docs:** `docs/appforge-development/distribution/INSTALLATION.md`, `docs/appforge-development/distribution/DISTRIBUTION.md`
+**Docs:** `docs/freshforge-development/distribution/INSTALLATION.md`, `docs/freshforge-development/distribution/DISTRIBUTION.md`
 
 ### Flow
 
 ```
-npx github:roasted-garlic/appforge install → open in Cursor → intake or bootstrap
+npx github:roasted-garlic/freshforge install → open in Cursor → intake or bootstrap
 ```
 
 ### Recommended install
 
 ```bash
-npx github:roasted-garlic/appforge install
+npx github:roasted-garlic/freshforge install
 ```
 
 ### Fallback
 
 ```bash
-git clone https://github.com/roasted-garlic/appforge.git appforge-temp
-node appforge-temp/scripts/install-appforge.mjs --target .
-rm -rf appforge-temp
+git clone https://github.com/roasted-garlic/freshforge.git freshforge-temp
+node freshforge-temp/scripts/install-freshforge.mjs --target .
+rm -rf freshforge-temp
 ```
 
 ---
 
 ## Clean Starter Export Workflow
 
-**When:** Maintainers prepare a clean starter copy from the AppForge development repo.
+**When:** Maintainers prepare a clean starter copy from the FreshForge development repo.
 
-**Docs:** `docs/appforge-development/distribution/DISTRIBUTION.md`, `docs/appforge-development/distribution/PACKAGING.md`
+**Docs:** `docs/freshforge-development/distribution/DISTRIBUTION.md`, `docs/freshforge-development/distribution/PACKAGING.md`
 
 ### Flow
 
 ```
-validate → export-starter → inspect dist/appforge-starter → push dev repo to GitHub
+validate → export-starter → inspect dist/freshforge-starter → push dev repo to GitHub
 ```
 
 ### Commands
@@ -552,13 +552,13 @@ npm run export:starter:full    # with README + validation
 node scripts/export-starter.mjs --clean --dry-run
 ```
 
-Default export: `AGENTS.md`, `.cursor/`, `docs/` only. Excludes `docs/appforge-development/`, `node_modules/`, dev artifacts, and live development `state.md`. Maps `state-template.md` → `state.md`.
+Default export: `AGENTS.md`, `.cursor/`, `docs/` only. Excludes `docs/freshforge-development/`, `node_modules/`, dev artifacts, and live development `state.md`. Maps `state-template.md` → `state.md`.
 
 ---
 
 ## Existing Project After-Install Workflow
 
-**When:** AppForge installed into a repository that already has application code.
+**When:** FreshForge installed into a repository that already has application code.
 
 **Skill:** `project-intake`
 
@@ -567,7 +567,7 @@ Default export: `AGENTS.md`, `.cursor/`, `docs/` only. Excludes `docs/appforge-d
 ### Flow
 
 ```
-Install AppForge → Existing Project Intake → review health/debt docs → managed phases for fixes
+Install FreshForge → Existing Project Intake → review health/debt docs → managed phases for fixes
 ```
 
 Intake is docs-only. Do not fix tech debt during intake.
@@ -576,7 +576,7 @@ Intake is docs-only. Do not fix tech debt during intake.
 
 ## New Project After-Install Workflow
 
-**When:** AppForge installed into a blank or greenfield repository.
+**When:** FreshForge installed into a blank or greenfield repository.
 
 **Skill:** `new-project-bootstrap`
 
@@ -585,7 +585,7 @@ Intake is docs-only. Do not fix tech debt during intake.
 ### Flow
 
 ```
-Install AppForge → New Project Bootstrap → review generated docs → approve first implementation phase
+Install FreshForge → New Project Bootstrap → review generated docs → approve first implementation phase
 ```
 
 No app code until user approves first implementation phase.
@@ -594,19 +594,19 @@ No app code until user approves first implementation phase.
 
 ## Workflow State in Development vs Installed Starter
 
-**Development repo:** `.cursor/workflow/state.md` tracks active Managed Phases, signoffs, and decision logs while building AppForge.
+**Development repo:** `.cursor/workflow/state.md` tracks active Managed Phases, signoffs, and decision logs while building FreshForge.
 
-**Installed/exported starter:** Install and export scripts always write `.cursor/workflow/state-template.md` to `.cursor/workflow/state.md`. Target projects never inherit AppForge development workflow history.
+**Installed/exported starter:** Install and export scripts always write `.cursor/workflow/state-template.md` to `.cursor/workflow/state.md`. Target projects never inherit FreshForge development workflow history.
 
 Canonical clean state: `.cursor/workflow/state-template.md`. Validation requires dev `state.md` to match before push.
 
 ---
 
-## AppForge Self-Development Workflow
+## FreshForge Self-Development Workflow
 
-**When:** Improving AppForge itself in the development repository (not a target application).
+**When:** Improving FreshForge itself in the development repository (not a target application).
 
-**Docs:** `docs/appforge-development/distribution/STARTER_SURFACE.md`, `docs/AI_RULES.md`
+**Docs:** `docs/freshforge-development/distribution/STARTER_SURFACE.md`, `docs/AI_RULES.md`
 
 ### Flow
 
@@ -620,14 +620,14 @@ Plan → Review → Implement → Test → Signoff
 - If **Starter Surface** is affected → list starter files to change (`AGENTS.md`, `.cursor/*`, starter-facing `docs/`)
 - If **Development Tooling** is affected → list `scripts/`, `package.json`, `.github/`, etc.
 - If **Distribution/Installer** is affected → verify install/export dry-runs
-- If **Development History** is affected → archive under `docs/appforge-development/`, keep `docs/workflow/plans/` and `docs/workflow/reviews/` clean
+- If **Development History** is affected → archive under `docs/freshforge-development/`, keep `docs/workflow/plans/` and `docs/workflow/reviews/` clean
 
 ### During Signoff
 
 - State whether **installed projects** will be affected
 - State what **default install/export** includes (`AGENTS.md`, `.cursor/`, `docs/` unless flags used)
 - State whether **starter surface** files changed
-- Archive plan/signoff to `docs/appforge-development/` when working on AppForge itself
+- Archive plan/signoff to `docs/freshforge-development/` when working on FreshForge itself
 
 ---
 

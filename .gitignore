@@ -34,7 +34,7 @@ Thumbs.db
 *.tar.gz
 *.tgz
 
-# AppForge local packaging output
-appforge-temp/
-appforge-starter/
+# FreshForge local packaging output
+freshforge-temp/
+freshforge-starter/
 tmp-install-test/
