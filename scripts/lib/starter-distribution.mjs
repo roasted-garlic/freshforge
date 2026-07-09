@@ -25,7 +25,7 @@ import path from 'node:path';
  * @property {string} [reason]
  */
 
-export const DEFAULT_ROOT_ENTRIES = ['AGENTS.md', '.cursor', 'docs', '.freshforge'];
+export const DEFAULT_ROOT_ENTRIES = ['AGENTS.md', 'CLAUDE.md', '.cursor', 'docs', '.freshforge'];
 
 export const VALIDATION_ENTRIES = [
   'scripts',
@@ -97,6 +97,7 @@ const EXCLUDED_DIR_NAMES = new Set([
   'freshforge-temp',
   'freshforge-starter',
   'tmp-install-test',
+  'reference',
 ]);
 
 const EXCLUDED_FILE_PATTERNS = [

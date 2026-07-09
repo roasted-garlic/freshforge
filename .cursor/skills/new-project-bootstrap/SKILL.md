@@ -69,7 +69,10 @@ Define a new application through a focused questionnaire and generate documentat
    - Exit criteria per phase
    - Explicit "Phase 0: documentation complete"
 
-7. **Signoff**
+7. **Assistant handoff packs**
+   - Create or refresh `docs/assistants/chatgpt/` and `docs/assistants/claude/` from bootstrap docs (skill `assistant-handoff`)
+
+8. **Signoff**
    - Signoff doc for bootstrap
    - **Stop before implementation** unless user explicitly approves first implementation phase
 
@@ -78,6 +81,7 @@ Define a new application through a focused questionnaire and generate documentat
 - `docs/workflow/plans/new-project-bootstrap-plan.md`
 - Populated project-specific docs
 - Recommended `ROADMAP.md`
+- `docs/assistants/chatgpt/` and `docs/assistants/claude/` (templates filled from brief)
 - Bootstrap signoff in `docs/workflow/reviews/`
 - Workflow state: bootstrap complete, implementation forbidden until approval
 

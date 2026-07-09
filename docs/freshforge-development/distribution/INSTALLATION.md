@@ -12,7 +12,7 @@ From your **target project directory** (existing repo or new folder):
 npx github:roasted-garlic/freshforge install
 ```
 
-No temporary clone or cleanup required. Default install copies **only** `AGENTS.md`, `.cursor/`, `docs/`, and `.freshforge/version.json`.
+No temporary clone or cleanup required. Default install copies **only** `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `docs/`, and `.freshforge/version.json`.
 
 ### Optional flags
 
@@ -40,8 +40,11 @@ npx freshforge install
 
 | Path | Description |
 |------|-------------|
-| `AGENTS.md` | Universal AI entry point |
+| `AGENTS.md` | Universal AI entry point (Cursor, Codex) |
+| `CLAUDE.md` | Claude Code bridge (`@AGENTS.md` import) |
 | `.cursor/` | Rules, agents, skills, workflow state, hooks |
+| `docs/` | Baseline docs, project templates, `assistants/` handoff packs, empty workflow folders |
+| `.freshforge/version.json` | Installation metadata |
 | `docs/` | Baseline and project-template documentation |
 
 Clean idle workflow state is written from `.cursor/workflow/state-template.md` → `.cursor/workflow/state.md`.

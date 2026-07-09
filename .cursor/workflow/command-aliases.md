@@ -116,6 +116,31 @@ Stop for human checkpoints.
 
 ---
 
+## Assistant Handoff
+
+**Aliases** (any of these → create or refresh external AI packs):
+
+- Assistant Handoff
+- Update Assistants
+- Refresh Assistants
+- Refresh CURRENT-STATE
+- Update ChatGPT Docs
+- Update Claude Docs
+
+**Equivalent to:**
+
+```
+Create or refresh portable handoff packs under docs/assistants/chatgpt/ and docs/assistants/claude/
+from docs/ and .cursor/workflow/state.md.
+
+docs/ remains source of truth. Assistant packs are for ChatGPT / Claude web upload.
+Never include secrets. Prefer Refresh CURRENT-STATE when only status changed.
+```
+
+**Skill:** `assistant-handoff`
+
+---
+
 ## Agent Rule
 
 When the user's message matches an alias, **do not ask** which workflow they meant — execute the mapped workflow immediately (subject to human checkpoint and state gates).

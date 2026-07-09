@@ -9,7 +9,7 @@ The GitHub repository may include development tooling, CI, and `docs/freshforge-
 | | FreshForge development repo | Starter surface (default install) |
 |--|---------------------------|-----------------------------------|
 | **Product** | Builds and maintains FreshForge | What target projects receive |
-| **Default paths** | Full repo | `AGENTS.md`, `.cursor/`, `docs/`, `.freshforge/` only |
+| **Default paths** | Full repo | `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `docs/`, `.freshforge/` only |
 | **Install/export scripts** | Distribution tools | Not included by default |
 
 ---
@@ -34,6 +34,7 @@ This working repository is **not** the final shipped artifact for end users. It 
 Both the `freshforge` CLI and `install-freshforge.mjs` / `export-starter.mjs` copy **only** these paths by default:
 
 - `AGENTS.md`
+- `CLAUDE.md`
 - `.cursor/`
 - `docs/` (with exclusions below)
 - `.freshforge/version.json` (not `.freshforge/backups/`)
@@ -68,9 +69,10 @@ They do **not** include by default:
 
 | Area | Contents |
 |------|----------|
-| `AGENTS.md` | Session entry point |
+| `AGENTS.md` | Session entry point (canonical) |
+| `CLAUDE.md` | Claude Code bridge importing `AGENTS.md` |
 | `.cursor/rules/`, `agents/`, `skills/`, `workflow/`, `hooks.json` | Agent workflow system |
-| `docs/` | Baseline docs, project templates, empty `plans/` / `reviews/` / `setup/` |
+| `docs/` | Baseline docs, project templates, empty `plans/` / `reviews/` / `setup/`, `assistants/` handoff packs |
 | `.freshforge/version.json` | Installation metadata |
 
 ### Never copied

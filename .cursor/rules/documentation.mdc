@@ -70,8 +70,12 @@ Escalate unresolved conflicts to review phase or a human checkpoint; do not gues
 **Intake-generated** (populated during Existing Project Intake):
 - `docs/project/PROJECT_HEALTH.md`, `docs/intake/INTAKE_FINDINGS.md`, `docs/project/TECH_DEBT.md`
 
+**External AI handoff packs** (portable exports; not agent source of truth):
+- `docs/assistants/chatgpt/`, `docs/assistants/claude/`
+
 **FreshForge development only** (not installed into target projects):
 - `docs/freshforge-development/` including `distribution/INSTALLATION.md`, `DISTRIBUTION.md`, `PACKAGING.md`, `STARTER_SURFACE.md`
+- `reference/` (example handoff packs for maintainers only)
 
 Project-specific backend supplements may be added later, e.g. `FIREBASE.md`, `SUPABASE.md`, `DATABASE.md`, `API.md`, `INFRASTRUCTURE.md`. Reference them from `docs/architecture/BACKEND.md`.
 
@@ -88,8 +92,10 @@ Project-specific backend supplements may be added later, e.g. `FIREBASE.md`, `SU
 | Security change | Update `SECURITY.md` or `RISK_REGISTER.md` |
 | New test commands | Update `TESTING.md` |
 | Release process change | Update `DEPLOYMENT.md` |
+| Behavior / architecture / phase status change | Refresh `docs/assistants/` packs (at least `CURRENT-STATE.md`) via skill `assistant-handoff` |
+| Intake or bootstrap complete | Create or fully refresh `docs/assistants/chatgpt/` and `docs/assistants/claude/` |
 
-Use skill `documentation-update` for structured doc maintenance.
+Use skill `documentation-update` for structured doc maintenance. Use skill `assistant-handoff` for portable ChatGPT/Claude packs under `docs/assistants/`.
 
 ## Starter Surface and Development Docs
 

@@ -39,4 +39,6 @@ freshforge-temp/
 freshforge-starter/
 tmp-install-test/
 tmp-test-legacy-appforge/
+tmp-test-current-freshforge/
+tmp-verify-*/
 test-fixtures/

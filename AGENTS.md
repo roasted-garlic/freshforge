@@ -194,6 +194,33 @@ Rules:
 
 ---
 
+## Multi-Agent Compatibility
+
+FreshForge works out of the box with these coding agents:
+
+| Tool | Entry point |
+|------|-------------|
+| **Cursor** | `AGENTS.md` + `.cursor/` rules, skills, and workflow |
+| **Codex** | `AGENTS.md` (native project instructions) |
+| **Claude Code** | `CLAUDE.md` (imports `@AGENTS.md`) |
+
+`AGENTS.md` is the **single source of truth** for shared instructions. Edit it once; all three tools pick up the same rules. Keep `CLAUDE.md` as a thin bridge only — do not duplicate full rule content there.
+
+---
+
+## External AI Assistant Packs
+
+Portable uploads for **ChatGPT** and **Claude (web)** for **target apps** live under:
+
+- `docs/assistants/chatgpt/`
+- `docs/assistants/claude/`
+
+These are **derived exports** — `docs/` remains source of truth for coding agents. Say **Assistant Handoff** or **Refresh CURRENT-STATE** to create or update packs. After Cursor work, re-upload at least `CURRENT-STATE.md` to the external project.
+
+**FreshForge development repo only:** filled packs about FreshForge itself live under `docs/freshforge-development/assistants/` (never installed into target projects).
+
+---
+
 ## Upgrading an Existing Installation
 
 If the project already has an older AppForge or FreshForge workflow install:

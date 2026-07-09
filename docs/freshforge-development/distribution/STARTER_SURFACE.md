@@ -14,7 +14,8 @@ It is the product FreshForge distributes. Improvements to agent behavior, workfl
 
 | Path | Contents |
 |------|----------|
-| `AGENTS.md` | Universal AI entry point |
+| `AGENTS.md` | Universal AI entry point (canonical for Cursor and Codex) |
+| `CLAUDE.md` | Thin Claude Code bridge (`@AGENTS.md` import) |
 | `.cursor/` | Rules, agents, skills, workflow templates, command aliases, hooks, idle state template |
 | `docs/` | Baseline docs, project templates, empty `workflow/plans/`, `workflow/reviews/`, `workflow/setup/` |
 | `.freshforge/version.json` | Installation metadata (version, source, migration history) |
@@ -39,7 +40,11 @@ Both copy **only** the starter surface unless optional flags are used.
 
 ### `AGENTS.md`
 
-Session entry point, workflow summary, gates, and mode overview.
+Session entry point, workflow summary, gates, and mode overview. **Single source of truth** for Cursor, Codex, and Claude Code (via `CLAUDE.md`).
+
+### `CLAUDE.md`
+
+Thin bridge for **Claude Code**. Imports `@AGENTS.md` at session start. Do not duplicate full rules here — edit `AGENTS.md` for shared instructions.
 
 ### `.cursor/`
 
@@ -62,6 +67,7 @@ Session entry point, workflow summary, gates, and mode overview.
 | Architecture | `architecture/ARCHITECTURE.md`, `BACKEND.md`, `DATA_MODEL.md` |
 | Standards | `standards/CODING_STANDARDS.md`, `STYLE_GUIDE.md`, `SECURITY.md`, `TESTING.md`, `DEPLOYMENT.md` |
 | Intake | `intake/INTAKE_FINDINGS.md` |
+| External AI packs | `assistants/chatgpt/`, `assistants/claude/` (templates; fill via `assistant-handoff`) |
 | Active phase work | `workflow/plans/`, `workflow/reviews/`, `workflow/setup/` (README + `.gitkeep` only in clean starter) |
 
 Distribution, installation, packaging, and starter-surface maintainer docs live under `docs/freshforge-development/distribution/` in the **development repo only** — not in installed projects.
@@ -74,6 +80,7 @@ Distribution, installation, packaging, and starter-surface maintainer docs live 
 - `.github/` (CI)
 - `.markdownlint-cli2.jsonc`
 - `docs/freshforge-development/` (maintainer history)
+- `reference/` (maintainer example handoff packs only)
 - `.freshforge/backups/` (migration backups — created in target projects only)
 - `node_modules/`, `dist/`, env files, logs, archives, temp folders
 
@@ -173,7 +180,7 @@ npm run export:starter
 Structure validation checks:
 
 - `docs/freshforge-development/distribution/STARTER_SURFACE.md` exists in the **development repo**
-- Default export roots: `AGENTS.md`, `.cursor/`, `docs/`, `.freshforge/` only
+- Default export roots: `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `docs/`, `.freshforge/` only
 - `docs/freshforge-development/` excluded from export/install
 - Exported `state.md` is clean idle (from `state-template.md`)
 - `docs/workflow/plans/`, `docs/workflow/reviews/`, `docs/workflow/setup/` contain only README + `.gitkeep`
@@ -182,7 +189,7 @@ Structure validation checks:
 ### Manual
 
 1. Inspect `dist/freshforge-starter/` after export.
-2. Confirm top-level: `AGENTS.md`, `.cursor/`, `docs/`, `.freshforge/`.
+2. Confirm top-level: `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `docs/`, `.freshforge/`.
 3. Confirm `docs/AI_RULES.md`, `docs/WORKFLOWS.md`, and subfolders `project/`, `architecture/`, `standards/`, `intake/` are present.
 4. Confirm `docs/freshforge-development/` and legacy flat paths (`docs/INSTALLATION.md`, etc.) are absent.
 5. Confirm no `node_modules/`, `scripts/`, or `.github/` (unless full export with `--include-validation`).
@@ -202,5 +209,7 @@ Structure validation checks:
 
 | Date | Summary |
 |------|---------|
+| 2026-07-09 | Added `docs/assistants/` ChatGPT and Claude handoff packs + skill |
+| 2026-07-09 | Added `CLAUDE.md` for Claude Code; multi-agent entry points |
 | 2026-06-24 | Added `.freshforge/version.json`; migrate/doctor upgrade path |
 | 2026-06-23 | Initial starter surface definition |

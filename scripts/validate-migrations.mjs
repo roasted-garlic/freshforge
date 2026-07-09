@@ -71,11 +71,42 @@ async function main() {
     violations.push('doctor on no-install fixture should report issues');
   }
 
-  // Doctor on current fixture should be healthy or low issues
+  // Doctor on current fixture (missing CLAUDE.md) should flag bridge
   const doctorCurrent = await runNode(CLI, ['doctor', '--target', currentFixture]);
   if (!doctorCurrent.stdout.includes('FreshForge Doctor')) {
     violations.push('doctor on current fixture failed to run');
   }
+  if (doctorCurrent.stdout.includes('CLAUDE.md exists') && doctorCurrent.stdout.includes('✗')) {
+    // expected before migrate
+  }
+
+  const TMP_CURRENT = path.join(ROOT, 'tmp-test-current-freshforge');
+  await rm(TMP_CURRENT, { recursive: true, force: true });
+  await cp(currentFixture, TMP_CURRENT, { recursive: true });
+
+  const claudeBridgeDry = await runNode(CLI, ['migrate', '--target', TMP_CURRENT, '--dry-run']);
+  if (!claudeBridgeDry.stdout.includes('add-claude-md-bridge') && !claudeBridgeDry.stdout.includes('CLAUDE.md')) {
+    violations.push(`claude bridge migrate dry-run missing CLAUDE.md action: ${claudeBridgeDry.stdout}`);
+  }
+
+  const claudeBridgeReal = await runNode(CLI, ['migrate', '--target', TMP_CURRENT]);
+  if (claudeBridgeReal.code !== 0) {
+    violations.push(`claude bridge migrate failed: ${claudeBridgeReal.stderr || claudeBridgeReal.stdout}`);
+  }
+
+  if (!(await exists(path.join(TMP_CURRENT, 'CLAUDE.md')))) {
+    violations.push('migrated current fixture missing CLAUDE.md');
+  }
+
+  const doctorAfterBridge = await runNode(CLI, ['doctor', '--target', TMP_CURRENT]);
+  if (!doctorAfterBridge.stdout.includes('CLAUDE.md exists (Claude Code bridge)')) {
+    violations.push('doctor after claude bridge should report CLAUDE.md check');
+  }
+  if (doctorAfterBridge.stdout.includes('✗ CLAUDE.md exists')) {
+    violations.push('doctor after claude bridge should pass CLAUDE.md check');
+  }
+
+  await rm(TMP_CURRENT, { recursive: true, force: true });
 
   // Legacy migrate dry-run
   await rm(TMP_LEGACY, { recursive: true, force: true });

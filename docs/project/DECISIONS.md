@@ -45,6 +45,58 @@ When a decision affects architecture, security, data, backend, or workflow:
 
 ## Decisions
 
+### ADR-008: External assistant handoff packs under docs/assistants/
+
+| Field | Value |
+|-------|-------|
+| Date | 2026-07-09 |
+| Status | accepted |
+| Deciders | Project team |
+
+**Context**
+Users upload project context to ChatGPT and Claude (web) for planning and prompt help. A reference pack lived at repo root / `reference/chatgpt/`, which either clutters root or stays maintainer-only.
+
+**Options considered**
+1. Root `assistants/` — discoverable but pollutes project root
+2. `docs/handoff/` — under docs but vague naming
+3. `docs/assistants/{chatgpt,claude}/` — clear audience, no root clutter
+
+**Decision**
+Ship template packs at `docs/assistants/chatgpt/` and `docs/assistants/claude/` with skill `assistant-handoff`. `docs/` remains source of truth; packs are portable exports. Refresh CURRENT-STATE on signoff; no auto-hooks in this phase.
+
+**Consequences**
+- Positive: Discoverable under docs; dual ChatGPT/Claude packs; skill-driven updates
+- Negative: Risk of drift if agents skip CURRENT-STATE refresh — mitigated by documentation-update and signoff wiring
+- Follow-ups: Optional hooks later if needed
+
+---
+
+### ADR-007: Multi-agent entry points (Cursor, Claude Code, Codex)
+
+| Field | Value |
+|-------|-------|
+| Date | 2026-07-09 |
+| Status | accepted |
+| Deciders | Project team |
+
+**Context**
+FreshForge must work out of the box with Cursor, Claude Code, and Codex without maintaining duplicate instruction files.
+
+**Options considered**
+1. Duplicate rules in `CLAUDE.md` — high drift risk
+2. Symlink `CLAUDE.md` → `AGENTS.md` — Windows friction
+3. Thin `CLAUDE.md` importing `@AGENTS.md` — single source of truth, Anthropic-recommended
+
+**Decision**
+Keep `AGENTS.md` canonical. Add root `CLAUDE.md` with `@AGENTS.md` for Claude Code. Codex reads `AGENTS.md` natively; Cursor uses `AGENTS.md` + `.cursor/`.
+
+**Consequences**
+- Positive: One edit updates all three tools; low maintenance
+- Negative: Claude users must have `CLAUDE.md` present (shipped by default install/migrate)
+- Follow-ups: None required for basic compatibility
+
+---
+
 ### ADR-006: Versioned migration system for installed starters
 
 | Field | Value |

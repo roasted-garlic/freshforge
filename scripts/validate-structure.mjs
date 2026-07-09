@@ -24,6 +24,7 @@ const ROOT = path.resolve(__dirname, '..');
 /** @type {readonly string[]} */
 const REQUIRED_STARTER_FILES = [
   'AGENTS.md',
+  'CLAUDE.md',
   '.freshforge/version.json',
   '.cursor/hooks.json',
   '.cursor/workflow/state.md',
@@ -47,12 +48,24 @@ const REQUIRED_STARTER_FILES = [
   'docs/standards/TESTING.md',
   'docs/standards/DEPLOYMENT.md',
   'docs/intake/INTAKE_FINDINGS.md',
+  'docs/assistants/README.md',
+  'docs/assistants/chatgpt/README.md',
+  'docs/assistants/chatgpt/INSTRUCTIONS.md',
+  'docs/assistants/chatgpt/PROJECT-OVERVIEW.md',
+  'docs/assistants/chatgpt/ARCHITECTURE-AND-CODE.md',
+  'docs/assistants/chatgpt/CURRENT-STATE.md',
+  'docs/assistants/claude/README.md',
+  'docs/assistants/claude/INSTRUCTIONS.md',
+  'docs/assistants/claude/PROJECT-OVERVIEW.md',
+  'docs/assistants/claude/ARCHITECTURE-AND-CODE.md',
+  'docs/assistants/claude/CURRENT-STATE.md',
   'docs/workflow/plans/README.md',
   'docs/workflow/plans/.gitkeep',
   'docs/workflow/reviews/README.md',
   'docs/workflow/reviews/.gitkeep',
   'docs/workflow/setup/README.md',
   'docs/workflow/setup/.gitkeep',
+  '.cursor/skills/assistant-handoff/SKILL.md',
 ];
 
 /** @type {readonly string[]} */
@@ -90,6 +103,9 @@ const REQUIRED_DIRS = [
   'docs/architecture',
   'docs/standards',
   'docs/intake',
+  'docs/assistants',
+  'docs/assistants/chatgpt',
+  'docs/assistants/claude',
   'docs/workflow',
   'docs/workflow/plans',
   'docs/workflow/reviews',
@@ -136,6 +152,9 @@ const REQUIRED_EXPORT_DOC_DIRS = [
   'docs/architecture',
   'docs/standards',
   'docs/intake',
+  'docs/assistants',
+  'docs/assistants/chatgpt',
+  'docs/assistants/claude',
   'docs/workflow',
   'docs/workflow/plans',
   'docs/workflow/reviews',
@@ -145,7 +164,7 @@ const REQUIRED_EXPORT_DOC_DIRS = [
 const STARTER_CLEAN_DIRS = ['docs/workflow/plans', 'docs/workflow/reviews', 'docs/workflow/setup'];
 const ALLOWED_STARTER_DIR_ENTRIES = new Set(['README.md', '.gitkeep']);
 
-const EXPECTED_DEFAULT_ROOTS = ['.cursor', '.freshforge', 'AGENTS.md', 'docs'];
+const EXPECTED_DEFAULT_ROOTS = ['.cursor', '.freshforge', 'AGENTS.md', 'CLAUDE.md', 'docs'];
 
 async function exists(target) {
   try {
@@ -337,6 +356,10 @@ async function checkExportedStarter() {
     violations.push('exported starter must not include docs/freshforge-development/');
   }
 
+  if (await exists(path.join(exportRoot, 'reference'))) {
+    violations.push('exported starter must not include reference/');
+  }
+
   if (await exists(path.join(exportRoot, '.freshforge', 'backups'))) {
     violations.push('exported starter must not include .freshforge/backups/');
   }
@@ -351,7 +374,7 @@ async function checkExportedStarter() {
     }
   }
 
-  for (const rel of ['docs/AI_RULES.md', 'docs/WORKFLOWS.md']) {
+  for (const rel of ['docs/AI_RULES.md', 'docs/WORKFLOWS.md', 'AGENTS.md', 'CLAUDE.md']) {
     if (!(await exists(path.join(exportRoot, rel)))) {
       violations.push(`exported starter missing: ${rel}`);
     }

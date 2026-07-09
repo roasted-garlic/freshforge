@@ -22,6 +22,7 @@ import {
 /** FreshForge-controlled workflow files (safe to update during migration). */
 export const CONTROLLED_EXACT = new Set([
   'AGENTS.md',
+  'CLAUDE.md',
   '.cursor/hooks.json',
   'docs/AI_RULES.md',
   'docs/WORKFLOWS.md',
@@ -406,6 +407,138 @@ async function planLegacyAppforgeToFreshforge(ctx) {
   return actions;
 }
 
+/**
+ * @param {MigrationContext} ctx
+ * @returns {Promise<PlannedAction[]>}
+ */
+async function planAddClaudeMdBridge(ctx) {
+  /** @type {PlannedAction[]} */
+  const actions = [];
+
+  if (ctx.installState.kind === 'none' && !ctx.installState.hasAgentsMd && !ctx.installState.hasCursor) {
+    return actions;
+  }
+
+  const claudePath = path.join(ctx.targetRoot, 'CLAUDE.md');
+  if ((await hasMeaningfulContent(claudePath)) && !ctx.forceWorkflow) {
+    return actions;
+  }
+
+  actions.push({
+    type: 'sync',
+    sourceRel: 'CLAUDE.md',
+    targetRel: 'CLAUDE.md',
+    reason: 'add Claude Code bridge that imports AGENTS.md',
+  });
+
+  const existingVersion = await readVersion(ctx.targetRoot);
+  const history = existingVersion?.migrationHistory ?? [];
+  if (!history.some((e) => e.id === 'add-claude-md-bridge')) {
+    actions.push({
+      type: 'write',
+      targetRel: '.freshforge/version.json',
+      reason: 'record add-claude-md-bridge migration',
+      content: JSON.stringify(
+        createVersionJson(ctx.packageVersion, {
+          previousName: existingVersion?.previousName ?? null,
+          installedAt: existingVersion?.installedAt ?? new Date().toISOString(),
+          migrationHistory: [
+            ...history,
+            { id: 'add-claude-md-bridge', ranAt: new Date().toISOString() },
+          ],
+        }),
+        null,
+        2,
+      ),
+    });
+  }
+
+  return actions;
+}
+
+/** Template-only assistant pack files safe to sync when missing. */
+const ASSISTANT_TEMPLATE_RELS = [
+  'docs/assistants/README.md',
+  'docs/assistants/chatgpt/README.md',
+  'docs/assistants/chatgpt/INSTRUCTIONS.md',
+  'docs/assistants/chatgpt/PROJECT-OVERVIEW.md',
+  'docs/assistants/chatgpt/ARCHITECTURE-AND-CODE.md',
+  'docs/assistants/chatgpt/CURRENT-STATE.md',
+  'docs/assistants/claude/README.md',
+  'docs/assistants/claude/INSTRUCTIONS.md',
+  'docs/assistants/claude/PROJECT-OVERVIEW.md',
+  'docs/assistants/claude/ARCHITECTURE-AND-CODE.md',
+  'docs/assistants/claude/CURRENT-STATE.md',
+];
+
+/**
+ * Sync missing assistant handoff templates only — never overwrite filled packs.
+ * @param {MigrationContext} ctx
+ * @returns {Promise<PlannedAction[]>}
+ */
+async function planAddAssistantHandoffPacks(ctx) {
+  /** @type {PlannedAction[]} */
+  const actions = [];
+
+  if (ctx.installState.kind === 'none' && !ctx.installState.hasAgentsMd && !ctx.installState.hasCursor) {
+    return actions;
+  }
+
+  for (const rel of ASSISTANT_TEMPLATE_RELS) {
+    const targetPath = path.join(ctx.targetRoot, rel);
+    if ((await hasMeaningfulContent(targetPath)) && !ctx.forceWorkflow) {
+      continue;
+    }
+    // Even with force-workflow, do not overwrite content docs that look project-filled
+    // (more than placeholder-only). Force only applies to missing files or empty stubs.
+    if (ctx.forceWorkflow && (await hasMeaningfulContent(targetPath))) {
+      const content = await readFile(targetPath, 'utf8');
+      const stillTemplate =
+        content.includes('[PROJECT_NAME]') || content.includes('[TBD]') || content.includes('[ONE_LINE_SUMMARY]');
+      if (!stillTemplate && /CURRENT-STATE|PROJECT-OVERVIEW|ARCHITECTURE-AND-CODE/.test(rel)) {
+        continue;
+      }
+    }
+    try {
+      await stat(path.join(ctx.sourceRoot, rel));
+    } catch {
+      continue;
+    }
+    actions.push({
+      type: 'sync',
+      sourceRel: rel,
+      targetRel: rel,
+      reason: 'add missing assistant handoff template',
+    });
+  }
+
+  if (actions.length === 0) return actions;
+
+  const existingVersion = await readVersion(ctx.targetRoot);
+  const history = existingVersion?.migrationHistory ?? [];
+  if (!history.some((e) => e.id === 'add-assistant-handoff-packs')) {
+    actions.push({
+      type: 'write',
+      targetRel: '.freshforge/version.json',
+      reason: 'record add-assistant-handoff-packs migration',
+      content: JSON.stringify(
+        createVersionJson(ctx.packageVersion, {
+          previousName: existingVersion?.previousName ?? null,
+          installedAt: existingVersion?.installedAt ?? new Date().toISOString(),
+          migrationHistory: [
+            ...history,
+            { id: 'add-assistant-handoff-packs', ranAt: new Date().toISOString() },
+          ],
+        }),
+        null,
+        2,
+      ),
+    });
+  }
+
+  return actions;
+}
+
 /** @type {MigrationDef[]} */
 export const MIGRATIONS = [
   {
@@ -415,6 +548,20 @@ export const MIGRATIONS = [
     to: '0.2.0',
     plan: planLegacyAppforgeToFreshforge,
   },
+  {
+    id: 'add-claude-md-bridge',
+    description: 'Add CLAUDE.md bridge for Claude Code multi-agent compatibility.',
+    from: ['freshforge', 'partial', 'unknown'],
+    to: '0.2.1',
+    plan: planAddClaudeMdBridge,
+  },
+  {
+    id: 'add-assistant-handoff-packs',
+    description: 'Add docs/assistants ChatGPT and Claude handoff templates when missing.',
+    from: ['freshforge', 'partial', 'unknown'],
+    to: '0.2.2',
+    plan: planAddAssistantHandoffPacks,
+  },
 ];
 
 /**
@@ -422,32 +569,53 @@ export const MIGRATIONS = [
  * @param {MigrationDef} migration
  */
 export function isMigrationApplicable(ctx, migration) {
-  if (ctx.fromFilter && ctx.fromFilter !== migration.id && !migration.from.includes(ctx.fromFilter)) {
-    return false;
-  }
-  if (ctx.fromFilter === 'appforge' && !migration.from.includes('appforge')) {
-    return false;
-  }
-
   const completed = new Set((ctx.installState.version?.migrationHistory ?? []).map((e) => e.id));
   if (completed.has(migration.id)) {
     return false;
   }
 
-  if (ctx.fromFilter === 'appforge') {
-    return migration.id === 'legacy-appforge-to-freshforge';
+  // Exact migration id filter (e.g. --from add-claude-md-bridge)
+  if (
+    ctx.fromFilter &&
+    ctx.fromFilter !== 'appforge' &&
+    ctx.fromFilter !== 'unknown' &&
+    ctx.fromFilter !== 'partial' &&
+    ctx.fromFilter !== 'freshforge' &&
+    ctx.fromFilter !== migration.id
+  ) {
+    return false;
   }
 
-  // For freshforge installs, only run if legacy signals present
-  if (ctx.installState.kind === 'freshforge' && migration.id === 'legacy-appforge-to-freshforge') {
-    return (
-      ctx.installState.hasLegacyAppForgeRefs ||
-      ctx.installState.legacyDocPaths.length > 0 ||
-      ctx.forceWorkflow
-    );
+  // --from appforge means "include legacy AppForge migration" — still run later upgrades too
+  if (ctx.fromFilter === 'appforge' || ctx.fromFilter === 'unknown' || ctx.fromFilter === 'partial') {
+    // allow all registered migrations that apply to this install kind
   }
 
-  return true;
+  if (ctx.installState.kind === 'none' && !ctx.installState.hasAgentsMd && !ctx.installState.hasCursor) {
+    return false;
+  }
+
+  // For freshforge installs, only run legacy if signals present (or --from appforge / force)
+  if (migration.id === 'legacy-appforge-to-freshforge') {
+    if (ctx.fromFilter === 'appforge') return true;
+    if (ctx.installState.kind === 'appforge' || ctx.installState.kind === 'partial' || ctx.installState.kind === 'unknown') {
+      return true;
+    }
+    if (ctx.installState.kind === 'freshforge') {
+      return (
+        ctx.installState.hasLegacyAppForgeRefs ||
+        ctx.installState.legacyDocPaths.length > 0 ||
+        ctx.forceWorkflow
+      );
+    }
+    return false;
+  }
+
+  if (migration.id === 'add-claude-md-bridge' || migration.id === 'add-assistant-handoff-packs') {
+    return true;
+  }
+
+  return false;
 }
 
 /**
@@ -464,8 +632,9 @@ export async function buildMigrationPlan(ctx) {
 
   for (const migration of MIGRATIONS) {
     if (!isMigrationApplicable(ctx, migration)) continue;
-    applicable.push(migration);
     const actions = await migration.plan(ctx);
+    if (actions.length === 0) continue;
+    applicable.push(migration);
     for (const action of actions) {
       if (action.reason?.startsWith('CONFLICT:')) {
         conflicts.push(action);
@@ -475,7 +644,60 @@ export async function buildMigrationPlan(ctx) {
     }
   }
 
-  return { migrations: applicable, actions: dedupeActions(allActions), conflicts };
+  const merged = dedupeActions(allActions);
+  return {
+    migrations: applicable,
+    actions: mergeVersionJsonActions(merged, ctx, applicable),
+    conflicts,
+  };
+}
+
+/**
+ * Multiple migrations may each write version.json — keep one merged history.
+ * @param {PlannedAction[]} actions
+ * @param {MigrationContext} ctx
+ * @param {MigrationDef[]} applicable
+ */
+function mergeVersionJsonActions(actions, ctx, applicable) {
+  const versionWrites = actions.filter((a) => a.type === 'write' && a.targetRel === '.freshforge/version.json');
+  const others = actions.filter((a) => !(a.type === 'write' && a.targetRel === '.freshforge/version.json'));
+  if (versionWrites.length === 0) return actions;
+
+  const existing = ctx.installState.version;
+  /** @type {Map<string, string>} */
+  const historyMap = new Map();
+  for (const entry of existing?.migrationHistory ?? []) {
+    historyMap.set(entry.id, entry.ranAt);
+  }
+  const now = new Date().toISOString();
+  for (const migration of applicable) {
+    historyMap.set(migration.id, now);
+  }
+
+  const previousName =
+    ctx.installState.kind === 'appforge' ||
+    ctx.installState.hasLegacyAppForgeRefs ||
+    ctx.fromFilter === 'appforge'
+      ? 'AppForge'
+      : existing?.previousName ?? null;
+
+  const content = JSON.stringify(
+    createVersionJson(ctx.packageVersion, {
+      previousName,
+      installedAt: existing?.installedAt ?? now,
+      migrationHistory: [...historyMap.entries()].map(([id, ranAt]) => ({ id, ranAt })),
+    }),
+    null,
+    2,
+  );
+
+  others.push({
+    type: 'write',
+    targetRel: '.freshforge/version.json',
+    reason: `record migrations: ${applicable.map((m) => m.id).join(', ')}`,
+    content,
+  });
+  return others;
 }
 
 /**

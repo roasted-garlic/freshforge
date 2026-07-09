@@ -40,10 +40,12 @@ Keep documentation aligned with the codebase and decisions after changes.
    | Tests | TESTING |
    | Release | DEPLOYMENT |
    | Process | WORKFLOWS |
+   | External AI packs | `docs/assistants/chatgpt/` and `docs/assistants/claude/` (at least CURRENT-STATE) |
 
 2. Update docs; resolve conflicts using priority order
 3. Add ADR to DECISIONS.md for significant choices
-4. Note doc updates in plan/signoff or workflow state `Files Modified`
+4. Refresh assistant handoff packs when behavior, architecture, or phase status changed — use skill `assistant-handoff` (CURRENT-STATE mandatory on implement/test/signoff)
+5. Note doc updates in plan/signoff or workflow state `Files Modified`
 
 ## Outputs
 

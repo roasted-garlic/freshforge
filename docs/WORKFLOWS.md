@@ -532,6 +532,17 @@ npx github:roasted-garlic/freshforge migrate
 
 Preserves project-specific docs; writes `.freshforge/version.json` and backups under `.freshforge/backups/`.
 
+Adds `CLAUDE.md` on older installs missing the Claude Code bridge.
+
+### External AI assistant packs
+
+Portable handoff docs for ChatGPT and Claude (web):
+
+- `docs/assistants/chatgpt/`
+- `docs/assistants/claude/`
+
+Say **Assistant Handoff** after intake/bootstrap, or **Refresh CURRENT-STATE** after managed-phase work. Re-upload at least `CURRENT-STATE.md` to the external project.
+
 ### Fallback
 
 ```bash

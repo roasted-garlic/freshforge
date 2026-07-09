@@ -2,7 +2,7 @@
 
 > How to ship, install, export, and verify a **clean** FreshForge workflow starter package.
 
-**Starter surface** (the installed product): `AGENTS.md`, `.cursor/`, `docs/`, `.freshforge/version.json` — see `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
+**Starter surface** (the installed product): `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `docs/`, `.freshforge/version.json` — see `docs/freshforge-development/distribution/STARTER_SURFACE.md`.
 
 **Distribution tools** (`bin/freshforge.mjs`, `scripts/install-freshforge.mjs`, `scripts/export-starter.mjs`) deliver the starter surface but are not part of the default installed product.
 
@@ -19,7 +19,7 @@
 | `README.md` | Full dev documentation | Optional (`--include-readme`) |
 | `node_modules/` | Local only | **Never copied** |
 
-The GitHub repository may include development tooling, CI, and `docs/freshforge-development/`. The **default** install and export includes `AGENTS.md`, `.cursor/`, `docs/`, and `.freshforge/version.json`.
+The GitHub repository may include development tooling, CI, and `docs/freshforge-development/`. The **default** install and export includes `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `docs/`, and `.freshforge/version.json`.
 
 ---
 
@@ -28,6 +28,7 @@ The GitHub repository may include development tooling, CI, and `docs/freshforge-
 | Area | Included |
 |------|----------|
 | Entry point | `AGENTS.md` |
+| Claude Code bridge | `CLAUDE.md` (`@AGENTS.md` import) |
 | Cursor workflow | `.cursor/rules/`, `.cursor/agents/`, `.cursor/skills/`, `.cursor/workflow/`, `.cursor/hooks.json` |
 | Baseline docs | `docs/AI_RULES.md`, `SECURITY.md`, `WORKFLOWS.md`, `TESTING.md`, `CODING_STANDARDS.md`, `DEPLOYMENT.md`, `DECISIONS.md`, `RISK_REGISTER.md`, `PACKAGING.md`, `INSTALLATION.md`, `DISTRIBUTION.md` |
 | Project templates | `docs/project/PROJECT_BRIEF.md`, `ARCHITECTURE.md`, `DATA_MODEL.md`, `BACKEND.md`, `STYLE_GUIDE.md`, `ROADMAP.md`, `PROJECT_HEALTH.md`, `INTAKE_FINDINGS.md`, `TECH_DEBT.md` |

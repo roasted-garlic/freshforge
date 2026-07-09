@@ -49,6 +49,8 @@ Migrations are registered in `scripts/lib/freshforge-migrations.mjs`:
 | id | from | to | description |
 |----|------|-----|-------------|
 | `legacy-appforge-to-freshforge` | appforge, unknown, partial | 0.2.0 | Rename AppForge workflow references; move legacy doc paths; add metadata |
+| `add-claude-md-bridge` | freshforge, partial, unknown | 0.2.1 | Add `CLAUDE.md` for Claude Code (`@AGENTS.md` import) |
+| `add-assistant-handoff-packs` | freshforge, partial, unknown | 0.2.2 | Add `docs/assistants/` ChatGPT and Claude templates when missing |
 
 The runner skips migrations already listed in `migrationHistory`.
 

@@ -128,10 +128,15 @@ Add tech debt rows to `TECH_DEBT.md`. Add risks to `RISK_REGISTER.md`. Recommend
 - Review Agent or self-review: doc consistency, conflict resolution per `documentation.mdc` priority
 - Fix doc conflicts only — no app code
 
-### 9. Signoff
+### 9. Assistant handoff packs
+
+- Create or fully refresh `docs/assistants/chatgpt/` and `docs/assistants/claude/` from intake docs (skill `assistant-handoff`)
+- Fill overview, architecture, and CURRENT-STATE; leave `[TBD]` / `[INFERRED]` where needed
+
+### 10. Signoff
 
 - Create **`docs/workflow/reviews/project-intake-signoff.md`**
-- Summarize: docs updated, health summary, top risks/debt, human input needed, recommended next phases
+- Summarize: docs updated, health summary, top risks/debt, human input needed, recommended next phases, assistant packs
 - Set workflow state `DONE: yes`
 
 ## Outputs
@@ -141,6 +146,7 @@ Add tech debt rows to `TECH_DEBT.md`. Add risks to `RISK_REGISTER.md`. Recommend
 - `docs/project/PROJECT_HEALTH.md`
 - `docs/intake/INTAKE_FINDINGS.md`
 - `docs/project/TECH_DEBT.md`
+- `docs/assistants/chatgpt/` and `docs/assistants/claude/` (populated or refreshed)
 - `docs/workflow/reviews/project-intake-signoff.md`
 - Updated `.cursor/workflow/state.md`
 

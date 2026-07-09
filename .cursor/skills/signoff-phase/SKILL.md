@@ -33,7 +33,8 @@ Formalize completion with summary, test results, risks, and approval status.
    - Risks and known issues
    - Final status: approved | approved_with_notes | blocked
 4. Update ROADMAP (done items, follow-ups)
-5. Update workflow state:
+5. Refresh external assistant packs — at minimum `docs/assistants/chatgpt/CURRENT-STATE.md` and `docs/assistants/claude/CURRENT-STATE.md` (skill `assistant-handoff`)
+6. Update workflow state:
    - `Signoff Status: [status]`
    - `DONE: yes` if approved
    - `Last Completed Step: Signoff`

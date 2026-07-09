@@ -1,6 +1,6 @@
 {
   "name": "freshforge",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "private": true,
   "description": "FreshForge — reusable Cursor AI workflow starter with install, export, and validation CLI",
   "bin": {

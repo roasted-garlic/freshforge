@@ -338,12 +338,16 @@ Default installed product:
 
 
 
-- `AGENTS.md`
-- `.cursor/`
-- `docs/` (excluding `docs/freshforge-development/`)
+- `AGENTS.md` — canonical entry for Cursor and Codex
+- `CLAUDE.md` — thin Claude Code bridge (`@AGENTS.md` import); do not duplicate rules here
+- `.cursor/` — Cursor rules, skills, workflow (excluding `docs/freshforge-development/`)
 - `.freshforge/version.json` (installation metadata; not `.freshforge/backups/`)
 
 Upgrade existing installs with `freshforge migrate` and inspect with `freshforge doctor` — see `docs/freshforge-development/migrations/README.md`.
+
+**Multi-agent:** Cursor and Codex use `AGENTS.md`; Claude Code uses `CLAUDE.md` (imports `@AGENTS.md`). Edit `AGENTS.md` for shared rules.
+
+**External AI packs:** Portable ChatGPT / Claude (web) uploads live under `docs/assistants/`. They are derived from `docs/` — not a second source of truth. Use skill `assistant-handoff` (aliases: Assistant Handoff, Refresh CURRENT-STATE).
 
 
 

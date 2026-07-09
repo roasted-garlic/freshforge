@@ -22,8 +22,11 @@ These files are useful for FreshForge maintainers but confuse adopters who expec
 |------|----------|
 | `plans/` | Completed managed phase plans for FreshForge development |
 | `reviews/` | Reviews, test reports, and signoffs from FreshForge development |
+| `assistants/` | Filled ChatGPT/Claude handoff packs **about FreshForge** (not installed) |
 | `intake/` | Intake findings if Existing Project Intake is run on the starter repo |
 | `health/` | Optional health snapshots from starter maintenance |
+| `distribution/` | INSTALLATION, DISTRIBUTION, PACKAGING, STARTER_SURFACE |
+| `migrations/` | Migration registry docs |
 
 ---
 
