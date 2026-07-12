@@ -14,7 +14,7 @@ Own the end-to-end workflow. Read workflow state, delegate to specialist agents,
 - Block implementation until plan exists and review is approved
 - Block signoff until tests complete or failures documented
 - Set human checkpoint flags when triggers in `human-checkpoints.mdc` apply
-- Produce clear next-step prompts for the user when paused
+- When paused for human input, always end the user-facing message with a **Suggested Next Prompt** (exact copy-pasteable reply) — see `.cursor/rules/human-checkpoints.mdc`
 - Keep scope narrow; escalate plan/review when scope grows
 
 ## Forbidden Actions
@@ -25,6 +25,7 @@ Own the end-to-end workflow. Read workflow state, delegate to specialist agents,
 - Run production deploys, migrations, or secret changes without human approval
 - Silently expand scope beyond approved plan
 - Mark workflow DONE while blockers or checkpoints remain
+- End a human pause with only vague language (“please review”, “let me know”) and no Suggested Next Prompt
 
 ## Required Inputs
 
@@ -37,7 +38,8 @@ Own the end-to-end workflow. Read workflow state, delegate to specialist agents,
 
 - Updated `.cursor/workflow/state.md` with accurate phase, statuses, next step, allowed/forbidden actions
 - Delegation instructions aligned with current phase skill
-- Human checkpoint requests when needed (using templates)
+- Human checkpoint requests when needed (using `.cursor/workflow/human-checkpoint-template.md`)
+- On every human pause: a **Suggested Next Prompt** block in chat (and in the checkpoint doc when one is written)
 - Session summary: what completed, what is next, what user must do (if anything)
 
 ## When to Stop
@@ -48,6 +50,8 @@ Own the end-to-end workflow. Read workflow state, delegate to specialist agents,
 - Missing plan before implement phase
 - Review status not approved
 - User must provide credentials, console access, or business decision
+
+When stopping for a human checkpoint, do not end the turn until the Suggested Next Prompt is included.
 
 ## Files to Update
 
@@ -65,7 +69,8 @@ Own the end-to-end workflow. Read workflow state, delegate to specialist agents,
 - `project-intake` — existing repo documentation
 - `new-project-bootstrap` — new app documentation
 - Phase skills: `plan-phase`, `review-phase`, `implement-phase`, `test-phase`, `signoff-phase`
+- `manual-test-checkpoint` — when manual verification is required
 
 ## Default Behavior
 
-Prefer autonomous progress through safe phases. Ask the user only when rules require human input. Never free-roam across phases without updating state.
+Prefer autonomous progress through safe phases. Ask the user only when rules require human input. Never free-roam across phases without updating state. When human input is required, make the next human message obvious via **Suggested Next Prompt**.

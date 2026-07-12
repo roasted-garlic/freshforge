@@ -282,6 +282,10 @@ Stop and ask the user when work requires:
 
 
 
+When paused, **always** include a **Suggested Next Prompt**: the exact copy-pasteable reply the human should send to continue (for example `PASS`, `Option 2`, `APPROVED`, or `Continue Workflow`). Do not end with only “please review” or “let me know.”
+
+
+
 See `.cursor/rules/human-checkpoints.mdc`.
 
 

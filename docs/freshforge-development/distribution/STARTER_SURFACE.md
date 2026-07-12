@@ -209,6 +209,7 @@ Structure validation checks:
 
 | Date | Summary |
 |------|---------|
+| 2026-07-11 | Required Suggested Next Prompt on every human checkpoint pause |
 | 2026-07-09 | Added `docs/assistants/` ChatGPT and Claude handoff packs + skill |
 | 2026-07-09 | Added `CLAUDE.md` for Claude Code; multi-agent entry points |
 | 2026-06-24 | Added `.freshforge/version.json`; migrate/doctor upgrade path |

@@ -61,6 +61,30 @@
 
 ---
 
+## Suggested Next Prompt
+<!-- REQUIRED: exact text the human should paste into chat to continue -->
+
+Paste this to continue:
+
+`[PRIMARY_REPLY]`
+
+**Other valid replies (if any):**
+- `[ALTERNATIVE_1]`
+- `[ALTERNATIVE_2]`
+
+### Examples (replace with the real primary reply)
+
+| Situation | Primary prompt |
+|-----------|----------------|
+| Manual test passed | `PASS` |
+| Manual test failed | `FAIL: button overlap on mobile` |
+| Choose option 2 | `Option 2` |
+| Approve deploy / design | `APPROVED` |
+| Finished setting secrets in console | `DONE: secrets set` |
+| Resume after prior feedback | `Continue Workflow` |
+
+---
+
 ## Impact If Delayed
 <!-- What is blocked while waiting -->
 
@@ -87,3 +111,4 @@
 - [ ] `Human Checkpoint Required` set to `no`
 - [ ] Plan/review updated if scope changed
 - [ ] `Next Required Step` set for current phase
+- [ ] Workflow resumed autonomously when safe (or new Suggested Next Prompt issued if still blocked)

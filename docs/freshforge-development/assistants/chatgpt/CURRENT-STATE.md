@@ -2,8 +2,8 @@
 
 > **Living snapshot** for FreshForge development. External assistants should read this first each session.
 
-**Last updated:** 2026-07-09  
-**Updated by:** Assistant handoff pack creation (maintainer)
+**Last updated:** 2026-07-11  
+**Updated by:** human-checkpoint-next-prompt managed phase
 
 ---
 
@@ -15,7 +15,7 @@
 | **Overall health** | Good — validation green; distribution + migrate/doctor in place |
 | **FreshForge version** | **0.2.2** (`.freshforge/version.json`) |
 | **Test suite** | `npm run validate` + `validate:migrations` (structure, markdown, links, fixtures) |
-| **Active managed phase** | None (idle) — external-assistant-handoff-packs **signed off** |
+| **Active managed phase** | None (idle) — human-checkpoint-next-prompt **signed off** |
 | **P0 deferred** | npm publish for `npx freshforge` |
 
 ---
@@ -30,6 +30,7 @@ None. Workflow state is idle.
 
 | Date | Milestone |
 |------|-----------|
+| 2026-07-11 | Suggested Next Prompt required on every human checkpoint pause — signed off |
 | 2026-07-09 | External assistant handoff packs (`docs/assistants/` templates + skill) — signed off |
 | 2026-07-09 | Multi-agent entry points (`CLAUDE.md` bridge) — signed off |
 | 2026-07-09 | Migration and update system (`migrate`, `doctor`, version.json) — signed off |

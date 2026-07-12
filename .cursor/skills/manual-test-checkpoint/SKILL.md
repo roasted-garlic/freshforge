@@ -36,7 +36,8 @@ Handle testing that requires human eyes, interaction, or environment access.
    - Numbered steps with expected results
    - Pass criteria checklist
    - Reply format: PASS / FAIL / PASS WITH NOTES
-3. Present instructions clearly to user; stop autonomous work
+   - **Suggested Next Prompt** section (required) with primary reply `PASS` and alternatives
+3. Present instructions clearly to user; end the message with **Suggested Next Prompt** (exact copy-pasteable reply); stop autonomous work
 4. On user response:
    - Record in `Decision Log` with timestamp
    - Update test report and signoff with result

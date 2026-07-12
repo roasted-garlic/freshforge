@@ -43,7 +43,7 @@ Stop and ask the user before:
 - Any console action outside the repo
 - Unclear requirements that change product behavior
 
-See `.cursor/rules/human-checkpoints.mdc`.
+When paused for any of the above, **always** end the message with a **Suggested Next Prompt** — the exact text the human should paste to continue (see `.cursor/rules/human-checkpoints.mdc`). Do not end with only “please review” or “let me know.”
 
 ---
 
